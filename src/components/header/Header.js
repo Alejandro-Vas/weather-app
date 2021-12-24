@@ -1,6 +1,9 @@
-import logo from "../../resources/img/logo.png";
-
 const Header = () => {
-  return <>{logo}</>;
+  const logo = require("../../resources/img/logo.png");
+  return (
+    <>
+      <img src={logo} />
+    </>
+  );
 };
 export default Header;

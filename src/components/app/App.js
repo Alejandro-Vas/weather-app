@@ -1,5 +1,5 @@
-import Header from "";
-import GetWeatherService from "../services/GetWeatherService";
+import Header from "../header/Header";
+import GetWeatherService from "../../services/GetWeatherService";
 
 GetWeatherService();
 
