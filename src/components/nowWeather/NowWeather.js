@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const api = {
   key: "4a988ac25507ea7c902562b2aa291b85",
@@ -6,8 +6,9 @@ const api = {
 };
 
 const NowWeather = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Киров");
   const [weather, setWeather] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const search = (event) => {
     if (event.key === "Enter") {
@@ -17,7 +18,9 @@ const NowWeather = () => {
           setWeather(result);
           setQuery("");
           console.log(result);
-        });
+        })
+        .then(setLoading(false))
+        .then(console.log(loading));
     }
   };
 
@@ -27,21 +30,33 @@ const NowWeather = () => {
         <input
           type="text"
           className="search-bar"
-          placeholder="Search..."
+          placeholder="Введие название города..."
           onChange={(e) => setQuery(e.target.value)}
           value={query}
           onKeyPress={search}
         />
       </div>
+      Погода сейчас:
+      {/* //   Город: ${res.name}
 
+//   Облачность: ${res.clouds.all}% ${res.weather[0].description}
+//   Температура: ${Math.round(weather.main.temp)}°
+//   Ощущается как: ${Math.round(weather.main.feels_like)}°
+//   Видимость: ${weather.visibility} метров
+//   Скорость ветра: ${weather.wind.speed} м/с
+//   Порывы ветра до: ${weather.wind.gust} м/с
+//   Направление ветра: ${weather.wind.deg}°
+//   Координаты: ${weather.coord.lat} с.ш. ${res.coord.lon} в.д
+//   Восход: ${unixTimeToLocal(res.sys.sunrise)}
+//   Закат: ${unixTimeToLocal(res.sys.sunset)} */}
       <div>
-        <h2></h2>
+        <h2>Погода сейчас</h2>
       </div>
-
-      <div>Город: Киров </div>
-      <div>Страна: Россия</div>
-      <div>Облачность: 100% небольшой снег </div>
-      <div>Температура: -16°</div>
+      <div>
+        <h3>Город: {weather.name} </h3>
+      </div>
+      <div>Страна: {}</div>
+      <div>Температура: {weather.name}°</div>
       <div>Ощущается как: -23°</div>
       <div>Видимость: 168 метров</div>
       <div>Скорость ветра: 4.24 м/с</div>
