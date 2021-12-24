@@ -1,14 +1,21 @@
+import { useEffect, useState } from "react";
 import GetWeatherService from "../../services/GetWeatherService";
 
 const NowWeather = () => {
-  GetWeatherService();
+  const [weather, setWeather] = useState(null);
+
+  useEffect(() => {
+    setWeather(() => GetWeatherService());
+    console.log("weather", weather);
+  }, [weather]);
+
   return (
     <>
       <div>
         <h2>Погода сейчас:</h2>
       </div>
 
-      <div>Город: Киров</div>
+      <div>Город: {weather}</div>
       <div>Страна: Россия</div>
       <div>Облачность: 100% небольшой снег </div>
       <div>Температура: -16°</div>
