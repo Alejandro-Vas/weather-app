@@ -1,4 +1,5 @@
 import { useState } from "react";
+import unixTimeToLocal from "../../functions/unixTimetoLocal";
 
 const api = {
   key: "4a988ac25507ea7c902562b2aa291b85",
@@ -6,7 +7,7 @@ const api = {
 };
 
 const NowWeather = () => {
-  const [query, setQuery] = useState("Киров");
+  const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -30,13 +31,12 @@ const NowWeather = () => {
         <input
           type="text"
           className="search-bar"
-          placeholder="Введие название города..."
+          placeholder="Введие название города"
           onChange={(e) => setQuery(e.target.value)}
           value={query}
           onKeyPress={search}
         />
       </div>
-      Погода сейчас:
       {/* //   Город: ${res.name}
 
 //   Облачность: ${res.clouds.all}% ${res.weather[0].description}
@@ -49,22 +49,31 @@ const NowWeather = () => {
 //   Координаты: ${weather.coord.lat} с.ш. ${res.coord.lon} в.д
 //   Восход: ${unixTimeToLocal(res.sys.sunrise)}
 //   Закат: ${unixTimeToLocal(res.sys.sunset)} */}
-      <div>
-        <h2>Погода сейчас</h2>
-      </div>
-      <div>
-        <h3>Город: {weather.name} </h3>
-      </div>
-      <div>Страна: {}</div>
-      <div>Температура: {weather.name}°</div>
-      <div>Ощущается как: -23°</div>
-      <div>Видимость: 168 метров</div>
-      <div>Скорость ветра: 4.24 м/с</div>
-      <div>Порывы ветра до: 10.76 м/с</div>
-      <div>Направление ветра: 185°</div>
-      <div>Координаты: 58.5966 с.ш. 49.6601 в.д</div>
-      <div>Восход: 8:31:57</div>
-      <div>Закат: 14:49:45</div>
+      {typeof weather.sys !== "undefined" ? (
+        <>
+          <div>
+            <h2>Погода сейчас</h2>
+          </div>
+          <div>
+            <h3>Город: {weather.name} </h3>
+          </div>
+          <div>
+            Страна:{" "}
+            {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
+          </div>
+          <div>Температура: {weather.name}°</div>
+          <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
+          <div>Видимость: {weather.visibility} метров</div>
+          <div>Скорость ветра: {weather.wind.speed} м/с</div>
+          <div>Порывы ветра до: {weather.wind.gust} м/с</div>
+          <div>Направление ветра: {weather.wind.deg}°</div>
+          <div>
+            Координаты: {weather.coord.lat} с.ш. {weather.coord.lon}
+          </div>
+          <div>Восход: {unixTimeToLocal(weather.sys.sunrise)}</div>
+          <div>Закат: {unixTimeToLocal(weather.sys.sunset)}</div>
+        </>
+      ) : null}
     </>
   );
 };
