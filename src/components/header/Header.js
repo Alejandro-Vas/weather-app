@@ -1,5 +1,6 @@
+import logo from "../../resources/img/logo.png";
+
 const Header = () => {
-  const logo = require("../../resources/img/logo.png");
   return (
     <>
       <img src={logo} alt="Weatherman App logo" />
