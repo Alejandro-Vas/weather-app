@@ -1,14 +1,16 @@
 import GetWeatherService from "../../services/GetWeatherService";
 
 const NowWeather = () => {
-  GetWeatherService();
+  const { result } = GetWeatherService();
+  console.log("now", result);
+
   return (
     <>
       <div>
-        <h2>Погода сейчас:</h2>
+        <h2>{result}</h2>
       </div>
 
-      <div>Город: Киров</div>
+      <div>Город: Киров {result}</div>
       <div>Страна: Россия</div>
       <div>Облачность: 100% небольшой снег </div>
       <div>Температура: -16°</div>
