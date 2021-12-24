@@ -1,9 +1,9 @@
-import TodayWeather from "../components/todayWeather/TodayWeather";
+import NowWeather from "../components/nowWeather/NowWeather";
 
 const MainPage = () => {
   return (
     <>
-      <TodayWeather />
+      <NowWeather />
     </>
   );
 };
