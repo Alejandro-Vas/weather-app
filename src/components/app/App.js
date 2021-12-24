@@ -1,13 +1,12 @@
 import Header from "../header/Header";
-import GetWeatherService from "../../services/GetWeatherService";
 
-GetWeatherService();
+import MainPage from "../../pages/mainPage";
 
 const App = () => {
   return (
     <>
       <Header />
-      <div>hi</div>
+      <MainPage />
     </>
   );
 };
