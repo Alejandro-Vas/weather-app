@@ -61,7 +61,7 @@ const NowWeather = () => {
             Страна:{" "}
             {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
           </div>
-          <div>Температура: {weather.name}°</div>
+          <div>Температура: {Math.round(weather.main.temp)}°</div>
           <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
           <div>Видимость: {weather.visibility} метров</div>
           <div>Скорость ветра: {weather.wind.speed} м/с</div>
