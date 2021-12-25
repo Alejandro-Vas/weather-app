@@ -1,7 +1,7 @@
 const ForecastPage = () => {
   return (
     <>
-      <div>Прогноз</div>
+      <div>Здесь будет прогноз</div>
     </>
   );
 };
