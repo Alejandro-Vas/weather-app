@@ -1,15 +1,19 @@
 import { useState } from "react";
+import SearchBox from "../searchBox/SearchBox";
+
 import unixTimeToLocal from "../../functions/unixTimetoLocal";
 
 const api = {
   key: "4a988ac25507ea7c902562b2aa291b85",
-  base: "https://api.openweathermap.org/data/2.5/weather?q="
+  base: "https://api.openweathermap.org/data/2.5/weather?q=",
 };
 
 const NowWeather = () => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const dateNow = new Date().toLocaleString();
 
   const search = (event) => {
     if (event.key === "Enter") {
@@ -27,32 +31,12 @@ const NowWeather = () => {
 
   return (
     <>
-      <div className="search-box">
-        <input
-          type="text"
-          className="search-bar"
-          placeholder="Введие название города"
-          onChange={(e) => setQuery(e.target.value)}
-          value={query}
-          onKeyPress={search}
-        />
-      </div>
-      {/* //   Город: ${res.name}
+      <SearchBox query={query} search={search} setQuery={setQuery} />
 
-//   Облачность: ${res.clouds.all}% ${res.weather[0].description}
-//   Температура: ${Math.round(weather.main.temp)}°
-//   Ощущается как: ${Math.round(weather.main.feels_like)}°
-//   Видимость: ${weather.visibility} метров
-//   Скорость ветра: ${weather.wind.speed} м/с
-//   Порывы ветра до: ${weather.wind.gust} м/с
-//   Направление ветра: ${weather.wind.deg}°
-//   Координаты: ${weather.coord.lat} с.ш. ${res.coord.lon} в.д
-//   Восход: ${unixTimeToLocal(res.sys.sunrise)}
-//   Закат: ${unixTimeToLocal(res.sys.sunset)} */}
       {typeof weather.sys !== "undefined" ? (
         <>
           <div>
-            <h2>Погода сейчас</h2>
+            <h2>Погода на {dateNow}</h2>
           </div>
           <div>
             <h3>Город: {weather.name} </h3>
