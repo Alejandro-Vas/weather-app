@@ -1,7 +1,9 @@
+import "./SearchBox.scss";
+
 const SearchBox = (props) => {
   const { search, query, setQuery } = props;
   return (
-    <div className="search-box">
+    <div className="search-box-wrapper shadow-lg mb-4 bg-white">
       <input
         type="text"
         className="search-bar"
