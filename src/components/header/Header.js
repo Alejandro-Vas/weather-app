@@ -1,7 +1,9 @@
+import logo from "../../resourses/img/logo.png";
+
 const Header = () => {
   return (
     <>
-      <img src="%PUBLIC_URL%/logo.png" alt="Weatherman App logo" />
+      <img src={logo} alt="Weatherman App logo" />
     </>
   );
 };
