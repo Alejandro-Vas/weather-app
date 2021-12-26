@@ -8,33 +8,39 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/weather?q=",
 };
 
+const dateNow = new Date().toLocaleString();
+
 const MainPage = () => {
   const [query, setQuery] = useState("Киров");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const dateNow = new Date().toLocaleString();
+  const onClearSearch = () => {
+    setQuery("");
+    setWeather({});
+  };
 
-  const search = (event) => {
-    if (event.key === "Enter") {
-      fetch(`${api.base}${query}&units=metric&appid=${api.key}&lang=ru`)
-        .then((res) => res.json())
-        .then((result) => {
-          setError(false);
-          setLoading(false);
-          setWeather(result);
-        })
-        .then(setLoading(true))
-        .catch(setError(true));
-    }
+  const onSearch = (event) => {
+    event.preventDefault();
+    fetch(`${api.base}${query}&units=metric&appid=${api.key}&lang=ru`)
+      .then((res) => res.json())
+      .then((result) => {
+        setError(false);
+        setLoading(false);
+        setWeather(result);
+      })
+      .then(setLoading(true))
+      .catch(setError(true));
   };
 
   return (
     <>
-      <SearchBox query={query} search={search} setQuery={setQuery} />
+      <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
 
-      {loading ? "ЗАГРУЗКА..." : null}
+      <button onClick={onClearSearch}>Очистить результаты</button>
+
+      {loading ? <div>"ЗАГРУЗКА..."</div> : null}
 
       {!loading && weather.message === "city not found" ? (
         <div>
