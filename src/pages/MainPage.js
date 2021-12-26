@@ -80,7 +80,7 @@ const MainPage = () => {
           <div>Порывы ветра до: {weather.wind.gust} м/с</div>
           <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
           <div>
-            Координаты: {weather.coord.lat} с.ш. {weather.coord.lon}
+            Координаты: {weather.coord.lat} {weather.coord.lon}
           </div>
           <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
           <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
