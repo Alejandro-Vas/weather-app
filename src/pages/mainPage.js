@@ -8,10 +8,11 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/weather?q=",
 };
 
-const NowWeather = () => {
+const MainPage = () => {
   const [query, setQuery] = useState("Киров");
   const [weather, setWeather] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const dateNow = new Date().toLocaleString();
 
@@ -20,12 +21,13 @@ const NowWeather = () => {
       fetch(`${api.base}${query}&units=metric&appid=${api.key}&lang=ru`)
         .then((res) => res.json())
         .then((result) => {
+          setError(false);
+          setLoading(false);
           setWeather(result);
           setQuery("");
-          console.log(result);
         })
-        .then(setLoading(false))
-        .then(console.log(loading));
+        .then(setLoading(true))
+        .catch(setError(true));
     }
   };
 
@@ -33,8 +35,22 @@ const NowWeather = () => {
     <>
       <SearchBox query={query} search={search} setQuery={setQuery} />
 
+      {loading ? "ЗАГРУЗКА..." : null}
+
+      {weather.message === "city not found" ? (
+        <div>
+          <h2>Город не найден</h2>
+        </div>
+      ) : null}
+
+      {!loading && error ? (
+        <div>
+          <h2>Ошибка загрузки</h2>
+        </div>
+      ) : null}
+
       {typeof weather.sys !== "undefined" ? (
-        <>
+        <div>
           <div>
             <h2>Погода на {dateNow}</h2>
           </div>
@@ -56,10 +72,10 @@ const NowWeather = () => {
           </div>
           <div>Восход: {unixTimeToLocal(weather.sys.sunrise)}</div>
           <div>Закат: {unixTimeToLocal(weather.sys.sunset)}</div>
-        </>
+        </div>
       ) : null}
     </>
   );
 };
 
-export default NowWeather;
+export default MainPage;
