@@ -37,7 +37,7 @@ const MainPage = () => {
 
       {loading ? "ЗАГРУЗКА..." : null}
 
-      {weather.message === "city not found" ? (
+      {!loading && weather.message === "city not found" ? (
         <div>
           <h2>Город не найден</h2>
         </div>
@@ -49,7 +49,7 @@ const MainPage = () => {
         </div>
       ) : null}
 
-      {typeof weather.sys !== "undefined" ? (
+      {!loading && typeof weather.sys !== "undefined" ? (
         <div>
           <div>
             <h2>Погода на {dateNow}</h2>
