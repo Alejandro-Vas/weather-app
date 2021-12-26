@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/Spinner/Spinner";
+import WeatherIcon from "../components/weatherIcon/WeatherIcon";
 
 import unixTimeToLocal from "../functions/unixTimetoLocal";
 import getWindDirection from "../functions/getWindDirection";
@@ -69,10 +70,11 @@ const MainPage = () => {
             {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
           </div>
           <div>
-            {/* {weather.weather[0].main}
-            {weather.weather[0].description}
-            {weather.weather[0].icon} */}
+            {/* {{weather.weather[0].main}
+            {weather.weather[0].description} */}
+            {weather.weather[0].icon}
           </div>
+          <WeatherIcon icon={weather.weather[0].icon} />
           <div>Температура: {Math.round(weather.main.temp)}°</div>
           <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
           <div>Видимость: {weather.visibility} метров</div>
