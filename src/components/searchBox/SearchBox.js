@@ -1,3 +1,4 @@
+import defaultCities from "./defaultCities.json";
 import "./SearchBox.scss";
 
 const SearchBox = (props) => {
@@ -10,7 +11,9 @@ const SearchBox = (props) => {
             list="city-options"
             id="city-choice"
             name="city"
-            ref={(input) => input && input.focus()}
+            // ref={(input) => input && input.focus()}
+            // add focus on submit
+
             className="search-bar"
             placeholder="Введие название города"
             type="text"
@@ -18,9 +21,9 @@ const SearchBox = (props) => {
             onChange={(e) => setQuery(e.target.value)}
           />
           <datalist id="city-options">
-            <option value="Киров" />
-            <option value="Нижний Новгород" />
-            <option value="Шарья" />
+            {defaultCities.cities.map((el) => {
+              return <option value={el} />;
+            })}
           </datalist>
         </label>
         <input type="submit" value="Поиск" />

@@ -11,7 +11,7 @@ const api = {
 const dateNow = new Date().toLocaleString();
 
 const MainPage = () => {
-  const [query, setQuery] = useState("Киров");
+  const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
