@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchBox from "../components/searchBox/SearchBox";
+import Spinner from "../components/Spinner/Spinner";
 
 import unixTimeToLocal from "../functions/unixTimetoLocal";
 
@@ -40,7 +41,7 @@ const MainPage = () => {
 
       <button onClick={onClearSearch}>Очистить результаты</button>
 
-      {loading ? <div>"ЗАГРУЗКА..."</div> : null}
+      {loading ? <Spinner /> : null}
 
       {!loading && weather.message === "city not found" ? (
         <div>
