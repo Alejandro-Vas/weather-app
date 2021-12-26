@@ -3,6 +3,7 @@ import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/Spinner/Spinner";
 
 import unixTimeToLocal from "../functions/unixTimetoLocal";
+import getWindDirection from "../functions/getWindDirection";
 
 const api = {
   key: "4a988ac25507ea7c902562b2aa291b85",
@@ -67,12 +68,17 @@ const MainPage = () => {
             Страна:{" "}
             {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
           </div>
+          <div>
+            {/* {weather.weather[0].main}
+            {weather.weather[0].description}
+            {weather.weather[0].icon} */}
+          </div>
           <div>Температура: {Math.round(weather.main.temp)}°</div>
           <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
           <div>Видимость: {weather.visibility} метров</div>
           <div>Скорость ветра: {weather.wind.speed} м/с</div>
           <div>Порывы ветра до: {weather.wind.gust} м/с</div>
-          <div>Направление ветра: {weather.wind.deg}°</div>
+          <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
           <div>
             Координаты: {weather.coord.lat} с.ш. {weather.coord.lon}
           </div>
