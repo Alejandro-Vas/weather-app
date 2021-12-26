@@ -82,8 +82,8 @@ const MainPage = () => {
           <div>
             Координаты: {weather.coord.lat} с.ш. {weather.coord.lon}
           </div>
-          <div>Восход: {unixTimeToLocal(weather.sys.sunrise)}</div>
-          <div>Закат: {unixTimeToLocal(weather.sys.sunset)}</div>
+          <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
+          <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
         </div>
       ) : null}
     </>

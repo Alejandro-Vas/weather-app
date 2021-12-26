@@ -1,4 +1,4 @@
-import defaultCities from "./defaultCities.json";
+import defaultCitiesFullList from "./defaultCitiesFullList.json";
 import "./SearchBox.scss";
 
 const SearchBox = (props) => {
@@ -21,8 +21,8 @@ const SearchBox = (props) => {
             onChange={(e) => setQuery(e.target.value)}
           />
           <datalist id="city-options">
-            {defaultCities.cities.map((el) => {
-              return <option value={el} />;
+            {defaultCitiesFullList.cities.map((el) => {
+              return <option value={el} key={el} />;
             })}
           </datalist>
         </label>
