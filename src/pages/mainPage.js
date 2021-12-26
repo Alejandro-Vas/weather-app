@@ -24,7 +24,6 @@ const MainPage = () => {
           setError(false);
           setLoading(false);
           setWeather(result);
-          setQuery("");
         })
         .then(setLoading(true))
         .catch(setError(true));
