@@ -1,9 +1,15 @@
 import weatherIconsAppear from "../../functions/weatherIconsAppear";
 
+import "./WeatherIcon.scss";
+
 const WeatherIcon = ({ icon }) => {
   return (
     <div>
-      <img alt="current weather icon" src={weatherIconsAppear(icon)} />
+      <img
+        className="weather-img"
+        alt="current weather"
+        src={weatherIconsAppear(icon)}
+      />
     </div>
   );
 };

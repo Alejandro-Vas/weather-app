@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBox from "../components/searchBox/SearchBox";
-import Spinner from "../components/Spinner/Spinner";
+import Spinner from "../components/spinner/Spinner";
 import WeatherIcon from "../components/weatherIcon/WeatherIcon";
 
 import unixTimeToLocal from "../functions/unixTimetoLocal";
