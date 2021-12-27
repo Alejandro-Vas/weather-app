@@ -1,33 +1,40 @@
-// export default function weatherIconsApper(icon) {
-//   const path = "../../resourses/icons/weahterIcons/";
+export default function weatherIconsApper(icon) {
+  const icon01d = require("../resourses/icons/weahterIcons/01d.png");
+  const icon01n = require("../resourses/icons/weahterIcons/01n.png");
+  const icon02d = require("../resourses/icons/weahterIcons/02d.png");
+  const icon02n = require("../resourses/icons/weahterIcons/02n.png");
+  const icon03d = require("../resourses/icons/weahterIcons/03d.png");
+  const icon03n = require("../resourses/icons/weahterIcons/03n.png");
+  const icon04d = require("../resourses/icons/weahterIcons/04d.png");
+  const icon04n = require("../resourses/icons/weahterIcons/04n.png");
+  const icon09n = require("../resourses/icons/weahterIcons/09n.png");
+  const icon09d = require("../resourses/icons/weahterIcons/09d.png");
+  const icon10n = require("../resourses/icons/weahterIcons/10n.png");
+  const icon10d = require("../resourses/icons/weahterIcons/10d.png");
+  const icon11n = require("../resourses/icons/weahterIcons/11n.png");
+  const icon11d = require("../resourses/icons/weahterIcons/11d.png");
+  const icon13n = require("../resourses/icons/weahterIcons/13n.png");
+  const icon13d = require("../resourses/icons/weahterIcons/13d.png");
+  const icon50n = require("../resourses/icons/weahterIcons/50n.png");
+  const icon50d = require("../resourses/icons/weahterIcons/50d.png");
 
-//   const icon01d = require(`${path}01d.png`);
-//   const icon01n = require(`${path}01n.png`);
-//   const icon02d = require(`${path}02d.png`);
-//   const icon02n = require(`${path}02n.png`);
-//   const icon03d = require(`${path}03d.png`);
-//   const icon03n = require(`${path}03n.png`);
-//   const icon04d = require(`${path}04d.png`);
-//   const icon04n = require(`${path}04n.png`);
-//   const icon09n = require(`${path}09n.png`);
-//   const icon09d = require(`${path}09d.png`);
-//   const icon10n = require(`${path}10n.png`);
-//   const icon10d = require(`${path}10d.png`);
-//   const icon11n = require(`${path}11n.png`);
-//   const icon11d = require(`${path}11d.png`);
-//   const icon13n = require(`${path}13n.png`);
-//   const icon13d = require(`${path}13d.png`);
-//   const icon50n = require(`${path}50n.png`);
-//   const icon50d = require(`${path}50d.png`);
-
-//   let result;
-
-//   switch (icon) {
-//     case "01d":
-//         icon
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
+  if (icon === "01d") return icon01d;
+  if (icon === "01n") return icon01n;
+  if (icon === "02d") return icon02d;
+  if (icon === "02n") return icon02n;
+  if (icon === "03d") return icon03d;
+  if (icon === "03n") return icon03n;
+  if (icon === "04d") return icon04d;
+  if (icon === "04n") return icon04n;
+  if (icon === "09d") return icon09d;
+  if (icon === "09n") return icon09n;
+  if (icon === "10d") return icon10d;
+  if (icon === "10n") return icon10n;
+  if (icon === "11d") return icon11d;
+  if (icon === "11n") return icon11n;
+  if (icon === "13d") return icon13d;
+  if (icon === "13n") return icon13n;
+  if (icon === "50d") return icon50d;
+  if (icon === "50n") return icon50n;
+  return null;
+}

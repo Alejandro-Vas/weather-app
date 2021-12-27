@@ -8,7 +8,7 @@ import getWindDirection from "../functions/getWindDirection";
 
 const api = {
   key: "4a988ac25507ea7c902562b2aa291b85",
-  base: "https://api.openweathermap.org/data/2.5/weather?q=",
+  base: "https://api.openweathermap.org/data/2.5/weather?q="
 };
 
 const dateNow = new Date().toLocaleString();
@@ -62,9 +62,11 @@ const MainPage = () => {
           <div>
             <h2>Погода на {dateNow}</h2>
           </div>
+
           <div>
             <h3>Город: {weather.name} </h3>
           </div>
+          <WeatherIcon icon={weather.weather[0].icon} />
           <div>
             Страна:{" "}
             {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
@@ -72,9 +74,9 @@ const MainPage = () => {
           <div>
             {/* {{weather.weather[0].main}
             {weather.weather[0].description} */}
-            {weather.weather[0].icon}
+            {/* {weather.weather[0].icon} */}
           </div>
-          <WeatherIcon icon={weather.weather[0].icon} />
+
           <div>Температура: {Math.round(weather.main.temp)}°</div>
           <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
           <div>Видимость: {weather.visibility} метров</div>
