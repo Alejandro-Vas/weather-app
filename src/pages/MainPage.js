@@ -5,11 +5,7 @@ import WeatherIcon from "../components/weatherIcon/WeatherIcon";
 
 import unixTimeToLocal from "../functions/unixTimetoLocal";
 import getWindDirection from "../functions/getWindDirection";
-
-const api = {
-  key: "4a988ac25507ea7c902562b2aa291b85",
-  base: "https://api.openweathermap.org/data/2.5/weather?q="
-};
+import getCurrentWeather from "../services/getCurrentWeather";
 
 const dateNow = new Date().toLocaleString();
 
@@ -26,7 +22,7 @@ const MainPage = () => {
 
   const onSearch = (event) => {
     event.preventDefault();
-    fetch(`${api.base}${query}&units=metric&appid=${api.key}&lang=ru`)
+    getCurrentWeather(query)
       .then((res) => res.json())
       .then((result) => {
         setError(false);
