@@ -42,52 +42,67 @@ const ShowCurrentWeather = () => {
       {loading ? <Spinner /> : null}
 
       {!loading && weather.message === "city not found" ? (
-        <div>
-          <h2>Город не найден</h2>
-        </div>
+        <CityNotFound />
       ) : null}
 
-      {!loading && error ? (
-        <div>
-          <h2>Ошибка загрузки</h2>
-        </div>
-      ) : null}
+      {!loading && error ? <LoadingError /> : null}
 
       {!loading && typeof weather.sys !== "undefined" ? (
-        <div>
-          <div>
-            <h2>Погода на {dateNow}</h2>
-          </div>
-
-          <div>
-            <h3>Город: {weather.name} </h3>
-          </div>
-          <WeatherIcon icon={weather.weather[0].icon} />
-          <div>
-            Страна:{" "}
-            {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
-          </div>
-          <div>
-            {/* {{weather.weather[0].main}
-            {weather.weather[0].description} */}
-            {/* {weather.weather[0].icon} */}
-          </div>
-
-          <div>Температура: {Math.round(weather.main.temp)}°</div>
-          <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
-          <div>Видимость: {weather.visibility} метров</div>
-          <div>Скорость ветра: {weather.wind.speed} м/с</div>
-          <div>Порывы ветра до: {weather.wind.gust} м/с</div>
-          <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
-          <div>
-            Координаты: {weather.coord.lat} {weather.coord.lon}
-          </div>
-          <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
-          <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
-        </div>
+        <View weather={weather} />
       ) : null}
     </>
   );
 };
 
 export default ShowCurrentWeather;
+
+const View = ({ weather }) => {
+  return (
+    <div>
+      <div>
+        <h2>Погода на {dateNow}</h2>
+      </div>
+
+      <div>
+        <h3>Город: {weather.name} </h3>
+      </div>
+      <WeatherIcon icon={weather.weather[0].icon} />
+      <div>
+        Страна: {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
+      </div>
+      <div>
+        {/* {{weather.weather[0].main}
+        {weather.weather[0].description} */}
+        {/* {weather.weather[0].icon} */}
+      </div>
+
+      <div>Температура: {Math.round(weather.main.temp)}°</div>
+      <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
+      <div>Видимость: {weather.visibility} метров</div>
+      <div>Скорость ветра: {weather.wind.speed} м/с</div>
+      <div>Порывы ветра до: {weather.wind.gust} м/с</div>
+      <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
+      <div>
+        Координаты: {weather.coord.lat} {weather.coord.lon}
+      </div>
+      <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
+      <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
+    </div>
+  );
+};
+
+const CityNotFound = () => {
+  return (
+    <div>
+      <h2>Город не найден</h2>
+    </div>
+  );
+};
+
+const LoadingError = () => {
+  return (
+    <div>
+      <h2>Ошибка загрузки</h2>
+    </div>
+  );
+};
