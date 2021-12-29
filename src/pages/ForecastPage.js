@@ -1,9 +1,9 @@
-import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
+import ShowForecastWeather from "../components/showWeather/ShowForecastWeather/ShowForecastWeather";
 
 const ForecastPage = () => {
   return (
     <>
-      <ShowCurrentWeather />
+      <ShowForecastWeather />
     </>
   );
 };
