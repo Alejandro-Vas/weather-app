@@ -1,8 +1,11 @@
+import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
+
 const ForecastPage = () => {
   return (
     <>
-      <div>Раздел в разработке, зайдите чуть позже =)</div>
+      <ShowCurrentWeather />
     </>
   );
 };
+
 export default ForecastPage;
