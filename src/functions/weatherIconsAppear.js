@@ -1,3 +1,8 @@
+// Function takes icon id from openweathermap.org (for ex. '01d'), returns icon of matching weather (sun, cloudly etc...)
+
+// Weather icons condition table:
+// https://openweathermap.org/weather-conditions
+
 export default function weatherIconsApper(icon) {
   const icon01d = require("../resourses/icons/weahterIcons/01d.png");
   const icon01n = require("../resourses/icons/weahterIcons/01n.png");
