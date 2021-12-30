@@ -15,10 +15,7 @@ import "./App.scss";
 const App = () => {
   const [query, setQuery] = useState("");
 
-  const [coordinates, setCoordinates] = useState({
-    lat: 58.5966,
-    lon: 49.6601
-  });
+  const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
 
   return (
     <Router>

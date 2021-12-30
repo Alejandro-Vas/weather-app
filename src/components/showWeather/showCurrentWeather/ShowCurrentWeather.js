@@ -28,7 +28,7 @@ const ShowCurrentWeather = (props) => {
         setError(false);
         setLoading(false);
         setWeather(result);
-        // setCoordiantes((result) => result.coord.lat, result.coord.lon);
+        setCoordiantes([result?.coord?.lat, result?.coord?.lon]);
       })
       .then(setLoading(true))
       .catch(setError(true));
@@ -49,7 +49,7 @@ const ShowCurrentWeather = (props) => {
       {!loading && error ? <LoadingError /> : null}
 
       {!loading && typeof weather.sys !== "undefined" ? (
-        <View weather={weather} />
+        <View weather={weather} coordinates={coordinates} />
       ) : null}
     </>
   );
@@ -57,7 +57,7 @@ const ShowCurrentWeather = (props) => {
 
 export default ShowCurrentWeather;
 
-const View = ({ weather }) => {
+const View = ({ weather, coordinates }) => {
   return (
     <div>
       <div>
@@ -85,6 +85,9 @@ const View = ({ weather }) => {
       <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
       <div>
         Координаты: {weather.coord.lat} {weather.coord.lon}
+        <div style={{ fontSize: "30px" }}>
+          lat: {coordinates[0]}, lon: {coordinates[1]}
+        </div>
       </div>
       <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
       <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
