@@ -9,8 +9,7 @@ import getCurrentWeather from "../../../services/getCurrentWeather";
 
 const dateNow = new Date().toLocaleString();
 
-const ShowCurrentWeather = () => {
-  const [query, setQuery] = useState("");
+const ShowCurrentWeather = ({ query, setQuery }) => {
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

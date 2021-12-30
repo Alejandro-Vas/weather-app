@@ -1,6 +1,6 @@
 import ShowForecastWeather from "../components/showWeather/ShowForecastWeather/ShowForecastWeather";
 
-const ForecastPage = () => {
+const ForecastPage = ({ query, setQuery }) => {
   return (
     <>
       <div>
@@ -8,7 +8,7 @@ const ForecastPage = () => {
         погода
       </div>
       <p />
-      <ShowForecastWeather />
+      <ShowForecastWeather query={query} setQuery={setQuery} />
     </>
   );
 };

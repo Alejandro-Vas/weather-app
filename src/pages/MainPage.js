@@ -1,12 +1,9 @@
 import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
 
-
-const MainPage = () => {
-  
-
+const MainPage = ({ query, setQuery }) => {
   return (
     <>
-      <ShowCurrentWeather />
+      <ShowCurrentWeather query={query} setQuery={setQuery} />
     </>
   );
 };

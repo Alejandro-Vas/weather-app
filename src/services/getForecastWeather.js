@@ -1,4 +1,4 @@
-function getCurrentWeather(lat, lon) {
+function getForecastWeather(lat, lon) {
   const api = {
     key: "4a988ac25507ea7c902562b2aa291b85",
     base: "https://api.openweathermap.org/data/2.5/onecall?"
@@ -7,4 +7,4 @@ function getCurrentWeather(lat, lon) {
   return fetch(`${api.base}lat=${lat}&lon=${lon}&appid=${api.key}&lang=ru`);
 }
 
-export default getCurrentWeather;
+export default getForecastWeather;

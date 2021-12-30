@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
@@ -12,14 +13,23 @@ import ForecastPage from "../../pages/ForecastPage";
 import "./App.scss";
 
 const App = () => {
+  const [query, setQuery] = useState("");
+
   return (
     <Router>
       <div className="container">
         <Header />
         <NaviBar />
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route exact path="forecast" element={<ForecastPage />} />
+          <Route
+            path="/"
+            element={<MainPage query={query} setQuery={setQuery} />}
+          />
+          <Route
+            exact
+            path="forecast"
+            element={<ForecastPage query={query} setQuery={setQuery} />}
+          />
           <Route exat path="about" element={<AboutPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
