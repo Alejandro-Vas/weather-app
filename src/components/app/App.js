@@ -5,6 +5,7 @@ import NaviBar from "../naviBar/NaviBar";
 
 import MainPage from "../../pages/MainPage";
 import AboutPage from "../../pages/AboutPage";
+import Page404 from "../../pages/404Page";
 
 import ForecastPage from "../../pages/ForecastPage";
 
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/" element={<MainPage />} />
           <Route exact path="forecast" element={<ForecastPage />} />
           <Route exat path="about" element={<AboutPage />} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </div>
     </Router>
