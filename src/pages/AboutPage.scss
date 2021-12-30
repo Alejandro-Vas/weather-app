@@ -1,0 +1,10 @@
+.repo-link {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  &--item {
+    margin-left: 5px;
+    text-decoration: none;
+  }
+}
