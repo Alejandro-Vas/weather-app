@@ -15,6 +15,11 @@ import "./App.scss";
 const App = () => {
   const [query, setQuery] = useState("");
 
+  const [coordinates, setCoordinates] = useState({
+    lat: 58.5966,
+    lon: 49.6601
+  });
+
   return (
     <Router>
       <div className="container">
@@ -23,12 +28,26 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<MainPage query={query} setQuery={setQuery} />}
+            element={
+              <MainPage
+                query={query}
+                setQuery={setQuery}
+                coordinates={coordinates}
+                setCoordiantes={setCoordinates}
+              />
+            }
           />
           <Route
             exact
             path="forecast"
-            element={<ForecastPage query={query} setQuery={setQuery} />}
+            element={
+              <ForecastPage
+                query={query}
+                setQuery={setQuery}
+                coordinates={coordinates}
+                setCoordiantes={setCoordinates}
+              />
+            }
           />
           <Route exat path="about" element={<AboutPage />} />
           <Route path="*" element={<Page404 />} />

@@ -9,7 +9,8 @@ import getForecastWeather from "../../../services/getForecastWeather";
 
 const dateNow = new Date().toLocaleString();
 
-const ShowForecastWeather = ({ query, setQuery }) => {
+const ShowForecastWeather = (props) => {
+  const { query, setQuery, coordinates, setCoordiantes } = props;
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -29,6 +30,7 @@ const ShowForecastWeather = ({ query, setQuery }) => {
         setWeather(result);
       })
       .then(setLoading(true))
+      // .console.log(coordinates)
       .catch(setError(true));
   };
 
