@@ -1,4 +1,5 @@
-function getForecastWeather(lat, lon) {
+function getForecastWeather(coordiantes) {
+  const [lat, lon] = coordiantes;
   const api = {
     key: "4a988ac25507ea7c902562b2aa291b85",
     base: "https://api.openweathermap.org/data/2.5/onecall?"
