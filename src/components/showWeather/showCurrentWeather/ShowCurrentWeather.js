@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBox from "../../../components/searchBox/SearchBox";
 import Spinner from "../../../components/spinner/Spinner";
 import WeatherIcon from "../../../components/weatherIcon/WeatherIcon";
+import { CityNotFound, LoadingError } from "../../errors/Errors";
 
 import unixTimeToLocal from "../../../functions/unixTimetoLocal";
 import getWindDirection from "../../../functions/getWindDirection";
@@ -91,22 +92,6 @@ const View = ({ weather, coordinates }) => {
       </div>
       <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
       <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
-    </div>
-  );
-};
-
-const CityNotFound = () => {
-  return (
-    <div>
-      <h2>Город не найден</h2>
-    </div>
-  );
-};
-
-const LoadingError = () => {
-  return (
-    <div>
-      <h2>Ошибка загрузки</h2>
     </div>
   );
 };

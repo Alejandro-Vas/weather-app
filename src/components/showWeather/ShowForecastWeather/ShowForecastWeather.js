@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBox from "../../../components/searchBox/SearchBox";
 import Spinner from "../../../components/spinner/Spinner";
 import WeatherIcon from "../../../components/weatherIcon/WeatherIcon";
+import { CityNotFound, LoadingError } from "../../errors/Errors";
 
 import unixTimeToLocal from "../../../functions/unixTimetoLocal";
 import getWindDirection from "../../../functions/getWindDirection";
@@ -37,9 +38,19 @@ const ShowForecastWeather = (props) => {
 
   return (
     <>
-      <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
+      <div>
+        <button onClick={onSearch}>Показать Прогноз на 4 часа</button>
+      </div>
+      <div>
+        <button onClick={onSearch}>Показать Прогноз на день</button>
+      </div>
+      <div>
+        <button onClick={onSearch}>Показать Прогноз на 4 дня</button>
+      </div>
 
-      <button onClick={onClearSearch}>Очистить результаты</button>
+      {loading ? <Spinner /> : null}
+
+      {!loading && error ? <LoadingError /> : null}
 
       {forecast ? <pre>{JSON.stringify(forecast, undefined, 2)}</pre> : null}
     </>

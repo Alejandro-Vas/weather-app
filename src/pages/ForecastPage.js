@@ -3,10 +3,7 @@ import ShowForecastWeather from "../components/showWeather/ShowForecastWeather/S
 const ForecastPage = (props) => {
   return (
     <>
-      <div>
-        Сервис "Прогноз" в разработке, в настоящее время отображается текущая
-        погода
-      </div>
+      <div>Сервис "Прогноз" в разработке...</div>
       <p />
       <ShowForecastWeather {...props} />
     </>
