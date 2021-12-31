@@ -40,7 +40,8 @@ const ShowForecastWeather = (props) => {
       <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
 
       <button onClick={onClearSearch}>Очистить результаты</button>
-      <div> {forecast?.current?.dt}</div>
+
+      {forecast ? <pre>{JSON.stringify(forecast, undefined, 2)}</pre> : null}
     </>
   );
 };
