@@ -13,9 +13,8 @@ const ShowForecastWeather = (props) => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [error, setError] = useState(false);
 
-  const onSearch = (event) => {
-    event.preventDefault();
-    getForecastWeather(coordinates)
+  const onSearch = async () => {
+    const result = await getForecastWeather(coordinates)
       .then((res) => res.json())
       .then((result) => {
         setError(false);
@@ -25,6 +24,7 @@ const ShowForecastWeather = (props) => {
       })
       .then(setLoading(true))
       .catch(setError(true));
+    return result;
   };
 
   return (

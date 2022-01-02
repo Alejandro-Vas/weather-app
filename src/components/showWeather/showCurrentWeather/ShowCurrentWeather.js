@@ -21,10 +21,10 @@ const ShowCurrentWeather = (props) => {
     setWeather({});
   };
 
-  const onSearch = (event) => {
+  const onSearch = async (event) => {
     event.preventDefault();
-    getCurrentWeather(query)
-      .then((res) => res.json())
+    const result = await getCurrentWeather(query)
+      .then((result) => result.json())
       .then((result) => {
         setError(false);
         setLoading(false);
@@ -33,6 +33,7 @@ const ShowCurrentWeather = (props) => {
       })
       .then(setLoading(true))
       .catch(setError(true));
+    return result;
   };
 
   return (
