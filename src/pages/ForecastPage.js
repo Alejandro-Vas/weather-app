@@ -1,4 +1,3 @@
-import AccordionForecast from "../components/accordionForecast/AccordionForecast";
 import ShowForecastWeather from "../components/showWeather/ShowForecastWeather/ShowForecastWeather";
 
 const ForecastPage = (props) => {

@@ -1,22 +1,17 @@
 import { useState } from "react";
-import SearchBox from "../../../components/searchBox/SearchBox";
 import Spinner from "../../../components/spinner/Spinner";
-import WeatherIcon from "../../../components/weatherIcon/WeatherIcon";
-import { CityNotFound, LoadingError } from "../../errors/Errors";
 
-import unixTimeToLocal from "../../../functions/unixTimetoLocal";
-import getWindDirection from "../../../functions/getWindDirection";
+import { LoadingError } from "../../errors/Errors";
+
 import getForecastWeather from "../../../services/getForecastWeather";
 import AccordionForecast from "../../accordionForecast/AccordionForecast";
-import ForecastPage from "../../../pages/ForecastPage";
-
-const dateNow = new Date().toLocaleString();
 
 const ShowForecastWeather = (props) => {
   const { query, setQuery, coordinates } = props;
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showAccordion, setShowAccordion] = useState(false);
   const [error, setError] = useState(false);
 
   const onClearSearch = () => {
@@ -32,6 +27,7 @@ const ShowForecastWeather = (props) => {
         setError(false);
         setLoading(false);
         setForecast(result);
+        setShowAccordion(true);
       })
       .then(setLoading(true))
       .catch(setError(true));
@@ -47,7 +43,7 @@ const ShowForecastWeather = (props) => {
 
       {!loading && error ? <LoadingError /> : null}
 
-      {!loading && forecast ? <AccordionForecast forecast={forecast} /> : null}
+      {showAccordion ? <AccordionForecast forecast={forecast} /> : null}
     </>
   );
 };

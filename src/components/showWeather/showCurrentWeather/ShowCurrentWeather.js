@@ -72,11 +72,6 @@ const View = ({ weather, coordinates }) => {
       <div>
         Страна: {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
       </div>
-      <div>
-        {/* {{weather.weather[0].main}
-        {weather.weather[0].description} */}
-        {/* {weather.weather[0].icon} */}
-      </div>
 
       <div>Температура: {Math.round(weather.main.temp)}°</div>
       <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
