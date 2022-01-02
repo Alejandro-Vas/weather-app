@@ -1,3 +1,4 @@
+import AccordionForecast from "../components/accordionForecast/AccordionForecast";
 import ShowForecastWeather from "../components/showWeather/ShowForecastWeather/ShowForecastWeather";
 
 const ForecastPage = (props) => {
@@ -5,6 +6,7 @@ const ForecastPage = (props) => {
     <>
       <div>Сервис "Прогноз" в разработке...</div>
       <p />
+
       <ShowForecastWeather {...props} />
     </>
   );

@@ -7,6 +7,7 @@ import { CityNotFound, LoadingError } from "../../errors/Errors";
 import unixTimeToLocal from "../../../functions/unixTimetoLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 import getForecastWeather from "../../../services/getForecastWeather";
+import AccordionForecast from "../../accordionForecast/AccordionForecast";
 import ForecastPage from "../../../pages/ForecastPage";
 
 const dateNow = new Date().toLocaleString();
@@ -39,20 +40,14 @@ const ShowForecastWeather = (props) => {
   return (
     <>
       <div>
-        <button onClick={onSearch}>Показать Прогноз на 4 часа</button>
-      </div>
-      <div>
-        <button onClick={onSearch}>Показать Прогноз на день</button>
-      </div>
-      <div>
-        <button onClick={onSearch}>Показать Прогноз на 4 дня</button>
+        <button onClick={onSearch}>Показать прогноз</button>
       </div>
 
       {loading ? <Spinner /> : null}
 
       {!loading && error ? <LoadingError /> : null}
 
-      {forecast ? <pre>{JSON.stringify(forecast, undefined, 2)}</pre> : null}
+      {!loading && forecast ? <AccordionForecast forecast={forecast} /> : null}
     </>
   );
 };

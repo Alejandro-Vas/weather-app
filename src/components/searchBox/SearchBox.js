@@ -1,4 +1,4 @@
-import defaultCitiesFullList from "./defaultCitiesFullList.json";
+import defaultCitiesFullList from "../../resourses/data/defaultCitiesFullList.json";
 import "./SearchBox.scss";
 
 const SearchBox = (props) => {
