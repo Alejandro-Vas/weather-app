@@ -7,7 +7,7 @@ import getForecastWeather from "../../../services/getForecastWeather";
 import AccordionForecast from "../../accordionForecast/AccordionForecast";
 
 const ShowForecastWeather = (props) => {
-  const { coordinates } = props;
+  const { coordinates, query } = props;
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
@@ -32,14 +32,23 @@ const ShowForecastWeather = (props) => {
       <div>
         <button onClick={onSearch}>Показать прогноз</button>
       </div>
-
       {loading ? <Spinner /> : null}
 
-      {!loading && error ? <LoadingError /> : null}
+      {!loading && error && showAccordion ? <LoadingError /> : null}
 
-      {!error && forecast && showAccordion ? (
-        <AccordionForecast forecast={forecast} />
-      ) : null}
+      {!error && forecast.lat ? (
+        <>
+          <div>
+            <h3>Погода {query}</h3>
+          </div>
+          <AccordionForecast forecast={forecast} />
+        </>
+      ) : (
+        <div>
+          <LoadingError />
+          <div>Сначала загрузите прогноз на сегодня</div>
+        </div>
+      )}
     </>
   );
 };

@@ -81,9 +81,6 @@ const View = ({ weather, coordinates }) => {
       <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
       <div>
         Координаты: {weather.coord.lat} {weather.coord.lon}
-        <div style={{ fontSize: "30px" }}>
-          lat: {coordinates[0]}, lon: {coordinates[1]}
-        </div>
       </div>
       <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
       <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
