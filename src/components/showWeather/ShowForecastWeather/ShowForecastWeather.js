@@ -14,11 +14,6 @@ const ShowForecastWeather = (props) => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [error, setError] = useState(false);
 
-  const onClearSearch = () => {
-    setQuery("");
-    setWeather({});
-  };
-
   const onSearch = (event) => {
     event.preventDefault();
     getForecastWeather(coordinates)
@@ -43,7 +38,9 @@ const ShowForecastWeather = (props) => {
 
       {!loading && error ? <LoadingError /> : null}
 
-      {showAccordion ? <AccordionForecast forecast={forecast} /> : null}
+      {!error && forecast && showAccordion ? (
+        <AccordionForecast forecast={forecast} />
+      ) : null}
     </>
   );
 };
