@@ -8,13 +8,13 @@ const AboutPage = () => {
       <div>
         Пожелания по развитию проекта можно направлять:
         <div className="repo-link">
-          <div className="repo-link--item">
+          <div className="repo-link__item">
             <a href="https://github.com/Alejandro-Vas/weather-app">
               <img src={githubLogo} alt="gitHub repository" />
             </a>
           </div>
 
-          <div className="repo-link--item">
+          <div className="repo-link__item">
             <a
               className="repo-link"
               href="https://github.com/Alejandro-Vas/weather-app"
