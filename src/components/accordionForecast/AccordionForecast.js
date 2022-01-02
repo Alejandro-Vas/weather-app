@@ -8,16 +8,20 @@ import "./AccordionForecast.scss";
 
 const AccordionForecast = ({ forecast }) => {
   return (
-    <Accordion
-      className="accordion-forecast"
-      defaultActiveKey={["0"]}
-      alwaysOpen
-    >
+    <Accordion className="accordion-forecast" defaultActiveKey={["0"]}>
       <Accordion.Item eventKey="0">
-        <Accordion.Header>Погода поминуно</Accordion.Header>
+        <Accordion.Header>Вероятность осадков на час</Accordion.Header>
         <Accordion.Body>
-          <div> {forecast.lat} </div>
-          <div> {forecast.lon} </div>
+          <div>
+            {forecast.minutely.map((el, index) => {
+              return index % 10 === 0 ? (
+                <div key={index}>
+                  {unixTimeToLocal(el.dt, true)} вероятность осадков{" "}
+                  {(el.precipitation * 100).toFixed()} %
+                </div>
+              ) : null;
+            })}
+          </div>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
