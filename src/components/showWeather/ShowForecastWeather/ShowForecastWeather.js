@@ -7,8 +7,7 @@ import getForecastWeather from "../../../services/getForecastWeather";
 import AccordionForecast from "../../accordionForecast/AccordionForecast";
 
 const ShowForecastWeather = (props) => {
-  const { query, setQuery, coordinates } = props;
-  const [weather, setWeather] = useState({});
+  const { coordinates } = props;
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
