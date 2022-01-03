@@ -5,7 +5,7 @@ import "./NaviBar.scss";
 
 const NaviBar = () => {
   return (
-    <div className="navi-bar-wrapper shadow-lg mb-4 bg-white">
+    <div className="navi-bar-wrapper shadow mb-4 bg-white">
       <Navbar bg="primary" variant="dark">
         <Container>
           <Nav className=" me-auto fs-5 fw-bold ">

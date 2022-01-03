@@ -4,7 +4,7 @@ import "./SearchBox.scss";
 const SearchBox = (props) => {
   const { onSearch, query, setQuery } = props;
   return (
-    <div className="search-box-wrapper shadow-lg mb-4 bg-white">
+    <div className="search-box-wrapper shadow mb-4 bg-white">
       <form onSubmit={onSearch}>
         <label>
           <input
