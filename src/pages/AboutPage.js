@@ -1,3 +1,4 @@
+import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
 import githubLogo from "../resourses/img/GitHub-Mark-32px.png";
 import "./AboutPage.scss";
 
@@ -8,18 +9,15 @@ const AboutPage = () => {
       <div>
         Пожелания по развитию проекта можно направлять:
         <div className="repo-link">
-          <div className="repo-link__item">
+          <div className="repo-link__item mt-2">
             <a href="https://github.com/Alejandro-Vas/weather-app">
               <img src={githubLogo} alt="gitHub repository" />
             </a>
           </div>
 
           <div className="repo-link__item">
-            <a
-              className="repo-link"
-              href="https://github.com/Alejandro-Vas/weather-app"
-            >
-              GitHub Repository
+            <a href="https://github.com/Alejandro-Vas/weather-app">
+              <ButtonSubmit btnText="Перейти на GitHub" variant="success" />
             </a>
           </div>
         </div>

@@ -1,13 +1,16 @@
 .repo-link {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-
+  align-items: flex-start;
   &__item {
-    margin-left: 5px;
+    margin-left: 20px;
   }
 }
 
 a {
   text-decoration: none;
+}
+
+.shadow-none {
+  box-shadow: none;
 }
