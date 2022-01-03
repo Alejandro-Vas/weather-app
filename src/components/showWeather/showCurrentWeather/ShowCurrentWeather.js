@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBox from "../../../components/searchBox/SearchBox";
 import Spinner from "../../../components/spinner/Spinner";
 import WeatherIcon from "../../../components/weatherIcon/WeatherIcon";
+import ButtonSubmit from "../../buttonSubmit/ButtonSubmit";
 import { CityNotFound, LoadingError } from "../../errors/Errors";
 
 import unixTimeToLocal from "../../../functions/unixTimetoLocal";
@@ -40,7 +41,11 @@ const ShowCurrentWeather = (props) => {
     <>
       <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
 
-      <button onClick={onClearSearch}>Очистить результаты</button>
+      <ButtonSubmit
+        onClick={onClearSearch}
+        btnText="Очистить результаты"
+        variant="primary"
+      />
 
       {loading ? <Spinner /> : null}
 
