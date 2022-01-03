@@ -14,18 +14,18 @@ const ShowForecastWeather = (props) => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [error, setError] = useState(false);
 
-  const onSearch = async () => {
-    const result = await getForecastWeather(coordinates)
+  const onSearch = () => {
+    getForecastWeather(coordinates)
       .then((res) => res.json())
-      .then((result) => {
+      .then((res) => {
         setError(false);
         setLoading(false);
-        setForecast(result);
+        setForecast(res);
         setShowAccordion(true);
+        console.log(res);
       })
       .then(setLoading(true))
       .catch(setError(true));
-    return result;
   };
 
   return (
@@ -33,7 +33,7 @@ const ShowForecastWeather = (props) => {
       <div>
         <ButtonSubmit
           onClick={onSearch}
-          btnText="Показать прогноз"
+          btnText="Загрузить прогноз"
           variant="success"
         />
       </div>
@@ -48,12 +48,7 @@ const ShowForecastWeather = (props) => {
           </div>
           <AccordionForecast forecast={forecast} />
         </>
-      ) : (
-        <div>
-          <LoadingError />
-          <div>Сначала загрузите прогноз на сегодня</div>
-        </div>
-      )}
+      ) : null}
     </>
   );
 };
