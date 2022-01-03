@@ -34,7 +34,7 @@ const ShowForecastWeather = (props) => {
         <ButtonSubmit
           onClick={onSearch}
           btnText="Показать прогноз"
-          variant="primary"
+          variant="success"
         />
       </div>
       {loading ? <Spinner /> : null}

@@ -44,7 +44,7 @@ const ShowCurrentWeather = (props) => {
       <ButtonSubmit
         onClick={onClearSearch}
         btnText="Очистить результаты"
-        variant="primary"
+        variant="danger"
       />
 
       {loading ? <Spinner /> : null}
