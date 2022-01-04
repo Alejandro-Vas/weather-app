@@ -42,11 +42,13 @@ const ShowCurrentWeather = (props) => {
     <>
       <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
 
-      <ButtonSubmit
-        onClick={onClearSearch}
-        btnText="Очистить результаты"
-        variant="danger"
-      />
+      {query && (
+        <ButtonSubmit
+          onClick={onClearSearch}
+          btnText="Очистить"
+          variant="danger"
+        />
+      )}
 
       {loading && <Spinner />}
 
