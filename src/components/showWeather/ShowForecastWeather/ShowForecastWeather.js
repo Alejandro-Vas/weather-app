@@ -6,6 +6,7 @@ import { LoadingError } from "../../errors/Errors";
 
 import getForecastWeather from "../../../services/getForecastWeather";
 import AccordionForecast from "../../accordionForecast/AccordionForecast";
+import AlertDismissible from "../../alertDismissible/AlertDismissible";
 
 const ShowForecastWeather = (props) => {
   const { coordinates, query } = props;
@@ -39,7 +40,13 @@ const ShowForecastWeather = (props) => {
           />
         </div>
       ) : (
-        "Сначала загрузите погоду на сегодня"
+        <div>
+          <AlertDismissible
+            variant="danger"
+            alertHeading="Предупреждение"
+            alertText="Сначала выберите город и загрузите погоду на сегодня"
+          />
+        </div>
       )}
 
       {loading ? <Spinner /> : null}
