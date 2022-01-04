@@ -20,6 +20,7 @@ const ShowCurrentWeather = (props) => {
   const onClearSearch = () => {
     setQuery("");
     setWeather({});
+    setCoordiantes([null, null]);
   };
 
   const onSearch = async (event) => {
