@@ -8,7 +8,10 @@ import "./AccordionForecast.scss";
 
 const AccordionForecast = ({ forecast }) => {
   return (
-    <Accordion className="accordion-forecast" defaultActiveKey={["0"]}>
+    <Accordion
+      className="accordion-forecast mt-2 shadow mb-5 bg-white rounded"
+      defaultActiveKey={["0"]}
+    >
       <Accordion.Item eventKey="0">
         <Accordion.Header>Вероятность осадков в ближайший час</Accordion.Header>
         <Accordion.Body>
