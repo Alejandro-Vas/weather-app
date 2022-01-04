@@ -5,7 +5,7 @@ import "./NaviBar.scss";
 const NaviBar = () => {
   return (
     <>
-      <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <ul className="nav nav-pills shadow mb-3" id="pills-tab" role="tablist">
         <li className="nav-item">
           <NavLink
             className="nav-link"
