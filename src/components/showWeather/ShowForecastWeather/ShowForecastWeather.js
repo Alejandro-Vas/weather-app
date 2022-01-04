@@ -31,21 +31,15 @@ const ShowForecastWeather = (props) => {
 
   return (
     <>
-      {coordinates[0] !== null ? (
-        <div>
-          <ButtonSubmit btnText="Загрузить прогноз" variant="success" />
-        </div>
-      ) : (
-        <div>
-          <AlertDismissible
-            variant="danger"
-            alertHeading="Предупреждение"
-            alertText="Сначала выберите город и загрузите погоду на сегодня"
-          />
-        </div>
+      {!coordinates[0] && (
+        <AlertDismissible
+          variant="danger"
+          alertHeading="Предупреждение"
+          alertText="Сначала выберите город и загрузите погоду на сегодня"
+        />
       )}
 
-      {loading ? <Spinner /> : null}
+      {loading && <Spinner />}
 
       {!loading && error && showAccordion ? <LoadingError /> : null}
 

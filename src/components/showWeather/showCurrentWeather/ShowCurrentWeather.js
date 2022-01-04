@@ -47,7 +47,7 @@ const ShowCurrentWeather = (props) => {
         variant="danger"
       />
 
-      {loading ? <Spinner /> : null}
+      {loading && <Spinner />}
 
       {!loading && weather.message === "city not found" ? (
         <CityNotFound />
