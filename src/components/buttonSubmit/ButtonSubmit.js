@@ -7,7 +7,7 @@ const ButtonSubmit = (props) => {
 
   return (
     <div className="button-wrapper">
-      <div className=" mt-2 shadow mb-5 bg-white rounded">
+      <div className=" mt-2 shadow mb-5 rounded">
         <Button variant={variant} onClick={onClick}>
           {btnText}
         </Button>
