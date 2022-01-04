@@ -1,11 +1,11 @@
 import { Accordion } from "react-bootstrap";
 
-import unixTimeToLocal from "../../functions/unixTimetoLocal";
 import getWindDirection from "../../functions/getWindDirection";
 import WeatherIcon from "../../components/weatherIcon/WeatherIcon";
 
 import "./AccordionForecast.scss";
 import ForecastMinutely from "./forecastMinutely/ForecastMinutely";
+import ForecastHourly from "./forecastHourly/ForecastHourly";
 
 const AccordionForecast = ({ forecast }) => {
   return (
@@ -22,8 +22,7 @@ const AccordionForecast = ({ forecast }) => {
       <Accordion.Item eventKey="1">
         <Accordion.Header>Погода на завтра</Accordion.Header>
         <Accordion.Body>
-          <div> {forecast.lat} </div>
-          <div> {forecast.lon} </div>
+          <ForecastHourly forecast={forecast} />
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="2">
