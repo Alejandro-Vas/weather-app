@@ -44,7 +44,7 @@ const ShowForecastWeather = (props) => {
       {!error && forecast.lat ? (
         <>
           <div>
-            <h3>Погода {query}</h3>
+            <h3>{query}</h3>
           </div>
           <AccordionForecast forecast={forecast} />
         </>
