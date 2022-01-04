@@ -10,7 +10,7 @@ import ForecastHourly from "./forecastHourly/ForecastHourly";
 const AccordionForecast = ({ forecast }) => {
   return (
     <Accordion
-      className="accordion-forecast mt-2 shadow mb-5 bg-white rounded"
+      className="accordion-forecast mt-2 shadow mb-5 rounded"
       defaultActiveKey={["0"]}
     >
       <Accordion.Item eventKey="0">
