@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Spinner from "../../../components/spinner/Spinner";
 import ButtonSubmit from "../../buttonSubmit/ButtonSubmit";
 
@@ -15,7 +15,7 @@ const ShowForecastWeather = (props) => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [error, setError] = useState(false);
 
-  const onSearch = () => {
+  useEffect(() => {
     getForecastWeather(coordinates)
       .then((res) => res.json())
       .then((res) => {
@@ -27,17 +27,13 @@ const ShowForecastWeather = (props) => {
       })
       .then(setLoading(true))
       .catch(setError(true));
-  };
+  }, [coordinates]);
 
   return (
     <>
       {coordinates[0] !== null ? (
         <div>
-          <ButtonSubmit
-            onClick={onSearch}
-            btnText="Загрузить прогноз"
-            variant="success"
-          />
+          <ButtonSubmit btnText="Загрузить прогноз" variant="success" />
         </div>
       ) : (
         <div>
