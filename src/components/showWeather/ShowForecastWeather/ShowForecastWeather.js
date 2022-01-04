@@ -30,13 +30,18 @@ const ShowForecastWeather = (props) => {
 
   return (
     <>
-      <div>
-        <ButtonSubmit
-          onClick={onSearch}
-          btnText="Загрузить прогноз"
-          variant="success"
-        />
-      </div>
+      {coordinates[0] !== null ? (
+        <div>
+          <ButtonSubmit
+            onClick={onSearch}
+            btnText="Загрузить прогноз"
+            variant="success"
+          />
+        </div>
+      ) : (
+        "Сначала загрузите погоду на сегодня"
+      )}
+
       {loading ? <Spinner /> : null}
 
       {!loading && error && showAccordion ? <LoadingError /> : null}
