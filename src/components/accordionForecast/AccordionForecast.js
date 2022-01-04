@@ -5,6 +5,7 @@ import getWindDirection from "../../functions/getWindDirection";
 import WeatherIcon from "../../components/weatherIcon/WeatherIcon";
 
 import "./AccordionForecast.scss";
+import ForecastMinutely from "./forecastMinutely/ForecastMinutely";
 
 const AccordionForecast = ({ forecast }) => {
   return (
@@ -15,16 +16,7 @@ const AccordionForecast = ({ forecast }) => {
       <Accordion.Item eventKey="0">
         <Accordion.Header>Вероятность осадков в ближайший час</Accordion.Header>
         <Accordion.Body>
-          <div>
-            {forecast.minutely?.map((el, index) => {
-              return index % 10 === 0 ? (
-                <div key={index}>
-                  {unixTimeToLocal(el.dt, true)} вероятность осадков{" "}
-                  {(el.precipitation * 100).toFixed()} %
-                </div>
-              ) : null;
-            })}
-          </div>
+          <ForecastMinutely forecast={forecast} />
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
