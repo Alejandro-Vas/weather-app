@@ -1,23 +1,15 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./NaviBar.scss";
 
 const NaviBar = () => {
-  const [isActive, setActive] = useState({ 0: true, 1: false, 2: false });
-
-  const handleToggle = (i) => {
-    setActive({ 0: false, 1: false, 2: false });
-    setActive((prevState) => ({ ...prevState, [i]: true }));
-  };
-
   return (
     <>
       <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li className="nav-item">
-          <Link
-            className={isActive[0] ? "nav-link active" : "nav-link"}
-            onClick={() => handleToggle(0)}
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
             id="pills-home-tab"
             data-toggle="pill"
             to="/"
@@ -26,12 +18,12 @@ const NaviBar = () => {
             aria-selected="true"
           >
             ПОГОДА СЕЙЧАС
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            className={isActive[1] ? "nav-link active" : "nav-link"}
-            onClick={() => handleToggle(1)}
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
             id="pills-profile-tab"
             data-toggle="pill"
             to="forecast"
@@ -40,12 +32,12 @@ const NaviBar = () => {
             aria-selected="false"
           >
             ПРОГНОЗ
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            className={isActive[2] ? "nav-link active" : "nav-link"}
-            onClick={() => handleToggle(2)}
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
             id="pills-contact-tab"
             data-toggle="pill"
             to="about"
@@ -54,7 +46,7 @@ const NaviBar = () => {
             aria-selected="false"
           >
             ABOUT
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </>
