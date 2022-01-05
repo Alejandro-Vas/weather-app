@@ -11,7 +11,7 @@ const ForecastHourly = (props) => {
   return (
     <>
       {hourly.map((el, index) => {
-        return index > 0 && index < 12 ? (
+        return index > 0 && index < 13 ? (
           <>
             <div
               key={index}
@@ -33,7 +33,7 @@ const ForecastHourly = (props) => {
                 </div>
               </div>
             </div>
-            {index < 11 && <hr id="hr" />}
+            {index < 12 && <hr id="hr" />}
           </>
         ) : null;
       })}
