@@ -24,12 +24,6 @@ const AccordionForecast = ({ forecast }) => {
           <div> {forecast.lon} </div>
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="2">
-        <Accordion.Header>JSON</Accordion.Header>
-        <Accordion.Body>
-          <pre>{JSON.stringify(forecast, undefined, 2)}</pre>
-        </Accordion.Body>
-      </Accordion.Item>
     </Accordion>
   );
 };
