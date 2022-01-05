@@ -19,7 +19,7 @@ const AccordionForecast = ({ forecast }) => {
       </Accordion.Item>
       <Accordion.Item eventKey="1">
         <Accordion.Header>
-          <h4>Прогноз на 3 дня</h4>
+          <h4>Прогноз на 5 дней</h4>
         </Accordion.Header>
         <Accordion.Body>
           <ForecastDaily forecast={forecast} />

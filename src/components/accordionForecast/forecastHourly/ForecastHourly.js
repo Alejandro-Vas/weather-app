@@ -13,7 +13,7 @@ const ForecastHourly = (props) => {
       {hourly.map((el, index) => {
         return index > 0 && index < 13 ? (
           <>
-            <div key={index} className="forecast fs-2">
+            <div key={index} className="forecast fs-5">
               <div className="forecast__item">
                 {unixTimeToLocal(el.dt, true)}
               </div>
