@@ -15,8 +15,7 @@ import "./App.scss";
 
 const App = () => {
   const [coordinates, setCoordinates] = useState([null, null]);
-  const [queryLocalStorage, setQueryLocalStorage] =
-    useLocalStorage("Query");
+  const [queryLocalStorage, setQueryLocalStorage] = useLocalStorage("Query");
   const [query, setQuery] = useState(queryLocalStorage);
 
   return (
@@ -33,7 +32,7 @@ const App = () => {
                 setQuery={setQuery}
                 coordinates={coordinates}
                 setCoordiantes={setCoordinates}
-                setQueryToLocalStorage={setQueryLocalStorage}
+                setQueryLocalStorage={setQueryLocalStorage}
               />
             }
           />
