@@ -1,10 +1,10 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
-import unixTimeToLocal from "./../../../functions/unixTimetoLocal";
-import getWindDirection from "./../../../functions/getWindDirection";
+import unixTimeToLocal from "../../../functions/unixTimetoLocal";
+import getWindDirection from "../../../functions/getWindDirection";
 
 import "../Forecast.scss";
 
-const ForecastHourly = (props) => {
+const ForecastDayly = (props) => {
   const {
     forecast: { hourly },
   } = props;
@@ -38,4 +38,4 @@ const ForecastHourly = (props) => {
     </>
   );
 };
-export default ForecastHourly;
+export default ForecastDayly;

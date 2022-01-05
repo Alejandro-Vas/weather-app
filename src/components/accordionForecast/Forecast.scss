@@ -1,4 +1,4 @@
-#hr-hourly {
+#gradient-hr {
   margin: 5px 0;
   padding: 0;
   height: 3px;
@@ -6,7 +6,7 @@
   background: linear-gradient(90deg, rgb(0, 0, 0), #ddd);
 }
 
-.hourly-weather {
+.forecast {
   display: flex;
   align-items: center;
   justify-content: space-around;

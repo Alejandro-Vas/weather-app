@@ -1,4 +1,5 @@
 import ForecastHourly from "./forecastHourly/ForecastHourly";
+import ForecastDayly from "./forecastDayly/ForecastDayly";
 import { Accordion } from "react-bootstrap";
 import "./AccordionForecast.scss";
 
@@ -21,7 +22,7 @@ const AccordionForecast = ({ forecast }) => {
           <h4>Прогноз на 3 дня</h4>
         </Accordion.Header>
         <Accordion.Body>
-          <div> </div>
+          <ForecastDayly forecast={forecast} />
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
