@@ -3,13 +3,13 @@
 export default function getWindDirection(angle) {
   const directions = [
     "↓ С",
-    "↙ СВ",
+    "↙ С-В",
     "← В",
-    "↖ ЮВ",
+    " Ю-В",
     "↑ Ю",
-    "↗ ЮЗ",
+    "↗ Ю-З",
     "→ З",
-    "↘ СЗ"
+    "↘ С-З",
   ];
   return directions[Math.round(angle / 45) % 8];
 }
