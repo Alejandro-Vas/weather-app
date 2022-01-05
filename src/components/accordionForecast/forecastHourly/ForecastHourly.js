@@ -13,22 +13,22 @@ const ForecastHourly = (props) => {
       {hourly.map((el, index) => {
         return index > 0 && index < 13 ? (
           <>
-            <div
-              key={index}
-              className="d-flex align-items-center justify-content-start"
-            >
-              <div>
+            <div key={index} className="hourly-weather">
+              <div className="hourly-weather__item">
                 <h3>{unixTimeToLocal(el.dt, true)}</h3>
               </div>
-              <WeatherIcon icon={el.weather[0].icon} />
-              <div>
+              <WeatherIcon
+                icon={el.weather[0].icon}
+                className="hourly-weather__item"
+              />
+              <div className="hourly-weather__item">
                 <h3>{Math.round(el.temp)}°</h3>
               </div>
-              <div className="d-flex flex-column justify-content-between m-2">
-                <div className="text-center">
+              <div className="hourly-weather__item_column">
+                <div className="item__column-item">
                   <h4>{getWindDirection(el.wind_deg)}</h4>
                 </div>
-                <div className="text-center">
+                <div className="item__column-item">
                   <h5>{Math.round(el.wind_speed)} м/с</h5>
                 </div>
               </div>
