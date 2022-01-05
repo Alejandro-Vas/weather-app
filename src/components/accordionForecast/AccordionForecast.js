@@ -1,11 +1,6 @@
-import { Accordion } from "react-bootstrap";
-
-
-import WeatherIcon from "../../components/weatherIcon/WeatherIcon";
-
-import "./AccordionForecast.scss";
-import ForecastMinutely from "./forecastMinutely/ForecastMinutely";
 import ForecastHourly from "./forecastHourly/ForecastHourly";
+import { Accordion } from "react-bootstrap";
+import "./AccordionForecast.scss";
 
 const AccordionForecast = ({ forecast }) => {
   return (
@@ -14,24 +9,22 @@ const AccordionForecast = ({ forecast }) => {
       defaultActiveKey={["0"]}
     >
       <Accordion.Item eventKey="0">
-        <Accordion.Header>Вероятность осадков в ближайший час</Accordion.Header>
-        <Accordion.Body>
-          <ForecastMinutely forecast={forecast} />
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header>Погода в ближайшие 12 часов</Accordion.Header>
+        <Accordion.Header>
+          <h4>Прогноз на 12 часов</h4>
+        </Accordion.Header>
         <Accordion.Body>
           <ForecastHourly forecast={forecast} />
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="2">
-        <Accordion.Header>Погода на 3 дня</Accordion.Header>
+      <Accordion.Item eventKey="1">
+        <Accordion.Header>
+          <h4>Прогноз на 3 дня</h4>
+        </Accordion.Header>
         <Accordion.Body>
           <div> {forecast.lon} </div>
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="3">
+      <Accordion.Item eventKey="2">
         <Accordion.Header>JSON</Accordion.Header>
         <Accordion.Body>
           <pre>{JSON.stringify(forecast, undefined, 2)}</pre>
