@@ -1,8 +1,10 @@
 .spinner {
-  width: 70%;
-  margin: 0 auto;
-  &-border {
-    margin-top: 30px;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+  }
 }
-
