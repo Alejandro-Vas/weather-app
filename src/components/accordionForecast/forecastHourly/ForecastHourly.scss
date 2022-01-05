@@ -9,14 +9,15 @@
 .hourly-weather {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
 
   &__item {
     text-align: center;
     min-width: 80px;
     &_column {
       text-align: center;
-      margin-left: 10px;
+      min-width: 80px;
+      margin-left: 0;
     }
   }
 }
