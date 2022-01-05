@@ -33,7 +33,7 @@ const ForecastHourly = (props) => {
                 </div>
               </div>
             </div>
-            <hr />
+            {index < 11 && <hr />}
           </>
         ) : null;
       })}
