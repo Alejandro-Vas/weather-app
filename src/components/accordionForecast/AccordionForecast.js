@@ -1,6 +1,6 @@
 import { Accordion } from "react-bootstrap";
 
-import getWindDirection from "../../functions/getWindDirection";
+
 import WeatherIcon from "../../components/weatherIcon/WeatherIcon";
 
 import "./AccordionForecast.scss";
@@ -20,7 +20,7 @@ const AccordionForecast = ({ forecast }) => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
-        <Accordion.Header>Погода на завтра</Accordion.Header>
+        <Accordion.Header>Погода в ближайшие 12 часов</Accordion.Header>
         <Accordion.Body>
           <ForecastHourly forecast={forecast} />
         </Accordion.Body>
