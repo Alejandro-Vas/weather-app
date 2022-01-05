@@ -15,7 +15,7 @@ const ForecastDaily = (props) => {
         return index < 5 ? (
           <>
             <div key={index} className="forecast fs-6">
-              <div className="forecast__item">{date}</div>
+              <div className="forecast__item_date fs-3">{date}</div>
               <WeatherIcon
                 icon={el.weather[0].icon}
                 className="forecast__item"
