@@ -21,7 +21,7 @@ const AccordionForecast = ({ forecast }) => {
           <h4>Прогноз на 3 дня</h4>
         </Accordion.Header>
         <Accordion.Body>
-          <div> {forecast.lon} </div>
+          <div> </div>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
