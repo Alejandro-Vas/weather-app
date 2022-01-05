@@ -7,15 +7,17 @@ import NaviBar from "../naviBar/NaviBar";
 import MainPage from "../../pages/MainPage";
 import AboutPage from "../../pages/AboutPage";
 import Page404 from "../../pages/404Page";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 import ForecastPage from "../../pages/ForecastPage";
 
 import "./App.scss";
 
 const App = () => {
-  const [query, setQuery] = useState("");
-
   const [coordinates, setCoordinates] = useState([null, null]);
+  const [queryLocalStorage, setQueryLocalStorage] =
+    useLocalStorage("Query");
+  const [query, setQuery] = useState(queryLocalStorage);
 
   return (
     <Router>
@@ -31,6 +33,7 @@ const App = () => {
                 setQuery={setQuery}
                 coordinates={coordinates}
                 setCoordiantes={setCoordinates}
+                setQueryToLocalStorage={setQueryLocalStorage}
               />
             }
           />

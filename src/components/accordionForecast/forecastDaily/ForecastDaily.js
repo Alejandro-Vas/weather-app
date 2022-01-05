@@ -1,5 +1,4 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
-import unixTimeToLocal from "../../../functions/unixTimetoLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 
 import "../Forecast.scss";
