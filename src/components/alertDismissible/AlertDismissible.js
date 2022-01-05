@@ -11,12 +11,16 @@ const AlertDismissible = (props) => {
     return (
       <Alert variant={variant} onClose={() => setShow(false)} dismissible>
         <Alert.Heading>{alertHeading}</Alert.Heading>
-        <p>{alertText}</p>
-        <p>
-          <Link className="back-to-main" to="/">
+        {alertText}
+        <div className="d-flex justify-content-around">
+          <Link className="alert__item" to="/">
             <ButtonSubmit btnText="Выбрать город" variant={variant} />
           </Link>
-        </p>
+
+          <Link className="alert__item" to="/about">
+            <ButtonSubmit btnText="Узнать больше" variant="warning" />
+          </Link>
+        </div>
       </Alert>
     );
   }
