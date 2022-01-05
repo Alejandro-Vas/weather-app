@@ -4,24 +4,22 @@ import getWindDirection from "../../../functions/getWindDirection";
 
 import "../Forecast.scss";
 
-const ForecastDayly = (props) => {
+const ForecastDaily = (props) => {
   const {
-    forecast: { hourly },
+    forecast: { daily },
   } = props;
   return (
     <>
-      {hourly.map((el, index) => {
-        return index > 0 && index < 13 ? (
+      {daily.map((el, index) => {
+        return index < 5 ? (
           <>
             <div key={index} className="forecast fs-2">
-              <div className="forecast__item">
-                {unixTimeToLocal(el.dt, true)}
-              </div>
+              <div className="forecast__item">{unixTimeToLocal(el.dt)}</div>
               <WeatherIcon
                 icon={el.weather[0].icon}
                 className="forecast__item"
               />
-              <div className="forecast__item">{Math.round(el.temp)}°</div>
+              <div className="forecast__item">{Math.round(el.temp.day)}°</div>
               <div className="forecast__item_column">
                 <div className="item__column-item">
                   {getWindDirection(el.wind_deg)}
@@ -31,11 +29,11 @@ const ForecastDayly = (props) => {
                 </div>
               </div>
             </div>
-            {index < 12 && <hr id="gradient-hr" />}
+            {index < 6 && <hr id="gradient-hr" />}
           </>
         ) : null;
       })}
     </>
   );
 };
-export default ForecastDayly;
+export default ForecastDaily;
