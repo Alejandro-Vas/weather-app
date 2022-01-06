@@ -17,6 +17,9 @@ const SearchBox = (props) => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onBlur={(e) => {
+              onSearch(e);
+            }}
           />
           <datalist id="city-options">
             {defaultCitiesFullList.cities.map((el) => {
