@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <>
       <div>
-        <h3>Источник данных - openweathermap.org</h3>
+        <h3>Источник данных openweathermap.org</h3>
       </div>
 
       <div>
