@@ -12,8 +12,8 @@ const ForecastDaily = (props) => {
       {daily.map((el, index) => {
         const date = new Date(el.dt * 1000).toLocaleString().slice(0, 5);
         return index < 5 ? (
-          <>
-            <div key={index} className="forecast fs-6">
+          <div key={index}>
+            <div className="forecast fs-6">
               <div className="forecast__item_date fs-3">{date}</div>
               <WeatherIcon
                 icon={el.weather[0].icon}
@@ -43,7 +43,7 @@ const ForecastDaily = (props) => {
               </div>
             </div>
             {index < 6 && <hr id="gradient-hr" />}
-          </>
+          </div>
         ) : null;
       })}
     </>
