@@ -14,8 +14,14 @@ import ForecastPage from "../../pages/ForecastPage";
 import "./App.scss";
 
 const App = () => {
-  const [coordinates, setCoordinates] = useState([null, null]);
-  const [queryLocalStorage, setQueryLocalStorage] = useLocalStorage("Query");
+  const [coordinates, setCoordinates] = useLocalStorage(
+    "coordinates",
+    [58.5966, 49.6601]
+  );
+  const [queryLocalStorage, setQueryLocalStorage] = useLocalStorage(
+    "Query",
+    "Киров"
+  );
   const [query, setQuery] = useState(queryLocalStorage);
 
   return (
