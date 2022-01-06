@@ -31,7 +31,7 @@ const App = () => {
                 query={query}
                 setQuery={setQuery}
                 coordinates={coordinates}
-                setCoordiantes={setCoordinates}
+                setCoordinates={setCoordinates}
                 setQueryLocalStorage={setQueryLocalStorage}
               />
             }
@@ -44,7 +44,7 @@ const App = () => {
                 query={query}
                 setQuery={setQuery}
                 coordinates={coordinates}
-                setCoordiantes={setCoordinates}
+                setCoordinates={setCoordinates}
               />
             }
           />

@@ -12,7 +12,7 @@ import getCurrentWeather from "../../../services/getCurrentWeather";
 const dateNow = new Date().toLocaleString();
 
 const ShowCurrentWeather = (props) => {
-  const { query, setQuery, coordinates, setCoordiantes, setQueryLocalStorage } =
+  const { query, setQuery, coordinates, setCoordinates, setQueryLocalStorage } =
     props;
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const ShowCurrentWeather = (props) => {
   const onClearSearch = () => {
     setQuery("");
     setWeather({});
-    setCoordiantes([null, null]);
+    setCoordinates([null, null]);
   };
 
   const onSearch = async (event) => {
@@ -33,7 +33,7 @@ const ShowCurrentWeather = (props) => {
         setLoading(false);
         setWeather(result);
         setQueryLocalStorage(query);
-        setCoordiantes([result?.coord?.lat, result?.coord?.lon]);
+        setCoordinates([result?.coord?.lat, result?.coord?.lon]);
       })
       .then(setLoading(true))
       .catch(setError(true));
