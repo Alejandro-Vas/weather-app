@@ -24,13 +24,7 @@ const ForecastDaily = (props) => {
                   ночь {Math.round(el.temp.night)}°
                 </div>
                 <div className="item__column-item">
-                  утро {Math.round(el.temp.morn)}°
-                </div>
-                <div className="item__column-item">
                   день {Math.round(el.temp.day)}°
-                </div>
-                <div className="item__column-item">
-                  вечер {Math.round(el.temp.eve)}°
                 </div>
               </div>
               <div className="forecast__item_column">
