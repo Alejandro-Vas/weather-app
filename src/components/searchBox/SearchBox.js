@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import defaultCitiesFullList from "../../resourses/data/defaultCitiesFullList.json";
+import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.json";
 import "./SearchBox.scss";
 
 const SearchBox = (props) => {

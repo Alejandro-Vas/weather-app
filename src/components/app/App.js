@@ -54,7 +54,7 @@ const App = () => {
               />
             }
           />
-          <Route exat path="about" element={<AboutPage />} />
+          <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </div>
