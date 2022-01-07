@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
-import NaviBar from "../naviBar/NaviBar";
+import NavigateBar from "../navigateBar/NavigateBar";
 
 import MainPage from "../../pages/MainPage";
 import AboutPage from "../../pages/AboutPage";
@@ -28,7 +28,7 @@ const App = () => {
     <Router>
       <div className="container">
         <Header />
-        <NaviBar />
+        <NavigateBar />
         <Routes>
           <Route
             path="/"

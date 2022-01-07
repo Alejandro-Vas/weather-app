@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 
-import "./NaviBar.scss";
+import "./NavigateBar.scss";
 
-const NaviBar = () => {
+const NavigateBar = () => {
   return (
     <>
       <ul className="nav nav-pills shadow mb-3" id="pills-tab" role="tablist">
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            activeClassName="active"
+            activeclassname="active"
             id="pills-home-tab"
             data-toggle="pill"
             to="/"
@@ -23,7 +23,7 @@ const NaviBar = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            activeClassName="active"
+            activeclassname="active"
             id="pills-profile-tab"
             data-toggle="pill"
             to="forecast"
@@ -37,7 +37,7 @@ const NaviBar = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            activeClassName="active"
+            activeclassname="active"
             id="pills-contact-tab"
             data-toggle="pill"
             to="about"
@@ -53,4 +53,4 @@ const NaviBar = () => {
   );
 };
 
-export default NaviBar;
+export default NavigateBar;
