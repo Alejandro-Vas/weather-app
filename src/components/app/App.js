@@ -14,6 +14,8 @@ import ForecastPage from "../../pages/ForecastPage";
 import "./App.scss";
 
 const App = () => {
+  const [weather, setWeather] = useState({});
+
   const [coordinates, setCoordinates] = useLocalStorage(
     "coordinates",
     [58.5966, 49.6601]
@@ -34,6 +36,8 @@ const App = () => {
             path="/"
             element={
               <MainPage
+                weather={weather}
+                setWeather={setWeather}
                 query={query}
                 setQuery={setQuery}
                 coordinates={coordinates}
@@ -51,6 +55,7 @@ const App = () => {
                 setQuery={setQuery}
                 coordinates={coordinates}
                 setCoordinates={setCoordinates}
+                weatherName={weather.name}
               />
             }
           />

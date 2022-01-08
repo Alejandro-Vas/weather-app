@@ -38,7 +38,7 @@ const ForecastDaily = (props) => {
                   </div>
                 </div>
               </div>
-              {index < 7 && <hr id="gradient-hr" />}
+              {index < 7 && <hr className="gradient-hr" />}
             </div>
           )
         );
