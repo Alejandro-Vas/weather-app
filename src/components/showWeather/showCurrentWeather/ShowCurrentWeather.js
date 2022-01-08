@@ -12,8 +12,15 @@ import getCurrentWeather from "../../../services/getCurrentWeather";
 import "./ShowCurrentWeather.scss";
 
 const ShowCurrentWeather = (props) => {
-  const { query, setQuery, setCoordinates, setQueryLocalStorage } = props;
-  const [weather, setWeather] = useState({});
+  const {
+    query,
+    setQuery,
+    setCoordinates,
+    setQueryLocalStorage,
+    weather,
+    setWeather,
+  } = props;
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
