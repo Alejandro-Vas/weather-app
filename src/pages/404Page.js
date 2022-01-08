@@ -7,7 +7,7 @@ const Page404 = () => {
   return (
     <div>
       <p className="not-found-text">Страница не найдена</p>
-      <Link className="back-to-main" to="/">
+      <Link className="back-to-main-link" to="/">
         <ButtonSubmit btnText="Вернуться на главную" variant="primary" />
       </Link>
     </div>

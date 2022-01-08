@@ -5,14 +5,12 @@ import "./AboutPage.scss";
 const AboutPage = () => {
   return (
     <>
-      <div>
-        <h3>Источник данных openweathermap.org</h3>
-      </div>
+      <div>Источник данных openweathermap.org</div>
 
       <div>
         Пожелания по развитию проекта можно направлять:
         <div className="repo-link">
-          <div className="repo-link__item mt-2">
+          <div className="repo-link__item repo-link__item_icon ">
             <a href="https://github.com/Alejandro-Vas/weather-app">
               <img src={githubLogo} alt="gitHub repository" />
             </a>
