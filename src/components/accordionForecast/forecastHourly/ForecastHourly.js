@@ -1,5 +1,5 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
-import unixTimeToLocal from "./../../../functions/unixTimetoLocal";
+import unixTimeToLocal from "./../../../functions/unixTimeToLocal";
 import getWindDirection from "./../../../functions/getWindDirection";
 
 import "../Forecast.scss";
@@ -7,6 +7,7 @@ import "../Forecast.scss";
 const ForecastHourly = (props) => {
   const {
     forecast: { hourly },
+    forecast: { timezone_offset },
   } = props;
   return (
     <>
@@ -15,7 +16,7 @@ const ForecastHourly = (props) => {
           <div key={index}>
             <div className="forecast fs-5">
               <div className="forecast__item  fs-3">
-                {unixTimeToLocal(el.dt, true)}
+                {unixTimeToLocal(el.dt + timezone_offset)}
               </div>
               <WeatherIcon
                 icon={el.weather[0].icon}
