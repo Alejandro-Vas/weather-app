@@ -5,5 +5,5 @@ export default function unixTimeToLocal(unix_timestamp) {
   let hours = date.getUTCHours();
   let minutes = "0" + date.getUTCMinutes();
 
-  return hours + ":" + minutes.substr(-2);
+  return hours + ":" + minutes.slice(-2);
 }

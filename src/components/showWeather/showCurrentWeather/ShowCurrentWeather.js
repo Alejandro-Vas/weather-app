@@ -35,7 +35,7 @@ const ShowCurrentWeather = (props) => {
       })
       .then(setLoading(true))
       .catch(setError(true));
-    debugger;
+
     return result;
   };
 
@@ -69,7 +69,6 @@ const ShowCurrentWeather = (props) => {
 export default ShowCurrentWeather;
 
 const View = ({ weather }) => {
-  debugger;
   return (
     <div>
       <div>
