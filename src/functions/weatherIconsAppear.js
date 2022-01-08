@@ -1,24 +1,24 @@
-// Function takes icon id from openweathermap.org (for ex. '01d'), returns icon of matching weather (sun, cloudly etc...)
+// Function takes icon id from openweathermap.org (for ex. '01d'), returns icon of matching weather (sun, cloud etc...)
 
-export default function weatherIconsApper(icon) {
-  const icon01d = require("../resources/icons/weahterIcons/01d.png");
-  const icon01n = require("../resources/icons/weahterIcons/01n.png");
-  const icon02d = require("../resources/icons/weahterIcons/02d.png");
-  const icon02n = require("../resources/icons/weahterIcons/02n.png");
-  const icon03d = require("../resources/icons/weahterIcons/03d.png");
-  const icon03n = require("../resources/icons/weahterIcons/03n.png");
-  const icon04d = require("../resources/icons/weahterIcons/04d.png");
-  const icon04n = require("../resources/icons/weahterIcons/04n.png");
-  const icon09n = require("../resources/icons/weahterIcons/09n.png");
-  const icon09d = require("../resources/icons/weahterIcons/09d.png");
-  const icon10n = require("../resources/icons/weahterIcons/10n.png");
-  const icon10d = require("../resources/icons/weahterIcons/10d.png");
-  const icon11n = require("../resources/icons/weahterIcons/11n.png");
-  const icon11d = require("../resources/icons/weahterIcons/11d.png");
-  const icon13n = require("../resources/icons/weahterIcons/13n.png");
-  const icon13d = require("../resources/icons/weahterIcons/13d.png");
-  const icon50n = require("../resources/icons/weahterIcons/50n.png");
-  const icon50d = require("../resources/icons/weahterIcons/50d.png");
+export default function weatherIconsAppear(icon) {
+  const icon01d = require("../resources/icons/weatherIcons/01d.png");
+  const icon01n = require("../resources/icons/weatherIcons/01n.png");
+  const icon02d = require("../resources/icons/weatherIcons/02d.png");
+  const icon02n = require("../resources/icons/weatherIcons/02n.png");
+  const icon03d = require("../resources/icons/weatherIcons/03d.png");
+  const icon03n = require("../resources/icons/weatherIcons/03n.png");
+  const icon04d = require("../resources/icons/weatherIcons/04d.png");
+  const icon04n = require("../resources/icons/weatherIcons/04n.png");
+  const icon09n = require("../resources/icons/weatherIcons/09n.png");
+  const icon09d = require("../resources/icons/weatherIcons/09d.png");
+  const icon10n = require("../resources/icons/weatherIcons/10n.png");
+  const icon10d = require("../resources/icons/weatherIcons/10d.png");
+  const icon11n = require("../resources/icons/weatherIcons/11n.png");
+  const icon11d = require("../resources/icons/weatherIcons/11d.png");
+  const icon13n = require("../resources/icons/weatherIcons/13n.png");
+  const icon13d = require("../resources/icons/weatherIcons/13d.png");
+  const icon50n = require("../resources/icons/weatherIcons/50n.png");
+  const icon50d = require("../resources/icons/weatherIcons/50d.png");
 
   if (icon === "01d") return icon01d;
   if (icon === "01n") return icon01n;
