@@ -8,7 +8,7 @@ import AccordionForecast from "../../accordionForecast/AccordionForecast";
 import AlertDismissible from "../../alertDismissible/AlertDismissible";
 
 const ShowForecastWeather = (props) => {
-  const { coordinates, query, weatherName } = props;
+  const { coordinates, weatherName } = props;
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);

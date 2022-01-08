@@ -78,7 +78,7 @@ export default ShowCurrentWeather;
 
 const View = ({ weather }) => {
   return (
-    <div>
+    <div className="shadow-lg p-3 mb-5 bg-white rounded">
       <div className="city-header">
         <h3>
           {weather.name} (
