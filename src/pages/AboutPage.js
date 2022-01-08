@@ -4,7 +4,7 @@ import "./AboutPage.scss";
 
 const AboutPage = () => {
   return (
-    <>
+    <div className="fade-in">
       <div>Источник данных openweathermap.org</div>
 
       <div>
@@ -23,7 +23,7 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
