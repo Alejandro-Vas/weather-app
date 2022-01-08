@@ -9,9 +9,10 @@ import unixTimeToLocal from "../../../functions/unixTimeToLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 import getCurrentWeather from "../../../services/getCurrentWeather";
 
+import "./ShowCurrentWeather.scss";
+
 const ShowCurrentWeather = (props) => {
-  const { query, setQuery, coordinates, setCoordinates, setQueryLocalStorage } =
-    props;
+  const { query, setQuery, setCoordinates, setQueryLocalStorage } = props;
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -60,7 +61,7 @@ const ShowCurrentWeather = (props) => {
       {!loading && error ? <LoadingError /> : null}
 
       {!loading && typeof weather.sys !== "undefined" ? (
-        <View weather={weather} coordinates={coordinates} />
+        <View weather={weather} />
       ) : null}
     </>
   );
@@ -72,21 +73,41 @@ const View = ({ weather }) => {
   return (
     <div>
       <div>
-        <h4>
+        <h3>
           {weather.name} (
           {weather.sys.country === "RU" ? "Россия" : weather.sys.country})
-        </h4>
+        </h3>
       </div>
-      <WeatherIcon icon={weather.weather[0].icon} />
+      <div className="weather">
+        <div className="weather weather-center">
+          <div className="weather__item">
+            <WeatherIcon icon={weather.weather[0].icon} />
+          </div>
+          <div className="weather__item">
+            <div>{Math.round(weather.main.temp)}°</div>
+          </div>
+        </div>
 
-      <div>Температура: {Math.round(weather.main.temp)}°</div>
-      <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
-      <div>Скорость ветра: {weather.wind.speed} м/с</div>
-      <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
-      <div>
-        Восход: {unixTimeToLocal(weather.sys.sunrise + weather.timezone)}
+        <div className="weather__item">
+          <div>Ощущается как {Math.round(weather.main.feels_like)}°</div>
+        </div>
       </div>
-      <div>Закат: {unixTimeToLocal(weather.sys.sunset + weather.timezone)}</div>
+      <hr className="gradient-hr"></hr>
+      <div className="weather">
+        <div className="weather__item">
+          <div>Ветер {Math.round(weather.wind.speed)} м/с</div>
+          <div>Направление - {getWindDirection(weather.wind.deg)}</div>
+        </div>
+
+        <div className="weather__item">
+          <div>
+            Восход: {unixTimeToLocal(weather.sys.sunrise + weather.timezone)}
+          </div>
+          <div>
+            Закат: {unixTimeToLocal(weather.sys.sunset + weather.timezone)}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
