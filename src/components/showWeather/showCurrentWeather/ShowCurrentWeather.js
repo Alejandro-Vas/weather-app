@@ -48,7 +48,7 @@ const ShowCurrentWeather = (props) => {
   };
 
   return (
-    <>
+    <div className="fade-in">
       <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
 
       {query && (
@@ -70,7 +70,7 @@ const ShowCurrentWeather = (props) => {
       {!loading && typeof weather.sys !== "undefined" ? (
         <View weather={weather} />
       ) : null}
-    </>
+    </div>
   );
 };
 
