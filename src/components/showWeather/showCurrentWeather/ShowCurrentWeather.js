@@ -5,11 +5,9 @@ import WeatherIcon from "../../../components/weatherIcon/WeatherIcon";
 import ButtonSubmit from "../../buttonSubmit/ButtonSubmit";
 import { CityNotFound, LoadingError } from "../../errors/Errors";
 
-import unixTimeToLocal from "../../../functions/unixTimetoLocal";
+import unixTimeToLocal from "../../../functions/unixTimeToLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 import getCurrentWeather from "../../../services/getCurrentWeather";
-
-const dateNow = new Date().toLocaleString();
 
 const ShowCurrentWeather = (props) => {
   const { query, setQuery, coordinates, setCoordinates, setQueryLocalStorage } =
@@ -37,6 +35,7 @@ const ShowCurrentWeather = (props) => {
       })
       .then(setLoading(true))
       .catch(setError(true));
+    debugger;
     return result;
   };
 
@@ -69,32 +68,26 @@ const ShowCurrentWeather = (props) => {
 
 export default ShowCurrentWeather;
 
-const View = ({ weather, coordinates }) => {
+const View = ({ weather }) => {
+  debugger;
   return (
     <div>
       <div>
-        <h2>Погода на {dateNow}</h2>
+        <h4>Город: {weather.name} </h4>
       </div>
-
-      <div>
-        <h3>Город: {weather.name} </h3>
-      </div>
-      <WeatherIcon icon={weather.weather[0].icon} />
       <div>
         Страна: {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
       </div>
+      <WeatherIcon icon={weather.weather[0].icon} />
 
       <div>Температура: {Math.round(weather.main.temp)}°</div>
       <div>Ощущается как: {Math.round(weather.main.feels_like)}°</div>
-      <div>Видимость: {weather.visibility} метров</div>
       <div>Скорость ветра: {weather.wind.speed} м/с</div>
-      <div>Порывы ветра до: {weather.wind.gust} м/с</div>
       <div>Направление ветра: {getWindDirection(weather.wind.deg)}</div>
       <div>
-        Координаты: {weather.coord.lat} {weather.coord.lon}
+        Восход: {unixTimeToLocal(weather.sys.sunrise + weather.timezone)}
       </div>
-      <div>Восход: {unixTimeToLocal(weather.sys.sunrise)} (GMT+3)</div>
-      <div>Закат: {unixTimeToLocal(weather.sys.sunset)} (GMT+3)</div>
+      <div>Закат: {unixTimeToLocal(weather.sys.sunset + weather.timezone)}</div>
     </div>
   );
 };
