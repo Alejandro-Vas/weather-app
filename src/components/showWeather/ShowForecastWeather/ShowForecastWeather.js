@@ -7,6 +7,8 @@ import getForecastWeather from "../../../services/getForecastWeather";
 import AccordionForecast from "../../accordionForecast/AccordionForecast";
 import AlertDismissible from "../../alertDismissible/AlertDismissible";
 
+import "./ShowForecastWeather.scss";
+
 const ShowForecastWeather = (props) => {
   const { coordinates, weatherName } = props;
   const [forecast, setForecast] = useState({});
@@ -43,12 +45,12 @@ const ShowForecastWeather = (props) => {
       {!loading && error && showAccordion ? <LoadingError /> : null}
 
       {!error && forecast.lat ? (
-        <>
+        <div className="fade-in">
           <div>
             <h3>{weatherName}</h3>
           </div>
           <AccordionForecast forecast={forecast} />
-        </>
+        </div>
       ) : null}
     </>
   );
