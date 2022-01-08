@@ -6,6 +6,10 @@
   background: linear-gradient(90deg, rgb(0, 0, 0), #ddd);
 }
 
+.city-header {
+  text-align: center;
+}
+
 .weather {
   display: flex;
   align-items: center;
@@ -23,7 +27,7 @@
     }
   }
 
-  &-center {
+  &_center {
     justify-content: center;
     font-size: 2rem;
   }

@@ -72,14 +72,14 @@ export default ShowCurrentWeather;
 const View = ({ weather }) => {
   return (
     <div>
-      <div>
+      <div className="city-header">
         <h3>
           {weather.name} (
           {weather.sys.country === "RU" ? "Россия" : weather.sys.country})
         </h3>
       </div>
       <div className="weather">
-        <div className="weather weather-center">
+        <div className="weather weather_center">
           <div className="weather__item">
             <WeatherIcon icon={weather.weather[0].icon} />
           </div>
@@ -89,7 +89,8 @@ const View = ({ weather }) => {
         </div>
 
         <div className="weather__item">
-          <div>Ощущается как {Math.round(weather.main.feels_like)}°</div>
+          <div>Ощущается </div>
+          <div>{Math.round(weather.main.feels_like)}°</div>
         </div>
       </div>
       <hr className="gradient-hr"></hr>
@@ -101,10 +102,10 @@ const View = ({ weather }) => {
 
         <div className="weather__item">
           <div>
-            Восход: {unixTimeToLocal(weather.sys.sunrise + weather.timezone)}
+            Восход {unixTimeToLocal(weather.sys.sunrise + weather.timezone)}
           </div>
           <div>
-            Закат: {unixTimeToLocal(weather.sys.sunset + weather.timezone)}
+            Закат {unixTimeToLocal(weather.sys.sunset + weather.timezone)}
           </div>
         </div>
       </div>
