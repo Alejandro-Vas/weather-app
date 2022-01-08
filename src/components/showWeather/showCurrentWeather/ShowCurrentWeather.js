@@ -72,11 +72,12 @@ const View = ({ weather }) => {
   return (
     <div>
       <div>
-        <h4>Город: {weather.name} </h4>
+        <h4>
+          {weather.name} (
+          {weather.sys.country === "RU" ? "Россия" : weather.sys.country})
+        </h4>
       </div>
-      <div>
-        Страна: {weather.sys.country === "RU" ? "Россия" : weather.sys.country}
-      </div>
+      <div>Страна:</div>
       <WeatherIcon icon={weather.weather[0].icon} />
 
       <div>Температура: {Math.round(weather.main.temp)}°</div>
