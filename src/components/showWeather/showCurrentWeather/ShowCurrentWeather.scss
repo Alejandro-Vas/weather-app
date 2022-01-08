@@ -32,15 +32,15 @@
   background: linear-gradient(90deg, rgb(0, 0, 0), #ddd);
 }
 
-@keyframes rollout {
+@keyframes fade-in {
   0% {
-    transform: translateY(-100px);
+    opacity: 0;
   }
   100% {
-    transform: none;
+    opacity: 1;
   }
 }
 
-.roll-out {
-  animation: rollout 0.4s;
+.fade-in {
+  animation: fade-in 0.5s;
 }

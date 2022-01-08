@@ -78,7 +78,7 @@ export default ShowCurrentWeather;
 
 const View = ({ weather }) => {
   return (
-    <div className="roll-out shadow-lg p-3 mb-5 rounded">
+    <div className="fade-in shadow-lg p-3 mb-5 rounded">
       <div className="city-header">
         <h3>
           {weather.name} (
