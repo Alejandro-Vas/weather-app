@@ -3,7 +3,10 @@ import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.js
 import "./SearchBox.scss";
 
 const SearchBox = (props) => {
-  const { onSearch, query, setQuery } = props;
+  const { onSearch, query, setQuery, loading } = props;
+  const btnClassName = loading
+    ? "shadow align-items-center disabled"
+    : "shadow align-items-center";
   return (
     <div className="input-group-prepend mb-4 ">
       <form onSubmit={onSearch} className="d-flex">
@@ -27,7 +30,7 @@ const SearchBox = (props) => {
             })}
           </datalist>
         </label>
-        <Button type="submit" className="shadow align-items-center">
+        <Button type="submit" className={btnClassName}>
           Поиск
         </Button>
       </form>

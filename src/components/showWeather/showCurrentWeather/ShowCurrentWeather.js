@@ -49,7 +49,12 @@ const ShowCurrentWeather = (props) => {
 
   return (
     <div className="fade-in">
-      <SearchBox query={query} setQuery={setQuery} onSearch={onSearch} />
+      <SearchBox
+        query={query}
+        setQuery={setQuery}
+        onSearch={onSearch}
+        loading={loading}
+      />
 
       {query && (
         <ButtonSubmit
