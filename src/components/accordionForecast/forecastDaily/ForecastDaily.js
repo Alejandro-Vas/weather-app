@@ -1,5 +1,6 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import getWindDirection from "../../../functions/getWindDirection";
+import getWeekDay from "../../../functions/getWeekDay";
 
 import "../Forecast.scss";
 
@@ -11,7 +12,7 @@ const ForecastDaily = (props) => {
     <>
       {daily.map((el, index) => {
         const date = new Date(el.dt * 1000).toLocaleString().slice(0, 5);
-        const weekDay = new Date(el.dt * 1000).getDay();
+        const weekDay = getWeekDay(el.dt);
         return (
           index > 0 &&
           index < 6 && (
