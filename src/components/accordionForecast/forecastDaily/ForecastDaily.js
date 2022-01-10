@@ -11,12 +11,16 @@ const ForecastDaily = (props) => {
     <>
       {daily.map((el, index) => {
         const date = new Date(el.dt * 1000).toLocaleString().slice(0, 5);
+        const weekDay = new Date(el.dt * 1000).getDay();
         return (
           index > 0 &&
           index < 6 && (
             <div key={index}>
               <div className="forecast fs-6">
-                <div className="forecast__item_date fs-3">{date}</div>
+                <div className="forecast__item_column">
+                  <div className="forecast__item_column fs-4">{date}</div>
+                  <div className="forecast__item_column">{weekDay}</div>
+                </div>
                 <WeatherIcon
                   icon={el.weather[0].icon}
                   className="forecast__item"
