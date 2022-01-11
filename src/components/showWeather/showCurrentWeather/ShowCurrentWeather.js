@@ -70,9 +70,9 @@ const ShowCurrentWeather = (props) => {
         <CityNotFound />
       ) : null}
 
-      {!loading && error ? <LoadingError /> : null}
+      {!loading && error && <LoadingError />}
 
-      {!loading && typeof weather.sys !== "undefined" ? (
+      {!loading && !error && typeof weather.sys !== "undefined" ? (
         <View weather={weather} />
       ) : null}
     </div>

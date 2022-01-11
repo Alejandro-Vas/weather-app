@@ -1,4 +1,4 @@
-import  apiKey  from "./apiKey";
+import apiKey from "./apiKey";
 
 function getCurrentWeather(query) {
   const apiBase = "https://api.openweathermap.org/data/2.5/weather?q=";
