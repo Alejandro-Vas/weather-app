@@ -1,8 +1,14 @@
+import "./ErrorMessage.scss";
+
 const ErrorMessage = () => {
   return (
-    <div>
-      <h3>Что-то пошло не так</h3>
-      <h2>Скоро починим</h2>
+    <div className="error-message">
+      <div className="error-message__item">
+        <h2>Что-то пошло не так</h2>
+      </div>
+      <div className="error-message__item">
+        <h3> Вернитесь чуть позже, скоро починим :)</h3>
+      </div>
     </div>
   );
 };
