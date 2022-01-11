@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
@@ -25,6 +25,10 @@ const App = () => {
     "Киров"
   );
   const [query, setQuery] = useState(queryLocalStorage);
+
+  useEffect(() => {
+    document.title = weather.name ? `Погода ${weather.name}` : `Погода`;
+  }, [weather]);
 
   return (
     <Router>
