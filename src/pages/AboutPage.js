@@ -5,8 +5,9 @@ import "./AboutPage.scss";
 const AboutPage = () => {
   return (
     <div className="fade-in">
-      <div>Источник данных openweathermap.org</div>
-
+      <div>
+        Источник данных: <a href="openweathermap.org">openweathermap.org</a>
+      </div>
       <div>
         Пожелания по развитию проекта можно направлять:
         <div className="repo-link">
