@@ -6,7 +6,8 @@ const AboutPage = () => {
   return (
     <div className="fade-in">
       <div>
-        Источник данных: <a href="openweathermap.org">openweathermap.org</a>
+        Источник данных{" "}
+        <a href="https://openweathermap.org/">openweathermap.org</a>
       </div>
       <div>
         Пожелания по развитию проекта можно направлять:
