@@ -2,7 +2,7 @@ import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
 import githubLogo from "../resources/img/GitHub-Mark-32px.png";
 import "./AboutPage.scss";
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   return (
     <div className="fade-in">
       <div>

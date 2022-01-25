@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
 import "./404page.scss";
 
-const Page404 = () => {
+const Page404: React.FC = () => {
   return (
     <div>
       <p className="not-found-text">Страница не найдена</p>
