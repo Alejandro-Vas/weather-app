@@ -1,6 +1,10 @@
 import "./Spinner.scss";
 
-const Spinner = ({ color }) => {
+interface IProps {
+  color: string;
+}
+
+const Spinner: React.FC<IProps> = ({ color }) => {
   return (
     <div className="spinner">
       <div
