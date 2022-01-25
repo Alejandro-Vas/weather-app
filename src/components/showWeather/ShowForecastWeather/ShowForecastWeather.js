@@ -13,7 +13,6 @@ const ShowForecastWeather = (props) => {
   const { coordinates, weatherName } = props;
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
-  const [showAccordion, setShowAccordion] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const ShowForecastWeather = (props) => {
         setError(false);
         setLoading(false);
         setForecast(res);
-        setShowAccordion(true);
         console.log(res);
       })
       .then(setLoading(true))
@@ -42,7 +40,7 @@ const ShowForecastWeather = (props) => {
 
       {loading && <Spinner />}
 
-      {!loading && error && showAccordion ? <LoadingError /> : null}
+      {!loading && error ? <LoadingError /> : null}
 
       {!error && forecast.lat ? (
         <div className="fade-in">
