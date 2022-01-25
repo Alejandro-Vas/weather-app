@@ -108,8 +108,8 @@ const View = ({ weather }) => {
       <hr className="gradient-hr"></hr>
       <div className="weather">
         <div className="weather__item">
-          <div>Ветер {Math.round(weather.wind.speed)} м/с</div>
-          <div>Направление - {getWindDirection(weather.wind.deg)}</div>
+          <div>Ветер: {Math.round(weather.wind.speed)} м/с</div>
+          <div>Направление: {getWindDirection(weather.wind.deg)}</div>
         </div>
 
         <div className="weather__item">
