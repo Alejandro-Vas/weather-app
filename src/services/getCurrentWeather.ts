@@ -1,6 +1,6 @@
 import apiKey from "./apiKey";
 
-function getCurrentWeather(query) {
+function getCurrentWeather(query: string) {
   const apiBase = "https://api.openweathermap.org/data/2.5/weather?q=";
 
   return fetch(`${apiBase}${query}&units=metric&appid=${apiKey}&lang=ru`);
