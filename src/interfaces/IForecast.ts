@@ -1,14 +1,4 @@
-export interface Weather {
-  lat: number;
-  lon: number;
-  timezone: string;
-  timezone_offset: number;
-  current: Current;
-  minutely?: MinutelyEntity[] | null;
-  hourly?: HourlyEntity[] | null;
-  daily?: DailyEntity[] | null;
-}
-export interface Current {
+interface Current {
   dt: number;
   sunrise: number;
   sunset: number;
@@ -24,17 +14,17 @@ export interface Current {
   wind_deg: number;
   weather?: WeatherEntity[] | null;
 }
-export interface WeatherEntity {
+interface WeatherEntity {
   id: number;
   main: string;
   description: string;
   icon: string;
 }
-export interface MinutelyEntity {
+interface MinutelyEntity {
   dt: number;
   precipitation: number;
 }
-export interface HourlyEntity {
+interface HourlyEntity {
   dt: number;
   temp: number;
   feels_like: number;
@@ -50,7 +40,7 @@ export interface HourlyEntity {
   weather?: WeatherEntity[] | null;
   pop: number;
 }
-export interface DailyEntity {
+interface DailyEntity {
   dt: number;
   sunrise: number;
   sunset: number;
@@ -71,7 +61,7 @@ export interface DailyEntity {
   uvi: number;
   snow?: number | null;
 }
-export interface Temp {
+interface Temp {
   day: number;
   min: number;
   max: number;
@@ -79,9 +69,20 @@ export interface Temp {
   eve: number;
   morn: number;
 }
-export interface FeelsLike {
+interface FeelsLike {
   day: number;
   night: number;
   eve: number;
   morn: number;
+}
+
+export interface IForecast {
+  lat: number;
+  lon: number;
+  timezone?: string;
+  timezone_offset?: number;
+  current?: Current;
+  minutely?: MinutelyEntity[] | null;
+  hourly?: HourlyEntity[] | null;
+  daily?: DailyEntity[] | null;
 }
