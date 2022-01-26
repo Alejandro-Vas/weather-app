@@ -10,10 +10,12 @@ import Page404 from "../../pages/404Page";
 
 import ForecastPage from "../../pages/ForecastPage";
 
+import { IWeather } from "../../interfaces/IWeather";
+
 import "./App.scss";
 
-const App = () => {
-  const [weather, setWeather] = useState({});
+const App: React.FC = () => {
+  const [weather, setWeather] = useState<IWeather>({});
 
   const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
   const [query, setQuery] = useState("Киров");
