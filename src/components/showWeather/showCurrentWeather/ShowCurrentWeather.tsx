@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import SearchBox from "../../searchBox/SearchBox";
 import Spinner from "../../spinner/Spinner";
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
@@ -25,20 +25,24 @@ const ShowCurrentWeather: React.FC<IProps> = (props) => {
     setCoordinates([]);
   };
 
+  const clearError = useCallback(() => setError(false), []);
+
   const onSearch = async (event) => {
+    setLoading(true);
     event.preventDefault();
     const result = await getCurrentWeather(query)
       .then((result) => result.json())
       .then((result) => {
         setError(false);
-        setLoading(false);
         setWeather(result);
         setQuery(query);
         setCoordinates([result.coord.lat, result.coord.lon]);
+        setLoading(false);
         // setLoading(true);
+        clearError();
       })
-      .then()
-      .catch(setError(true));
+      .then();
+    // .catch(setError(true));
 
     return result;
   };
@@ -62,13 +66,11 @@ const ShowCurrentWeather: React.FC<IProps> = (props) => {
 
       {loading && <Spinner />}
 
-      {!loading && weather.message === "city not found" ? (
-        <CityNotFound />
-      ) : null}
+      {weather.message === "city not found" ? <CityNotFound /> : null}
 
       {!loading && error && <LoadingError />}
 
-      {!loading && !error && typeof weather.sys !== "undefined" ? (
+      {!loading && typeof weather.sys !== "undefined" ? (
         <View weather={weather} />
       ) : null}
     </div>
