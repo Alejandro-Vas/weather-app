@@ -7,7 +7,6 @@ import NavigateBar from "../navigateBar/NavigateBar";
 import MainPage from "../../pages/MainPage";
 import AboutPage from "../../pages/AboutPage";
 import Page404 from "../../pages/404Page";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 import ForecastPage from "../../pages/ForecastPage";
 
@@ -16,15 +15,8 @@ import "./App.scss";
 const App = () => {
   const [weather, setWeather] = useState({});
 
-  const [coordinates, setCoordinates] = useLocalStorage(
-    "coordinates",
-    [58.5966, 49.6601]
-  );
-  const [queryLocalStorage, setQueryLocalStorage] = useLocalStorage(
-    "Query",
-    "Киров"
-  );
-  const [query, setQuery] = useState(queryLocalStorage);
+  const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
+  const [query, setQuery] = useState("Киров");
 
   useEffect(() => {
     document.title = weather.name ? `Погода ${weather.name}` : `Погода`;
@@ -46,7 +38,6 @@ const App = () => {
                 setQuery={setQuery}
                 coordinates={coordinates}
                 setCoordinates={setCoordinates}
-                setQueryLocalStorage={setQueryLocalStorage}
               />
             }
           />
