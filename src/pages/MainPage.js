@@ -4,9 +4,9 @@ import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
 const MainPage = (props) => {
   return (
     <>
-      <ErrorBoundary>
-        <ShowCurrentWeather {...props} />
-      </ErrorBoundary>
+      {/* <ErrorBoundary> */}
+      <ShowCurrentWeather {...props} />
+      {/* </ErrorBoundary> */}
     </>
   );
 };

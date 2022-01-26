@@ -51,7 +51,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="forecast"
             element={
               <ForecastPage

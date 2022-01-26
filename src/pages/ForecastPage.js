@@ -3,9 +3,9 @@ import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
 const ForecastPage = (props) => {
   return (
     <>
-      <ErrorBoundary>
+      {/* <ErrorBoundary> */}
         <ShowForecastWeather {...props} />
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
     </>
   );
 };
