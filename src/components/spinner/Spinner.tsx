@@ -1,7 +1,7 @@
 import "./Spinner.scss";
 
 interface IProps {
-  color: string;
+  color?: string;
 }
 
 const Spinner: React.FC<IProps> = ({ color }) => {

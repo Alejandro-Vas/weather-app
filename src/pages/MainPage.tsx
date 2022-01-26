@@ -2,14 +2,13 @@ import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/Sho
 import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
 import { IWeather } from "../interfaces/IWeather";
 
-interface IProps {
+export interface IProps {
   weather: IWeather;
   setWeather: (weather: IWeather) => void;
   query: string;
   setQuery: (query: string) => void;
   coordinates: number[];
   setCoordinates: (coordinates: number[]) => void;
-
 }
 
 const MainPage: React.FC<IProps> = (props) => {

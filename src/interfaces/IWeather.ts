@@ -12,6 +12,7 @@ export interface IWeather {
   id?: number;
   name?: string;
   cod?: number;
+  message?: string;
 }
 
 export interface Coord {

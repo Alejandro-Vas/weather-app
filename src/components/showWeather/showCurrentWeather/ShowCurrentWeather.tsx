@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SearchBox from "../../../components/searchBox/SearchBox";
-import Spinner from "../../../components/spinner/Spinner";
-import WeatherIcon from "../../../components/weatherIcon/WeatherIcon";
+import SearchBox from "../../searchBox/SearchBox";
+import Spinner from "../../spinner/Spinner";
+import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import ButtonSubmit from "../../buttonSubmit/ButtonSubmit";
 import { CityNotFound, LoadingError } from "../../errors/Errors";
 
@@ -11,7 +11,9 @@ import getCurrentWeather from "../../../services/getCurrentWeather";
 
 import "./ShowCurrentWeather.scss";
 
-const ShowCurrentWeather = (props) => {
+import { IProps } from "../../../pages/MainPage";
+
+const ShowCurrentWeather: React.FC<IProps> = (props) => {
   const { query, setQuery, setCoordinates, weather, setWeather } = props;
 
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,7 @@ const ShowCurrentWeather = (props) => {
   const onClearSearch = () => {
     setQuery("");
     setWeather({});
-    setCoordinates([null, null]);
+    setCoordinates([]);
   };
 
   const onSearch = async (event) => {
@@ -32,9 +34,10 @@ const ShowCurrentWeather = (props) => {
         setLoading(false);
         setWeather(result);
         setQuery(query);
-        setCoordinates([result?.coord?.lat, result?.coord?.lon]);
+        setCoordinates([result.coord.lat, result.coord.lon]);
+        // setLoading(true);
       })
-      .then(setLoading(true))
+      .then()
       .catch(setError(true));
 
     return result;
