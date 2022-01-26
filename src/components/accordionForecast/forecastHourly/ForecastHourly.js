@@ -16,7 +16,7 @@ const ForecastHourly = (props) => {
           <div key={index}>
             <div className="forecast fs-5">
               <div className="forecast__item  fs-3">
-                {unixTimeToLocal(el.dt + timezone_offset)}
+                {unixTimeToLocal(el.dt, timezone_offset)}
               </div>
               <WeatherIcon
                 icon={el.weather[0].icon}

@@ -15,7 +15,7 @@ const ShowCurrentWeather: React.FC<ICurrentWeather> = ({ weather }) => {
       <div className="city-header">
         <h3>
           {weather.name} (
-          {weather.sys!.country === "RU" ? "Россия" : weather.sys!.country})
+          {weather.sys?.country === "RU" ? "Россия" : weather.sys?.country})
         </h3>
       </div>
       <div className="weather">
