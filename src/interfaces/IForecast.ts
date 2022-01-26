@@ -24,7 +24,7 @@ interface MinutelyEntity {
   dt: number;
   precipitation: number;
 }
-interface HourlyEntity {
+export interface HourlyEntity {
   dt: number;
   temp: number;
   feels_like: number;
@@ -77,8 +77,8 @@ interface FeelsLike {
 }
 
 export interface IForecast {
-  lat: number;
-  lon: number;
+  lat?: number;
+  lon?: number;
   timezone?: string;
   timezone_offset?: number;
   current?: Current;

@@ -1,27 +1,28 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
-import unixTimeToLocal from "./../../../functions/unixTimeToLocal";
-import getWindDirection from "./../../../functions/getWindDirection";
+import unixTimeToLocal from "../../../functions/unixTimeToLocal";
+import getWindDirection from "../../../functions/getWindDirection";
+import { IForecast } from "../../../interfaces/IForecast";
 
 import "../Forecast.scss";
+interface IProps {
+  forecast: IForecast;
+}
 
-const ForecastHourly = (props) => {
-  const {
-    forecast: { hourly },
-    forecast: { timezone_offset },
-  } = props;
+const ForecastHourly: React.FC<IProps> = (props) => {
+  const { forecast }: IProps = props;
   return (
     <>
-      {hourly.map((el, index) => {
+      {forecast.hourly?.map((el, index) => {
         return index > 0 && index < 13 ? (
           <div key={index}>
             <div className="forecast fs-5">
               <div className="forecast__item  fs-3">
-                {unixTimeToLocal(el.dt, timezone_offset)}
+                {unixTimeToLocal(el.dt, forecast.timezone_offset!)}
               </div>
-              <WeatherIcon
-                icon={el.weather[0].icon}
-                className="forecast__item"
-              />
+              <div className="forecast__item">
+                <WeatherIcon icon={el.weather![0].icon} />
+              </div>
+
               <div className="forecast__item">{Math.round(el.temp)}°</div>
               <div className="forecast__item_column">
                 <div className="item__column-item">
