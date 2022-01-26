@@ -12,7 +12,7 @@ interface Current {
   visibility: number;
   wind_speed: number;
   wind_deg: number;
-  weather?: WeatherEntity[] | null;
+  weather: WeatherEntity[] | null;
 }
 interface WeatherEntity {
   id: number;
