@@ -33,11 +33,12 @@ const ShowCurrentWeather: React.FC<IProps> = (props) => {
     const result = await getCurrentWeather(query)
       .then((result) => result.json())
       .then((result) => {
+        setLoading(false);
         setError(false);
         setWeather(result);
         setQuery(query);
         setCoordinates([result.coord.lat, result.coord.lon]);
-        setLoading(false);
+
         // setLoading(true);
         clearError();
       })
