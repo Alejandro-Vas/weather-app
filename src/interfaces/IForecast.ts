@@ -7,7 +7,6 @@ export interface Weather {
   minutely?: MinutelyEntity[] | null;
   hourly?: HourlyEntity[] | null;
   daily?: DailyEntity[] | null;
-  alerts?: AlertsEntity[] | null;
 }
 export interface Current {
   dt: number;
@@ -23,7 +22,6 @@ export interface Current {
   visibility: number;
   wind_speed: number;
   wind_deg: number;
-  wind_gust: number;
   weather?: WeatherEntity[] | null;
 }
 export interface WeatherEntity {
@@ -32,7 +30,6 @@ export interface WeatherEntity {
   description: string;
   icon: string;
 }
-
 export interface MinutelyEntity {
   dt: number;
   precipitation: number;
@@ -53,7 +50,6 @@ export interface HourlyEntity {
   weather?: WeatherEntity[] | null;
   pop: number;
 }
-
 export interface DailyEntity {
   dt: number;
   sunrise: number;
@@ -72,8 +68,8 @@ export interface DailyEntity {
   weather?: WeatherEntity[] | null;
   clouds: number;
   pop: number;
-  snow?: number | null;
   uvi: number;
+  snow?: number | null;
 }
 export interface Temp {
   day: number;
@@ -88,12 +84,4 @@ export interface FeelsLike {
   night: number;
   eve: number;
   morn: number;
-}
-export interface AlertsEntity {
-  sender_name: string;
-  event: string;
-  start: number;
-  end: number;
-  description: string;
-  tags?: (string | null)[] | null;
 }
