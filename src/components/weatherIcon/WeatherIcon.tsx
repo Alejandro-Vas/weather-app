@@ -1,8 +1,11 @@
 import weatherIconsAppear from "../../functions/weatherIconsAppear";
 
 import "./WeatherIcon.scss";
+interface IProps {
+  icon: string;
+}
 
-const WeatherIcon = ({ icon }) => {
+const WeatherIcon: React.FC<IProps> = ({ icon }) => {
   return (
     <div>
       <img

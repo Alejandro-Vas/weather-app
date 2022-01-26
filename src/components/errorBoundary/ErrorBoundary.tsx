@@ -1,12 +1,20 @@
-import { Component } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
-class ErrorBoundary extends Component {
+interface IProps {
+  children: ReactNode;
+}
+
+interface IState {
+  error: boolean;
+}
+
+class ErrorBoundary extends Component<IProps, IState> {
   state = {
     error: false,
   };
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.log(error, errorInfo);
     this.setState({
       error: true,

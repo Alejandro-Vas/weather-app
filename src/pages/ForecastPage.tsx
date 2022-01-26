@@ -1,31 +1,40 @@
 import { useState, useEffect } from "react";
-import Spinner from "../../../components/spinner/Spinner";
+import Spinner from "../components/spinner/Spinner";
 
-import { LoadingError } from "../../errors/Errors";
+import { LoadingError } from "../components/errors/Errors";
 
-import getForecastWeather from "../../../services/getForecastWeather";
-import AccordionForecast from "../../accordionForecast/AccordionForecast";
-import AlertDismissible from "../../alertDismissible/AlertDismissible";
+import getForecastWeather from "../services/getForecastWeather";
+import AccordionForecast from "../components/accordionForecast/AccordionForecast";
+import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
-import "./ShowForecastWeather.scss";
+import { IForecast } from "../interfaces/IForecast";
 
-const ShowForecastWeather = (props) => {
+interface IProps {
+  query: string;
+  setQuery: (query: string) => void;
+  coordinates: number[];
+  setCoordinates: (coordinates: number[]) => void;
+  weatherName: string | undefined;
+}
+
+const ForecastPage: React.FC<IProps> = (props) => {
   const { coordinates, weatherName } = props;
-  const [forecast, setForecast] = useState({});
+  const [forecast, setForecast] = useState<IForecast>({
+    lat: 58.5966,
+    lon: 49.6601,
+  });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getForecastWeather(coordinates)
       .then((res) => res.json())
       .then((res) => {
-        setError(false);
+        setError(null);
         setLoading(false);
         setForecast(res);
         console.log(res);
-      })
-      .then(setLoading(true))
-      .catch(setError(true));
+      });
   }, [coordinates]);
 
   return (
@@ -42,7 +51,7 @@ const ShowForecastWeather = (props) => {
 
       {!loading && error ? <LoadingError /> : null}
 
-      {!error && forecast.lat ? (
+      {!error && forecast.current ? (
         <div className="fade-in">
           <div>
             <h3>{weatherName}</h3>
@@ -54,4 +63,4 @@ const ShowForecastWeather = (props) => {
   );
 };
 
-export default ShowForecastWeather;
+export default ForecastPage;

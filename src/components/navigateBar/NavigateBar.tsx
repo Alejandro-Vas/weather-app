@@ -2,14 +2,13 @@ import { NavLink } from "react-router-dom";
 
 import "./NavigateBar.scss";
 
-const NavigateBar = () => {
+const NavigateBar: React.FC = () => {
   return (
     <>
       <ul className="nav nav-pills shadow mb-3" id="pills-tab" role="tablist">
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            activeclassname="active"
             id="pills-home-tab"
             data-toggle="pill"
             to="/"
@@ -23,7 +22,6 @@ const NavigateBar = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            activeclassname="active"
             id="pills-profile-tab"
             data-toggle="pill"
             to="forecast"
@@ -37,7 +35,6 @@ const NavigateBar = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            activeclassname="active"
             id="pills-contact-tab"
             data-toggle="pill"
             to="about"

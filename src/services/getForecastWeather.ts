@@ -1,6 +1,6 @@
 import apiKey from "./apiKey";
 
-function getForecastWeather(coordinates) {
+function getForecastWeather(coordinates: number[]) {
   const [lat, lon] = coordinates;
   const apiBase = "https://api.openweathermap.org/data/2.5/onecall?";
 

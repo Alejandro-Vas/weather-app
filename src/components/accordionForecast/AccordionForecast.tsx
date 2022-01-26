@@ -1,13 +1,18 @@
 import ForecastHourly from "./forecastHourly/ForecastHourly";
 import ForecastDaily from "./forecastDaily/ForecastDaily";
 import { Accordion } from "react-bootstrap";
+import { IForecast } from "../../interfaces/IForecast";
 import "./AccordionForecast.scss";
 
-const AccordionForecast = ({ forecast }) => {
+interface IProps {
+  forecast: IForecast;
+}
+
+const AccordionForecast: React.FC<IProps> = ({ forecast }) => {
   return (
     <Accordion
       className="accordion-forecast mt-2 shadow mb-5 rounded"
-      defaultActiveKey={["0"]}
+      // defaultActiveKey="0"
     >
       <Accordion.Item eventKey="0">
         <Accordion.Header>

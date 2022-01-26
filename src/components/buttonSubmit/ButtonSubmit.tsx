@@ -2,7 +2,13 @@ import { Button } from "react-bootstrap";
 
 import "./ButtonSubmit.scss";
 
-const ButtonSubmit = (props) => {
+interface IProps {
+  variant: string;
+  btnText: string;
+  onClick?: () => void;
+}
+
+const ButtonSubmit: React.FC<IProps> = (props) => {
   const { variant, btnText, onClick } = props;
 
   return (
