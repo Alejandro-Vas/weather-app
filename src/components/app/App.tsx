@@ -15,7 +15,8 @@ import { IWeather } from "../../interfaces/IWeather";
 import "./App.scss";
 
 const App: React.FC = () => {
-  const [weather, setWeather] = useState<IWeather>({});
+  const initialWeatherValue = { name: "" };
+  const [weather, setWeather] = useState<IWeather>(initialWeatherValue);
 
   const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
   const [query, setQuery] = useState("Киров");

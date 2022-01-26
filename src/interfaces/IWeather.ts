@@ -10,7 +10,7 @@ export interface IWeather {
   sys?: Sys;
   timezone?: number;
   id?: number;
-  name?: string;
+  name: string;
   cod?: number;
   message?: string;
 }
