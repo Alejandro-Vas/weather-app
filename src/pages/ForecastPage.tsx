@@ -18,7 +18,7 @@ interface IProps {
 }
 
 const ForecastPage: React.FC<IProps> = (props) => {
-  const { coordinates, weatherName } = props;
+  const { coordinates, weatherName, query } = props;
   const [forecast, setForecast] = useState<IForecast>({
     lat: 58.5966,
     lon: 49.6601,
@@ -54,7 +54,7 @@ const ForecastPage: React.FC<IProps> = (props) => {
       {!error && forecast.current ? (
         <div className="fade-in">
           <div>
-            <h3>{weatherName}</h3>
+            <h3>{weatherName || query}</h3>
           </div>
           <AccordionForecast forecast={forecast} />
         </div>
