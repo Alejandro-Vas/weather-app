@@ -5,12 +5,12 @@ import apiKey from "../../services/apiKey";
 export const weatherApi = createApi({
   reducerPath: "api/products",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.openweathermap.org/data/2.5/weather?q=",
+    baseUrl: "https://api.openweathermap.org/data/2.5",
   }),
   endpoints: (builder) => ({
     getWeather: builder.query<IWeather, string>({
-      query: (query = "Киров") =>
-        `${query}&units=metric&appid=${apiKey}&lang=ru`,
+      query: (query) =>
+        `weather?q=${query}&units=metric&appid=${apiKey}&lang=ru`,
     }),
   }),
 });

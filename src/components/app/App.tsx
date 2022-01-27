@@ -12,8 +12,8 @@ import ForecastPage from "../../pages/ForecastPage";
 
 import { IWeather } from "../../interfaces/IWeather";
 
-import { Provider } from "react-redux";
-import { store } from "../../store/store";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useGetWeatherQuery } from "../../store/weather/weather-api";
 
 import "./App.scss";
 
@@ -24,48 +24,59 @@ const App: React.FC = () => {
   const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
   const [query, setQuery] = useState("Киров");
 
+  const { data, isFetching, isLoading, isSuccess, isError, error } =
+    useGetWeatherQuery(query);
+
+  console.log(
+    "есть есть данные то все работает ЗБС",
+    data,
+    isFetching,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  );
+
   useEffect(() => {
     document.title = weather.name ? `Погода ${weather.name}` : `Погода`;
   }, [weather]);
 
   return (
-    <Provider store={store}>
-      <Router>
-        <div className="container">
-          <Header />
-          <NavigateBar />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MainPage
-                  weather={weather}
-                  setWeather={setWeather}
-                  query={query}
-                  setQuery={setQuery}
-                  coordinates={coordinates}
-                  setCoordinates={setCoordinates}
-                />
-              }
-            />
-            <Route
-              path="forecast"
-              element={
-                <ForecastPage
-                  query={query}
-                  setQuery={setQuery}
-                  coordinates={coordinates}
-                  setCoordinates={setCoordinates}
-                  weatherName={weather.name}
-                />
-              }
-            />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </div>
-      </Router>
-    </Provider>
+    <Router>
+      <div className="container">
+        <Header />
+        <NavigateBar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MainPage
+                weather={weather}
+                setWeather={setWeather}
+                query={query}
+                setQuery={setQuery}
+                coordinates={coordinates}
+                setCoordinates={setCoordinates}
+              />
+            }
+          />
+          <Route
+            path="forecast"
+            element={
+              <ForecastPage
+                query={query}
+                setQuery={setQuery}
+                coordinates={coordinates}
+                setCoordinates={setCoordinates}
+                weatherName={weather.name}
+              />
+            }
+          />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
