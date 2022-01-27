@@ -12,6 +12,9 @@ import ForecastPage from "../../pages/ForecastPage";
 
 import { IWeather } from "../../interfaces/IWeather";
 
+import { Provider } from "react-redux";
+import { store } from "../../store/store";
+
 import "./App.scss";
 
 const App: React.FC = () => {
@@ -26,41 +29,43 @@ const App: React.FC = () => {
   }, [weather]);
 
   return (
-    <Router>
-      <div className="container">
-        <Header />
-        <NavigateBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <MainPage
-                weather={weather}
-                setWeather={setWeather}
-                query={query}
-                setQuery={setQuery}
-                coordinates={coordinates}
-                setCoordinates={setCoordinates}
-              />
-            }
-          />
-          <Route
-            path="forecast"
-            element={
-              <ForecastPage
-                query={query}
-                setQuery={setQuery}
-                coordinates={coordinates}
-                setCoordinates={setCoordinates}
-                weatherName={weather.name}
-              />
-            }
-          />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className="container">
+          <Header />
+          <NavigateBar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MainPage
+                  weather={weather}
+                  setWeather={setWeather}
+                  query={query}
+                  setQuery={setQuery}
+                  coordinates={coordinates}
+                  setCoordinates={setCoordinates}
+                />
+              }
+            />
+            <Route
+              path="forecast"
+              element={
+                <ForecastPage
+                  query={query}
+                  setQuery={setQuery}
+                  coordinates={coordinates}
+                  setCoordinates={setCoordinates}
+                  weatherName={weather.name}
+                />
+              }
+            />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 };
 

@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { cartReducer } from "./cart/cart.slice";
 import { weatherApi } from "./weather/weather-api";
 
 export const store = configureStore({
