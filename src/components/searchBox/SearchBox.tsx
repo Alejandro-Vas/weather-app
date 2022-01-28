@@ -3,14 +3,21 @@ import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.js
 import "./SearchBox.scss";
 
 interface IProps {
-  onSearch: (event: React.FormEvent) => void;
   query: string;
   setQuery: (query: string) => void;
   loading: boolean;
 }
 
 const SearchBox: React.FC<IProps> = (props) => {
-  const { onSearch, query, setQuery, loading } = props;
+  const { query, setQuery, loading } = props;
+
+  const onSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    setQuery(event.target.value);
+    console.log("event", event.target.value);
+    console.log("query", query);
+  };
   const btnClassName = loading
     ? "shadow align-items-center disabled"
     : "shadow align-items-center";
@@ -25,8 +32,7 @@ const SearchBox: React.FC<IProps> = (props) => {
             className="search-bar input-group-text"
             placeholder="Введите название города"
             type="text"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onClick={(event) => onSearch(event)}
             onBlur={(event) => {
               onSearch(event);
             }}

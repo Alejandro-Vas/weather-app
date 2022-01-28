@@ -13,8 +13,6 @@ import getCurrentWeather from "../services/getCurrentWeather";
 import { useGetWeatherQuery } from "../store/weather/weather-api";
 
 export interface IProps {
-  weather: IWeather;
-  setWeather: (weather: IWeather) => void;
   query: string;
   setQuery: (query: string) => void;
   coordinates: number[];
@@ -22,22 +20,16 @@ export interface IProps {
 }
 
 const MainPage: React.FC<IProps> = (props) => {
-  const initialWeatherValue = { name: "" };
-  const { query, setQuery, setCoordinates, setWeather } = props;
-
-  const [skip, setSkip] = useState(true);
+  const { query, setQuery, setCoordinates } = props;
 
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
   const { data, isFetching, isLoading, isSuccess, isError } =
-    useGetWeatherQuery(query, {
-      skip,
-    });
+    useGetWeatherQuery(query);
 
   const onClearSearch = () => {
     setQuery("");
-    setWeather(initialWeatherValue);
     setCoordinates([]);
   };
 
@@ -61,19 +53,9 @@ const MainPage: React.FC<IProps> = (props) => {
   //   return result;
   // };
 
-  const onSearch = (event: React.FormEvent) => {
-    event.preventDefault();
-    setSkip(false);
-  };
-
   return (
     <div className="fade-in">
-      <SearchBox
-        query={query}
-        setQuery={setQuery}
-        onSearch={onSearch}
-        loading={isLoading}
-      />
+      <SearchBox query={query} setQuery={setQuery} loading={isLoading} />
 
       {query && (
         <ButtonSubmit

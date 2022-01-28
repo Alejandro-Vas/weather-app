@@ -40,8 +40,6 @@ const App: React.FC = () => {
             path="/"
             element={
               <MainPage
-                weather={weather}
-                setWeather={setWeather}
                 query={query}
                 setQuery={setQuery}
                 coordinates={coordinates}
