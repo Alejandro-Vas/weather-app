@@ -10,6 +10,8 @@ import { CityNotFound, LoadingError } from "../components/errors/Errors";
 
 import getCurrentWeather from "../services/getCurrentWeather";
 
+import { useGetWeatherQuery } from "../store/weather/weather-api";
+
 export interface IProps {
   weather: IWeather;
   setWeather: (weather: IWeather) => void;
@@ -21,10 +23,17 @@ export interface IProps {
 
 const MainPage: React.FC<IProps> = (props) => {
   const initialWeatherValue = { name: "" };
-  const { query, setQuery, setCoordinates, weather, setWeather } = props;
+  const { query, setQuery, setCoordinates, setWeather } = props;
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [skip, setSkip] = useState(true);
+
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+
+  const { data, isFetching, isLoading, isSuccess, isError } =
+    useGetWeatherQuery(query, {
+      skip,
+    });
 
   const onClearSearch = () => {
     setQuery("");
@@ -32,24 +41,29 @@ const MainPage: React.FC<IProps> = (props) => {
     setCoordinates([]);
   };
 
-  const clearError = useCallback(() => setError(null), []);
+  // const clearError = useCallback(() => setError(null), []);
 
-  const onSearch = async (event: React.FormEvent) => {
-    setLoading(true);
+  // const onSearch = async (event: React.FormEvent) => {
+  //   setLoading(true);
+  //   event.preventDefault();
+  //   const result = await getCurrentWeather(query)
+  //     .then((result) => result.json())
+  //     .then((result) => {
+  //       setLoading(false);
+  //       setError(null);
+  //       setWeather(result);
+  //       setQuery(query);
+  //       setCoordinates([result.coord.lat, result.coord.lon]);
+  //       clearError();
+  //     })
+  //     .then();
+
+  //   return result;
+  // };
+
+  const onSearch = (event: React.FormEvent) => {
     event.preventDefault();
-    const result = await getCurrentWeather(query)
-      .then((result) => result.json())
-      .then((result) => {
-        setLoading(false);
-        setError(null);
-        setWeather(result);
-        setQuery(query);
-        setCoordinates([result.coord.lat, result.coord.lon]);
-        clearError();
-      })
-      .then();
-
-    return result;
+    setSkip(false);
   };
 
   return (
@@ -58,7 +72,7 @@ const MainPage: React.FC<IProps> = (props) => {
         query={query}
         setQuery={setQuery}
         onSearch={onSearch}
-        loading={loading}
+        loading={isLoading}
       />
 
       {query && (
@@ -69,16 +83,14 @@ const MainPage: React.FC<IProps> = (props) => {
         />
       )}
 
-      {loading && <Spinner />}
+      {isFetching && !isSuccess && <Spinner />)}
 
-      {weather.message === "city not found" ? <CityNotFound /> : null}
+      {data?.message === "city not found" ? <CityNotFound /> : null}
 
-      {!loading && error && <LoadingError />}
+      {!isLoading && isError && <LoadingError />}
       {/* <ErrorBoundary> */}
 
-      {!loading && typeof weather.sys !== "undefined" ? (
-        <ShowCurrentWeather weather={weather} />
-      ) : null}
+      {isSuccess && <ShowCurrentWeather data={data} />}
       {/* <ErrorBoundary/> */}
     </div>
   );

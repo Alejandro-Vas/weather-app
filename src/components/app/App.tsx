@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
@@ -24,22 +24,11 @@ const App: React.FC = () => {
   const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
   const [query, setQuery] = useState("Киров");
 
-  const { data, isFetching, isLoading, isSuccess, isError, error } =
-    useGetWeatherQuery(query);
-
-  console.log(
-    "есть есть данные то все работает ЗБС",
-    data,
-    isFetching,
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  );
+  const { data } = useGetWeatherQuery(query);
 
   useEffect(() => {
-    document.title = weather.name ? `Погода ${weather.name}` : `Погода`;
-  }, [weather]);
+    document.title = data?.name ? `Погода ${data.name}` : `Погода`;
+  }, [data]);
 
   return (
     <Router>

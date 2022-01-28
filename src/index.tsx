@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
+// import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
 
 import App from "./components/app/App";
 import { Provider } from "react-redux";
