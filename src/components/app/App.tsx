@@ -18,8 +18,6 @@ import { useGetWeatherQuery } from "../../store/weather/weather-api";
 import "./App.scss";
 
 const App: React.FC = () => {
-  const initialWeatherValue = { name: "" };
-  const [weather, setWeather] = useState<IWeather>(initialWeatherValue);
 
   const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
   const [query, setQuery] = useState("Киров");
@@ -55,7 +53,6 @@ const App: React.FC = () => {
                 setQuery={setQuery}
                 coordinates={coordinates}
                 setCoordinates={setCoordinates}
-                weatherName={weather.name}
               />
             }
           />

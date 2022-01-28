@@ -8,23 +8,25 @@ import AccordionForecast from "../components/accordionForecast/AccordionForecast
 import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
 import { IForecast } from "../interfaces/IForecast";
+import { useGetWeatherQuery } from "../store/weather/weather-api";
 
 interface IProps {
   query: string;
   setQuery: (query: string) => void;
   coordinates: number[];
   setCoordinates: (coordinates: number[]) => void;
-  weatherName: string | undefined;
 }
 
 const ForecastPage: React.FC<IProps> = (props) => {
-  const { coordinates, weatherName, query } = props;
+  const { coordinates, query } = props;
   const [forecast, setForecast] = useState<IForecast>({
     lat: 58.5966,
     lon: 49.6601,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const { data } = useGetWeatherQuery(query);
 
   useEffect(() => {
     getForecastWeather(coordinates)
@@ -54,7 +56,7 @@ const ForecastPage: React.FC<IProps> = (props) => {
       {!error && forecast.current ? (
         <div className="fade-in">
           <div>
-            <h3>{weatherName || query}</h3>
+            <h3>{data?.name || query}</h3>
           </div>
           <AccordionForecast forecast={forecast} />
         </div>
