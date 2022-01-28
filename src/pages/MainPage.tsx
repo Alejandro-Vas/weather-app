@@ -83,14 +83,16 @@ const MainPage: React.FC<IProps> = (props) => {
         />
       )}
 
-      {isFetching && !isSuccess && <Spinner />)}
-
       {data?.message === "city not found" ? <CityNotFound /> : null}
 
       {!isLoading && isError && <LoadingError />}
-      {/* <ErrorBoundary> */}
 
-      {isSuccess && <ShowCurrentWeather data={data} />}
+      {/* <ErrorBoundary> */}
+      {!isFetching && data?.sys! ? (
+        <ShowCurrentWeather data={data} />
+      ) : (
+        <Spinner />
+      )}
       {/* <ErrorBoundary/> */}
     </div>
   );
