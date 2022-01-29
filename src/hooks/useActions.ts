@@ -1,18 +1,15 @@
-// import { useDispatch } from "react-redux";
-// import { bindActionCreators } from "redux";
-// // import { cartActions } from "../store/cart/cart.slice";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { queryActions } from "../store/query/querySlice";
 
-// const AllActions =>{
-//   ...cartActions,
-// };
-
-// const useActions = () => {
-//   const dispatch = useDispatch();
-
-//   return bindActionCreators(AllActions, dispatch);
-// };
+const AllActions = {
+  ...queryActions,
+};
 
 const useActions = () => {
-  return 0;
+  const dispatch = useDispatch();
+
+  return bindActionCreators(AllActions, dispatch);
 };
+
 export default useActions;

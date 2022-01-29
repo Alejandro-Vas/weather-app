@@ -1,6 +1,10 @@
 import { Button } from "react-bootstrap";
+
 import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.json";
 import "./SearchBox.scss";
+
+import useActions from "../../hooks/useActions";
+import { FormEventHandler } from "react";
 
 interface IProps {
   query: string;
@@ -9,14 +13,14 @@ interface IProps {
 }
 
 const SearchBox: React.FC<IProps> = (props) => {
-  const { query, setQuery, loading } = props;
+  const { query, loading } = props;
 
-  const onSearch = (event: React.FormEvent) => {
+  const { setQuery } = useActions();
+
+  const onSearch = (event: FormEventHandler<HTMLInputElement>) => {
     event.preventDefault();
 
     setQuery(event.target.value);
-    console.log("event", event.target.value);
-    console.log("query", query);
   };
   const btnClassName = loading
     ? "shadow align-items-center disabled"
@@ -32,9 +36,8 @@ const SearchBox: React.FC<IProps> = (props) => {
             className="search-bar input-group-text"
             placeholder="Введите название города"
             type="text"
-            onClick={(event) => onSearch(event)}
             onBlur={(event) => {
-              onSearch(event);
+              setQuery(event.target.value);
             }}
           />
           <datalist id="city-options">

@@ -11,51 +11,32 @@ import { CityNotFound, LoadingError } from "../components/errors/Errors";
 import getCurrentWeather from "../services/getCurrentWeather";
 
 import { useGetWeatherQuery } from "../store/weather/weather-api";
+import useActions from "../hooks/useActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export interface IProps {
-  query: string;
-  setQuery: (query: string) => void;
   coordinates: number[];
   setCoordinates: (coordinates: number[]) => void;
 }
 
 const MainPage: React.FC<IProps> = (props) => {
-  const { query, setQuery, setCoordinates } = props;
+  const { setCoordinates } = props;
 
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  const { clearQuery } = useActions();
+
+  const query = useTypedSelector((state) => state.query.value);
 
   const { data, isFetching, isLoading, isSuccess, isError } =
     useGetWeatherQuery(query);
 
   const onClearSearch = () => {
-    setQuery("");
+    clearQuery();
     setCoordinates([]);
   };
 
-  // const clearError = useCallback(() => setError(null), []);
-
-  // const onSearch = async (event: React.FormEvent) => {
-  //   setLoading(true);
-  //   event.preventDefault();
-  //   const result = await getCurrentWeather(query)
-  //     .then((result) => result.json())
-  //     .then((result) => {
-  //       setLoading(false);
-  //       setError(null);
-  //       setWeather(result);
-  //       setQuery(query);
-  //       setCoordinates([result.coord.lat, result.coord.lon]);
-  //       clearError();
-  //     })
-  //     .then();
-
-  //   return result;
-  // };
-
   return (
     <div className="fade-in">
-      <SearchBox query={query} setQuery={setQuery} loading={isLoading} />
+      <SearchBox query={query} loading={isLoading} />
 
       {query && (
         <ButtonSubmit
