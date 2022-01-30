@@ -8,9 +8,11 @@ export const forecastApi = createApi({
     baseUrl: "https://api.openweathermap.org/data/2.5",
   }),
   endpoints: (builder) => ({
-    getForecast: builder.query<IForecast, string>({
-      query: (query) =>
-        `weather?q=${query}&units=metric&appid=${apiKey}&lang=ru`,
+    getForecast: builder.query<IForecast, number[]>({
+      query: (coordinates) => {
+        const [lat, lon] = coordinates;
+        return `lat=${lat}&lon=${lon}&appid=${apiKey}&lang=ru&units=metric`;
+      },
     }),
   }),
 });
