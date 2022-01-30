@@ -5,7 +5,7 @@ import Spinner from "../components/spinner/Spinner";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
 import { CityNotFound, LoadingError } from "../components/errors/Errors";
 
-import { useGetWeatherQuery } from "../store/weather/weather-api";
+import { useGetWeatherQuery } from "../store/weather/weatherApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useState } from "react";
 

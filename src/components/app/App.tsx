@@ -13,7 +13,7 @@ import ForecastPage from "../../pages/ForecastPage";
 import { IWeather } from "../../interfaces/IWeather";
 
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { useGetWeatherQuery } from "../../store/weather/weather-api";
+import { useGetWeatherQuery } from "../../store/weather/weatherApi";
 
 import "./App.scss";
 

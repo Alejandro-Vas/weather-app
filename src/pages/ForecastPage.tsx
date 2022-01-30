@@ -8,7 +8,7 @@ import AccordionForecast from "../components/accordionForecast/AccordionForecast
 import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
 import { IForecast } from "../interfaces/IForecast";
-import { useGetWeatherQuery } from "../store/weather/weather-api";
+import { useGetWeatherQuery } from "../store/weather/weatherApi";
 
 interface IProps {
   query: string;

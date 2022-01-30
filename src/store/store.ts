@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import querySlice from "./query/querySlice";
-import { weatherApi } from "./weather/weather-api";
+import { weatherApi } from "./weather/weatherApi";
 
 export const store = configureStore({
   reducer: {
