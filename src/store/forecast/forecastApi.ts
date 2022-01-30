@@ -10,8 +10,7 @@ export const forecastApi = createApi({
   endpoints: (builder) => ({
     getForecast: builder.query<IForecast, number[]>({
       query: (coordinates) => {
-        const [lat, lon] = coordinates;
-        return `onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=ru&units=metric`;
+        return `onecall?lat=${coordinates[0]}&lon=${coordinates[1]}&appid=${apiKey}&lang=ru&units=metric`;
       },
     }),
   }),

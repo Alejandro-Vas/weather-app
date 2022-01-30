@@ -12,7 +12,9 @@ export const store = configureStore({
     coordinates: coordinatesSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(weatherApi.middleware),
+    getDefaultMiddleware()
+      .concat(weatherApi.middleware)
+      .concat(forecastApi.middleware),
 });
 
 export type TypeRootState = ReturnType<typeof store.getState>;

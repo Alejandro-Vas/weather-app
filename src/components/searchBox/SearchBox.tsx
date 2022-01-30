@@ -18,7 +18,7 @@ const SearchBox: React.FC<IProps> = (props) => {
 
   const { setQuery, setCoordinates } = useActions();
   const query = useTypedSelector((state) => state.query.value);
-  const { data } = useGetWeatherQuery(query);
+  const { data: weather } = useGetWeatherQuery(query);
   const coordinates = useTypedSelector((state) => state.coordinates.value);
   console.log(coordinates);
 
@@ -26,16 +26,20 @@ const SearchBox: React.FC<IProps> = (props) => {
     event.preventDefault();
     if (queryValue !== "") {
       setQuery(queryValue);
-
-      setTimeout(() => setCoordinates(data?.coord), 300);
+      setTimeout(
+        () => setCoordinates([weather?.coord?.lon, weather?.coord?.lat]),
+        300
+      );
     }
   };
 
   const onBlurSearch = () => {
     if (queryValue !== "") {
       setQuery(queryValue);
-      setCoordinates(data?.coord);
-      setTimeout(() => setCoordinates(data?.coord), 300);
+      setTimeout(
+        () => setCoordinates([weather?.coord?.lon, weather?.coord?.lat]),
+        300
+      );
     }
   };
 

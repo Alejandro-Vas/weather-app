@@ -1,14 +1,17 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import getWindDirection from "../../../functions/getWindDirection";
 import getWeekDay from "../../../functions/getWeekDay";
-import { IForecast } from "../../../interfaces/IForecast";
 
 import "../Forecast.scss";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
 
 const ForecastDaily: React.FC = () => {
+  const coordinates = useTypedSelector((state) => state.coordinates.value);
+  const { data: forecast } = useGetForecastQuery(coordinates);
   return (
     <>
-      {forecast.daily?.map((el, index) => {
+      {forecast?.daily?.map((el, index) => {
         const date = new Date(el.dt * 1000).toLocaleString().slice(0, 5);
         const weekDay = getWeekDay(el.dt);
         return (

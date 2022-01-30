@@ -1,28 +1,24 @@
-import { useState, useEffect } from "react";
 import Spinner from "../components/spinner/Spinner";
 
 import { LoadingError } from "../components/errors/Errors";
 
-import getForecastWeather from "../services/getForecastWeather";
 import AccordionForecast from "../components/accordionForecast/AccordionForecast";
 import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
-import { IForecast } from "../interfaces/IForecast";
-import { useGetWeatherQuery } from "../store/weather/weatherApi";
 import { useGetForecastQuery } from "../store/forecast/forecastApi";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useGetWeatherQuery } from "../store/weather/weatherApi";
 
 interface IProps {
-  query: string;
   setQuery: (query: string) => void;
-  coordinates: number[];
-  setCoordinates: (coordinates: number[]) => void;
-  forecastCity: string | undefined;
 }
 
 const ForecastPage: React.FC<IProps> = (props) => {
-  const { coordinates, query, forecastCity } = props;
+  const query = useTypedSelector((state) => state.query.value);
+  const coordinates = useTypedSelector((state) => state.coordinates.value);
 
-  const { data, isLoading, error } = useGetForecastQuery(coordinates);
+  const { data: forecast, isLoading, error } = useGetForecastQuery(coordinates);
+  const { data: weather } = useGetWeatherQuery(query);
 
   return (
     <>
@@ -38,10 +34,10 @@ const ForecastPage: React.FC<IProps> = (props) => {
 
       {!isLoading && error ? <LoadingError /> : null}
 
-      {!error && data?.current ? (
+      {!error && forecast?.current ? (
         <div className="fade-in">
           <div>
-            <h3>{forecastCity || query}</h3>
+            <h3>{weather?.name}</h3>
           </div>
           <AccordionForecast />
         </div>
