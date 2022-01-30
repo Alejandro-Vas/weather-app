@@ -40,15 +40,15 @@ const MainPage: React.FC<IProps> = (props) => {
         variant="danger"
       />
 
-      {data?.message === "city not found" ? <CityNotFound /> : null}
+      {isFetching && <Spinner />}
 
-      {!isLoading && isError && <LoadingError />}
+      {data?.message === "city not found" && <CityNotFound />}
+
+      {!isLoading && isError && queryValue && <LoadingError />}
 
       {/* <ErrorBoundary> */}
-      {!isFetching && data?.sys! ? (
+      {!isFetching && data?.sys! && !isError && queryValue && (
         <ShowCurrentWeather data={data} />
-      ) : (
-        <Spinner />
       )}
       {/* <ErrorBoundary/> */}
     </div>
