@@ -31,12 +31,7 @@ const App: React.FC = () => {
           <Route path="/" element={<MainPage />} />
           <Route
             path="forecast"
-            element={
-              <ForecastPage
-                setQuery={setQuery}
-
-              />
-            }
+            element={<ForecastPage setQuery={setQuery} />}
           />
           <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<Page404 />} />

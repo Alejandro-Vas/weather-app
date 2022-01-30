@@ -26,7 +26,6 @@ const ForecastDaily: React.FC = () => {
                 <div className="forecast__item">
                   <WeatherIcon icon={el.weather![0].icon} />
                 </div>
-
                 <div className="forecast__item_column">
                   <div className="item__column-item">
                     ночь {Math.round(el.temp.night)}°
