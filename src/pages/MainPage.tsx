@@ -6,7 +6,6 @@ import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
 import { CityNotFound, LoadingError } from "../components/errors/Errors";
 
 import { useGetWeatherQuery } from "../store/weather/weather-api";
-import useActions from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useState } from "react";
 
@@ -16,15 +15,18 @@ export interface IProps {
 }
 
 const MainPage: React.FC<IProps> = (props) => {
-  const { setCoordinates } = props;
   const query = useTypedSelector((state) => state.query.value);
   const [queryValue, setQueryValue] = useState(query);
 
-  const { data, isFetching, isLoading, isError } = useGetWeatherQuery(query);
+  const { data, error, isFetching, isLoading, isError } =
+    useGetWeatherQuery(query);
+  console.log("error", error);
 
   const onClearSearch = () => {
     setQueryValue("");
   };
+
+  console.log("dataMessage", data);
 
   return (
     <div className="fade-in">
@@ -42,9 +44,7 @@ const MainPage: React.FC<IProps> = (props) => {
 
       {isFetching && <Spinner />}
 
-      {data?.message === "city not found" && <CityNotFound />}
-
-      {!isLoading && isError && queryValue && <LoadingError />}
+      {isError && <LoadingError />}
 
       {/* <ErrorBoundary> */}
       {!isFetching && data?.sys! && !isError && queryValue && (
