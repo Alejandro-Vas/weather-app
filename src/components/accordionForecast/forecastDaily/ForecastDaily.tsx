@@ -4,12 +4,8 @@ import getWeekDay from "../../../functions/getWeekDay";
 import { IForecast } from "../../../interfaces/IForecast";
 
 import "../Forecast.scss";
-interface IProps {
-  forecast: IForecast;
-}
 
-const ForecastDaily: React.FC<IProps> = (props) => {
-  const { forecast }: IProps = props;
+const ForecastDaily: React.FC = () => {
   return (
     <>
       {forecast.daily?.map((el, index) => {

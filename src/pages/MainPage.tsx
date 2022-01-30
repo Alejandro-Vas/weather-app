@@ -3,7 +3,7 @@ import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/Sho
 import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/spinner/Spinner";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
-import { CityNotFound, LoadingError } from "../components/errors/Errors";
+import { LoadingError } from "../components/errors/Errors";
 
 import { useGetWeatherQuery } from "../store/weather/weatherApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";

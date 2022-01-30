@@ -11,7 +11,7 @@ export const forecastApi = createApi({
     getForecast: builder.query<IForecast, number[]>({
       query: (coordinates) => {
         const [lat, lon] = coordinates;
-        return `lat=${lat}&lon=${lon}&appid=${apiKey}&lang=ru&units=metric`;
+        return `onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=ru&units=metric`;
       },
     }),
   }),

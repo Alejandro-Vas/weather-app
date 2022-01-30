@@ -9,35 +9,20 @@ import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
 import { IForecast } from "../interfaces/IForecast";
 import { useGetWeatherQuery } from "../store/weather/weatherApi";
+import { useGetForecastQuery } from "../store/forecast/forecastApi";
 
 interface IProps {
   query: string;
   setQuery: (query: string) => void;
   coordinates: number[];
   setCoordinates: (coordinates: number[]) => void;
+  forecastCity: string | undefined;
 }
 
 const ForecastPage: React.FC<IProps> = (props) => {
-  const { coordinates, query } = props;
-  const [forecast, setForecast] = useState<IForecast>({
-    lat: 58.5966,
-    lon: 49.6601,
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { coordinates, query, forecastCity } = props;
 
-  const { data } = useGetWeatherQuery(query);
-
-  useEffect(() => {
-    getForecastWeather(coordinates)
-      .then((res) => res.json())
-      .then((res) => {
-        setError(null);
-        setLoading(false);
-        setForecast(res);
-        console.log(res);
-      });
-  }, [coordinates]);
+  const { data, isLoading, error } = useGetForecastQuery(coordinates);
 
   return (
     <>
@@ -49,16 +34,16 @@ const ForecastPage: React.FC<IProps> = (props) => {
         />
       )}
 
-      {loading && <Spinner />}
+      {isLoading && <Spinner />}
 
-      {!loading && error ? <LoadingError /> : null}
+      {!isLoading && error ? <LoadingError /> : null}
 
-      {!error && forecast.current ? (
+      {!error && data?.current ? (
         <div className="fade-in">
           <div>
-            <h3>{data?.name || query}</h3>
+            <h3>{forecastCity || query}</h3>
           </div>
-          <AccordionForecast forecast={forecast} />
+          <AccordionForecast />
         </div>
       ) : null}
     </>

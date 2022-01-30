@@ -4,12 +4,8 @@ import getWindDirection from "../../../functions/getWindDirection";
 import { IForecast } from "../../../interfaces/IForecast";
 
 import "../Forecast.scss";
-interface IProps {
-  forecast: IForecast;
-}
 
-const ForecastHourly: React.FC<IProps> = (props) => {
-  const { forecast }: IProps = props;
+const ForecastHourly: React.FC = () => {
   return (
     <>
       {forecast.hourly?.map((el, index) => {

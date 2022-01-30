@@ -4,22 +4,15 @@ import { Accordion } from "react-bootstrap";
 import { IForecast } from "../../interfaces/IForecast";
 import "./AccordionForecast.scss";
 
-interface IProps {
-  forecast: IForecast;
-}
-
-const AccordionForecast: React.FC<IProps> = ({ forecast }) => {
+const AccordionForecast: React.FC = () => {
   return (
-    <Accordion
-      className="accordion-forecast mt-2 shadow mb-5 rounded"
-      // defaultActiveKey="0"
-    >
+    <Accordion className="accordion-forecast mt-2 shadow mb-5 rounded">
       <Accordion.Item eventKey="0">
         <Accordion.Header>
           <h4>Прогноз на 12 часов</h4>
         </Accordion.Header>
         <Accordion.Body>
-          <ForecastHourly forecast={forecast} />
+          <ForecastHourly />
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
@@ -27,7 +20,7 @@ const AccordionForecast: React.FC<IProps> = ({ forecast }) => {
           <h4>Прогноз на 5 дней</h4>
         </Accordion.Header>
         <Accordion.Body>
-          <ForecastDaily forecast={forecast} />
+          <ForecastDaily />
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
