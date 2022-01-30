@@ -38,8 +38,6 @@ const App: React.FC = () => {
             path="/"
             element={
               <MainPage
-                query={query}
-                setQuery={setQuery}
                 coordinates={coordinates}
                 setCoordinates={setCoordinates}
               />

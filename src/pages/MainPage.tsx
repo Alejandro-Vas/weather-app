@@ -1,18 +1,14 @@
-import { useState, useCallback } from "react";
-
 import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
-import { IWeather } from "../interfaces/IWeather";
 
 import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/spinner/Spinner";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
 import { CityNotFound, LoadingError } from "../components/errors/Errors";
 
-import getCurrentWeather from "../services/getCurrentWeather";
-
 import { useGetWeatherQuery } from "../store/weather/weather-api";
 import useActions from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useState } from "react";
 
 export interface IProps {
   coordinates: number[];
@@ -21,30 +17,28 @@ export interface IProps {
 
 const MainPage: React.FC<IProps> = (props) => {
   const { setCoordinates } = props;
-
-  const { clearQuery } = useActions();
-
   const query = useTypedSelector((state) => state.query.value);
+  const [queryValue, setQueryValue] = useState(query);
 
-  const { data, isFetching, isLoading, isSuccess, isError } =
-    useGetWeatherQuery(query);
+  const { data, isFetching, isLoading, isError } = useGetWeatherQuery(query);
 
   const onClearSearch = () => {
-    clearQuery();
-    setCoordinates([]);
+    setQueryValue("");
   };
 
   return (
     <div className="fade-in">
-      <SearchBox query={query} loading={isLoading} />
+      <SearchBox
+        loading={isLoading}
+        queryValue={queryValue}
+        setQueryValue={setQueryValue}
+      />
 
-      {query && (
-        <ButtonSubmit
-          onClick={onClearSearch}
-          btnText="Очистить"
-          variant="danger"
-        />
-      )}
+      <ButtonSubmit
+        onClick={onClearSearch}
+        btnText="Очистить"
+        variant="danger"
+      />
 
       {data?.message === "city not found" ? <CityNotFound /> : null}
 

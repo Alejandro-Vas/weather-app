@@ -4,24 +4,31 @@ import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.js
 import "./SearchBox.scss";
 
 import useActions from "../../hooks/useActions";
-import { FormEventHandler } from "react";
 
 interface IProps {
-  query: string;
-  setQuery: (query: string) => void;
+  queryValue: string;
+  setQueryValue: (value: string) => void;
   loading: boolean;
 }
 
 const SearchBox: React.FC<IProps> = (props) => {
-  const { query, loading } = props;
+  const { loading, queryValue, setQueryValue } = props;
 
   const { setQuery } = useActions();
 
-  const onSearch = (event: FormEventHandler<HTMLInputElement>) => {
+  const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    setQuery(event.target.value);
+    if (queryValue !== "") {
+      setQuery(queryValue);
+    }
   };
+
+  const onBlurSearch = () => {
+    if (queryValue !== "") {
+      setQuery(queryValue);
+    }
+  };
+
   const btnClassName = loading
     ? "shadow align-items-center disabled"
     : "shadow align-items-center";
@@ -36,9 +43,9 @@ const SearchBox: React.FC<IProps> = (props) => {
             className="search-bar input-group-text"
             placeholder="Введите название города"
             type="text"
-            onBlur={(event) => {
-              setQuery(event.target.value);
-            }}
+            value={queryValue}
+            onChange={(event) => setQueryValue(event.target.value)}
+            onBlur={onBlurSearch}
           />
           <datalist id="city-options">
             {defaultCitiesFullList.cities.map((el) => {
