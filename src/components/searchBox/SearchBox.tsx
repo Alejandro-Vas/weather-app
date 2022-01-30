@@ -10,11 +10,11 @@ import { useGetWeatherQuery } from "../../store/weather/weatherApi";
 interface IProps {
   queryValue: string;
   setQueryValue: (value: string) => void;
-  loading: boolean;
+  isLoading: boolean;
 }
 
 const SearchBox: React.FC<IProps> = (props) => {
-  const { loading, queryValue, setQueryValue } = props;
+  const { isLoading, queryValue, setQueryValue } = props;
 
   const { setQuery, setCoordinates } = useActions();
   const query = useTypedSelector((state) => state.query.value);
@@ -27,8 +27,8 @@ const SearchBox: React.FC<IProps> = (props) => {
     if (queryValue !== "") {
       setQuery(queryValue);
       setTimeout(
-        () => setCoordinates([weather?.coord?.lon, weather?.coord?.lat]),
-        300
+        () => setCoordinates([weather?.coord?.lat, weather?.coord?.lon]),
+        1000
       );
     }
   };
@@ -37,13 +37,13 @@ const SearchBox: React.FC<IProps> = (props) => {
     if (queryValue !== "") {
       setQuery(queryValue);
       setTimeout(
-        () => setCoordinates([weather?.coord?.lon, weather?.coord?.lat]),
-        300
+        () => setCoordinates([weather?.coord?.lat, weather?.coord?.lon]),
+        1000
       );
     }
   };
 
-  const btnClassName = loading
+  const btnClassName = isLoading
     ? "shadow align-items-center disabled"
     : "shadow align-items-center";
   return (

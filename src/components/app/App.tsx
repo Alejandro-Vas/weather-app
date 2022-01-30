@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
@@ -15,8 +15,7 @@ import { useGetWeatherQuery } from "../../store/weather/weatherApi";
 import "./App.scss";
 
 const App: React.FC = () => {
-  const [query, setQuery] = useState("Киров");
-  const { data: weather } = useGetWeatherQuery(query);
+  const { data: weather } = useGetWeatherQuery("Киров");
 
   useEffect(() => {
     document.title = weather?.name ? `Погода ${weather.name}` : `Погода`;
@@ -29,10 +28,7 @@ const App: React.FC = () => {
         <NavigateBar />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route
-            path="forecast"
-            element={<ForecastPage setQuery={setQuery} />}
-          />
+          <Route path="forecast" element={<ForecastPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>

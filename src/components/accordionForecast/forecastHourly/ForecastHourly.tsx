@@ -8,7 +8,9 @@ import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
 
 const ForecastHourly: React.FC = () => {
   const coordinates = useTypedSelector((state) => state.coordinates.value);
+  console.log(coordinates);
   const { data: forecast } = useGetForecastQuery(coordinates);
+  console.log(forecast);
   return (
     <>
       {forecast?.hourly?.map((el, index) => {

@@ -13,20 +13,16 @@ const MainPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);
   const [queryValue, setQueryValue] = useState(query);
 
-  const { data, error, isFetching, isLoading, isError } =
-    useGetWeatherQuery(query);
-  console.log("error", error);
+  const { data, isFetching, isLoading, isError } = useGetWeatherQuery(query);
 
   const onClearSearch = () => {
     setQueryValue("");
   };
 
-  console.log("dataMessage", data);
-
   return (
     <div className="fade-in">
       <SearchBox
-        loading={isLoading}
+        isLoading={isLoading}
         queryValue={queryValue}
         setQueryValue={setQueryValue}
       />

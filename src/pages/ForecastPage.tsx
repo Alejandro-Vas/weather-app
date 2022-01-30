@@ -9,11 +9,7 @@ import { useGetForecastQuery } from "../store/forecast/forecastApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useGetWeatherQuery } from "../store/weather/weatherApi";
 
-interface IProps {
-  setQuery: (query: string) => void;
-}
-
-const ForecastPage: React.FC<IProps> = (props) => {
+const ForecastPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);
   const coordinates = useTypedSelector((state) => state.coordinates.value);
 
