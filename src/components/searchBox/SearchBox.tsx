@@ -1,16 +1,48 @@
 import { Button } from "react-bootstrap";
+
 import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.json";
 import "./SearchBox.scss";
 
+import useActions from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useGetWeatherQuery } from "../../store/weather/weatherApi";
+
 interface IProps {
-  onSearch: (event: React.FormEvent) => void;
-  query: string;
-  setQuery: (query: string) => void;
+  queryValue: string;
+  setQueryValue: (value: string) => void;
   loading: boolean;
 }
 
 const SearchBox: React.FC<IProps> = (props) => {
-  const { onSearch, query, setQuery, loading } = props;
+  const { loading, queryValue, setQueryValue } = props;
+
+  const { setQuery, setCoordinates } = useActions();
+  const query = useTypedSelector((state) => state.query.value);
+  const { data: weather } = useGetWeatherQuery(query);
+  const coordinates = useTypedSelector((state) => state.coordinates.value);
+  console.log(coordinates);
+
+  const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (queryValue !== "") {
+      setQuery(queryValue);
+      setTimeout(
+        () => setCoordinates([weather?.coord?.lon, weather?.coord?.lat]),
+        300
+      );
+    }
+  };
+
+  const onBlurSearch = () => {
+    if (queryValue !== "") {
+      setQuery(queryValue);
+      setTimeout(
+        () => setCoordinates([weather?.coord?.lon, weather?.coord?.lat]),
+        300
+      );
+    }
+  };
+
   const btnClassName = loading
     ? "shadow align-items-center disabled"
     : "shadow align-items-center";
@@ -25,11 +57,9 @@ const SearchBox: React.FC<IProps> = (props) => {
             className="search-bar input-group-text"
             placeholder="Введите название города"
             type="text"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            onBlur={(event) => {
-              onSearch(event);
-            }}
+            value={queryValue}
+            onChange={(event) => setQueryValue(event.target.value)}
+            onBlur={onBlurSearch}
           />
           <datalist id="city-options">
             {defaultCitiesFullList.cities.map((el) => {

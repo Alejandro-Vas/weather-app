@@ -1,23 +1,22 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import unixTimeToLocal from "../../../functions/unixTimeToLocal";
 import getWindDirection from "../../../functions/getWindDirection";
-import { IForecast } from "../../../interfaces/IForecast";
 
 import "../Forecast.scss";
-interface IProps {
-  forecast: IForecast;
-}
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
 
-const ForecastHourly: React.FC<IProps> = (props) => {
-  const { forecast }: IProps = props;
+const ForecastHourly: React.FC = () => {
+  const coordinates = useTypedSelector((state) => state.coordinates.value);
+  const { data: forecast } = useGetForecastQuery(coordinates);
   return (
     <>
-      {forecast.hourly?.map((el, index) => {
+      {forecast?.hourly?.map((el, index) => {
         return index > 0 && index < 13 ? (
           <div key={index}>
             <div className="forecast fs-5">
               <div className="forecast__item  fs-3">
-                {unixTimeToLocal(el.dt, forecast.timezone_offset!)}
+                {unixTimeToLocal(el.dt, forecast?.timezone_offset!)}
               </div>
               <div className="forecast__item">
                 <WeatherIcon icon={el.weather![0].icon} />

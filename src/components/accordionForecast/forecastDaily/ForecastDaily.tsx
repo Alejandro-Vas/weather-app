@@ -1,18 +1,17 @@
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import getWindDirection from "../../../functions/getWindDirection";
 import getWeekDay from "../../../functions/getWeekDay";
-import { IForecast } from "../../../interfaces/IForecast";
 
 import "../Forecast.scss";
-interface IProps {
-  forecast: IForecast;
-}
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
 
-const ForecastDaily: React.FC<IProps> = (props) => {
-  const { forecast }: IProps = props;
+const ForecastDaily: React.FC = () => {
+  const coordinates = useTypedSelector((state) => state.coordinates.value);
+  const { data: forecast } = useGetForecastQuery(coordinates);
   return (
     <>
-      {forecast.daily?.map((el, index) => {
+      {forecast?.daily?.map((el, index) => {
         const date = new Date(el.dt * 1000).toLocaleString().slice(0, 5);
         const weekDay = getWeekDay(el.dt);
         return (
@@ -27,7 +26,6 @@ const ForecastDaily: React.FC<IProps> = (props) => {
                 <div className="forecast__item">
                   <WeatherIcon icon={el.weather![0].icon} />
                 </div>
-
                 <div className="forecast__item_column">
                   <div className="item__column-item">
                     ночь {Math.round(el.temp.night)}°

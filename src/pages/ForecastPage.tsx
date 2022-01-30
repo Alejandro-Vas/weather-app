@@ -1,41 +1,24 @@
-import { useState, useEffect } from "react";
 import Spinner from "../components/spinner/Spinner";
 
 import { LoadingError } from "../components/errors/Errors";
 
-import getForecastWeather from "../services/getForecastWeather";
 import AccordionForecast from "../components/accordionForecast/AccordionForecast";
 import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
-import { IForecast } from "../interfaces/IForecast";
+import { useGetForecastQuery } from "../store/forecast/forecastApi";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useGetWeatherQuery } from "../store/weather/weatherApi";
 
 interface IProps {
-  query: string;
   setQuery: (query: string) => void;
-  coordinates: number[];
-  setCoordinates: (coordinates: number[]) => void;
-  weatherName: string | undefined;
 }
 
 const ForecastPage: React.FC<IProps> = (props) => {
-  const { coordinates, weatherName, query } = props;
-  const [forecast, setForecast] = useState<IForecast>({
-    lat: 58.5966,
-    lon: 49.6601,
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const query = useTypedSelector((state) => state.query.value);
+  const coordinates = useTypedSelector((state) => state.coordinates.value);
 
-  useEffect(() => {
-    getForecastWeather(coordinates)
-      .then((res) => res.json())
-      .then((res) => {
-        setError(null);
-        setLoading(false);
-        setForecast(res);
-        console.log(res);
-      });
-  }, [coordinates]);
+  const { data: forecast, isLoading, error } = useGetForecastQuery(coordinates);
+  const { data: weather } = useGetWeatherQuery(query);
 
   return (
     <>
@@ -47,16 +30,16 @@ const ForecastPage: React.FC<IProps> = (props) => {
         />
       )}
 
-      {loading && <Spinner />}
+      {isLoading && <Spinner />}
 
-      {!loading && error ? <LoadingError /> : null}
+      {!isLoading && error ? <LoadingError /> : null}
 
-      {!error && forecast.current ? (
+      {!error && forecast?.current ? (
         <div className="fade-in">
           <div>
-            <h3>{weatherName || query}</h3>
+            <h3>{weather?.name}</h3>
           </div>
-          <AccordionForecast forecast={forecast} />
+          <AccordionForecast />
         </div>
       ) : null}
     </>

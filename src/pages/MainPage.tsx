@@ -1,84 +1,50 @@
-import { useState, useCallback } from "react";
-
 import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
-import { IWeather } from "../interfaces/IWeather";
 
 import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/spinner/Spinner";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
-import { CityNotFound, LoadingError } from "../components/errors/Errors";
+import { LoadingError } from "../components/errors/Errors";
 
-import getCurrentWeather from "../services/getCurrentWeather";
+import { useGetWeatherQuery } from "../store/weather/weatherApi";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useState } from "react";
 
-export interface IProps {
-  weather: IWeather;
-  setWeather: (weather: IWeather) => void;
-  query: string;
-  setQuery: (query: string) => void;
-  coordinates: number[];
-  setCoordinates: (coordinates: number[]) => void;
-}
+const MainPage: React.FC = () => {
+  const query = useTypedSelector((state) => state.query.value);
+  const [queryValue, setQueryValue] = useState(query);
 
-const MainPage: React.FC<IProps> = (props) => {
-  const initialWeatherValue = { name: "" };
-  const { query, setQuery, setCoordinates, weather, setWeather } = props;
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { data, error, isFetching, isLoading, isError } =
+    useGetWeatherQuery(query);
+  console.log("error", error);
 
   const onClearSearch = () => {
-    setQuery("");
-    setWeather(initialWeatherValue);
-    setCoordinates([]);
+    setQueryValue("");
   };
 
-  const clearError = useCallback(() => setError(null), []);
-
-  const onSearch = async (event: React.FormEvent) => {
-    setLoading(true);
-    event.preventDefault();
-    const result = await getCurrentWeather(query)
-      .then((result) => result.json())
-      .then((result) => {
-        setLoading(false);
-        setError(null);
-        setWeather(result);
-        setQuery(query);
-        setCoordinates([result.coord.lat, result.coord.lon]);
-        clearError();
-      })
-      .then();
-
-    return result;
-  };
+  console.log("dataMessage", data);
 
   return (
     <div className="fade-in">
       <SearchBox
-        query={query}
-        setQuery={setQuery}
-        onSearch={onSearch}
-        loading={loading}
+        loading={isLoading}
+        queryValue={queryValue}
+        setQueryValue={setQueryValue}
       />
 
-      {query && (
-        <ButtonSubmit
-          onClick={onClearSearch}
-          btnText="Очистить"
-          variant="danger"
-        />
-      )}
+      <ButtonSubmit
+        onClick={onClearSearch}
+        btnText="Очистить"
+        variant="danger"
+      />
 
-      {loading && <Spinner />}
+      {isFetching && <Spinner />}
 
-      {weather.message === "city not found" ? <CityNotFound /> : null}
+      {isError && <LoadingError />}
 
-      {!loading && error && <LoadingError />}
       {/* <ErrorBoundary> */}
-
-      {!loading && typeof weather.sys !== "undefined" ? (
-        <ShowCurrentWeather weather={weather} />
-      ) : null}
+      {!isFetching && data?.sys! && !isError && queryValue && (
+        <ShowCurrentWeather data={data} />
+      )}
       {/* <ErrorBoundary/> */}
     </div>
   );

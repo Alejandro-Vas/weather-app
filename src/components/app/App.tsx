@@ -10,19 +10,16 @@ import Page404 from "../../pages/404Page";
 
 import ForecastPage from "../../pages/ForecastPage";
 
-import { IWeather } from "../../interfaces/IWeather";
+import { useGetWeatherQuery } from "../../store/weather/weatherApi";
 
 import "./App.scss";
 
 const App: React.FC = () => {
-  const initialWeatherValue = { name: "" };
-  const [weather, setWeather] = useState<IWeather>(initialWeatherValue);
-
-  const [coordinates, setCoordinates] = useState([58.5966, 49.6601]);
   const [query, setQuery] = useState("Киров");
+  const { data: weather } = useGetWeatherQuery(query);
 
   useEffect(() => {
-    document.title = weather.name ? `Погода ${weather.name}` : `Погода`;
+    document.title = weather?.name ? `Погода ${weather.name}` : `Погода`;
   }, [weather]);
 
   return (
@@ -31,30 +28,10 @@ const App: React.FC = () => {
         <Header />
         <NavigateBar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <MainPage
-                weather={weather}
-                setWeather={setWeather}
-                query={query}
-                setQuery={setQuery}
-                coordinates={coordinates}
-                setCoordinates={setCoordinates}
-              />
-            }
-          />
+          <Route path="/" element={<MainPage />} />
           <Route
             path="forecast"
-            element={
-              <ForecastPage
-                query={query}
-                setQuery={setQuery}
-                coordinates={coordinates}
-                setCoordinates={setCoordinates}
-                weatherName={weather.name}
-              />
-            }
+            element={<ForecastPage setQuery={setQuery} />}
           />
           <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<Page404 />} />
