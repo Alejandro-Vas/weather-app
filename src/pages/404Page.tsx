@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
+
 import "./404page.scss";
 
 const Page404: React.FC = () => {

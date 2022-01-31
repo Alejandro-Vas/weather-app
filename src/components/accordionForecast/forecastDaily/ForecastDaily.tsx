@@ -1,10 +1,11 @@
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
+
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import getWindDirection from "../../../functions/getWindDirection";
 import getWeekDay from "../../../functions/getWeekDay";
 
 import "../Forecast.scss";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
 
 const ForecastDaily: React.FC = () => {
   const coordinates = useTypedSelector((state) => state.coordinates.value);

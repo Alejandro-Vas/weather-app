@@ -1,10 +1,10 @@
-import WeatherIcon from "../../weatherIcon/WeatherIcon";
+import { IWeather } from "../../../interfaces/IWeather";
 
+import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import unixTimeToLocal from "../../../functions/unixTimeToLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 
 import "./ShowCurrentWeather.scss";
-import { IWeather } from "../../../interfaces/IWeather";
 
 interface IProps {
   data: IWeather;

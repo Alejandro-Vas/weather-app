@@ -1,6 +1,8 @@
+import { Accordion } from "react-bootstrap";
+
 import ForecastHourly from "./forecastHourly/ForecastHourly";
 import ForecastDaily from "./forecastDaily/ForecastDaily";
-import { Accordion } from "react-bootstrap";
+
 import "./AccordionForecast.scss";
 
 const AccordionForecast: React.FC = () => {

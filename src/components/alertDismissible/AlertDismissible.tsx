@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ButtonSubmit from "../buttonSubmit/ButtonSubmit";
 
+import ButtonSubmit from "../buttonSubmit/ButtonSubmit";
 interface IProps {
   variant: string;
   alertHeading: string;

@@ -1,15 +1,12 @@
-import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
+import { useEffect, useState } from "react";
+import { useGetWeatherQuery } from "../store/weather/weatherApi";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
+import { LoadingError } from "../components/errors/Errors";
+import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
 import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/spinner/Spinner";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
-import { LoadingError } from "../components/errors/Errors";
-
-import { useGetWeatherQuery } from "../store/weather/weatherApi";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import { useEffect, useState } from "react";
-
-import useActions from "../hooks/useActions";
 
 const MainPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);

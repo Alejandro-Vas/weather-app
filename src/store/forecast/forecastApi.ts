@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IForecast } from "../../interfaces/IForecast";
-import apiKey from "../../services/apiKey";
+
+import apiKey from "../apiKey";
 
 export const forecastApi = createApi({
   reducerPath: "api/forecast",

@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import querySlice from "./query/querySlice";
-import coordinatesSlice from "./coordinates/coordinatesSlice";
+
 import { weatherApi } from "./weather/weatherApi";
 import { forecastApi } from "./forecast/forecastApi";
+
+import querySlice from "./query/querySlice";
+import coordinatesSlice from "./coordinates/coordinatesSlice";
 
 export const store = configureStore({
   reducer: {

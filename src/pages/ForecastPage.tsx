@@ -1,16 +1,14 @@
 import { useEffect } from "react";
-import Spinner from "../components/spinner/Spinner";
-
-import { LoadingError } from "../components/errors/Errors";
-
-import AccordionForecast from "../components/accordionForecast/AccordionForecast";
-import AlertDismissible from "../components/alertDismissible/AlertDismissible";
-
 import { useGetForecastQuery } from "../store/forecast/forecastApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useGetWeatherQuery } from "../store/weather/weatherApi";
+import { LoadingError } from "../components/errors/Errors";
 
 import useActions from "../hooks/useActions";
+
+import Spinner from "../components/spinner/Spinner";
+import AccordionForecast from "../components/accordionForecast/AccordionForecast";
+import AlertDismissible from "../components/alertDismissible/AlertDismissible";
 
 const ForecastPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);
