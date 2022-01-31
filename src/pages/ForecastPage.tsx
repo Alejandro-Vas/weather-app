@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Spinner from "../components/spinner/Spinner";
 
 import { LoadingError } from "../components/errors/Errors";
@@ -9,16 +10,29 @@ import { useGetForecastQuery } from "../store/forecast/forecastApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useGetWeatherQuery } from "../store/weather/weatherApi";
 
+import useActions from "../hooks/useActions";
+
 const ForecastPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);
   const coordinates = useTypedSelector((state) => state.coordinates.value);
 
-  const { data: forecast, isLoading, error } = useGetForecastQuery(coordinates);
+  const {
+    data: forecast,
+    isLoading,
+    isFetching,
+    error,
+  } = useGetForecastQuery(coordinates);
   const { data: weather } = useGetWeatherQuery(query);
+  const { setCoordinates } = useActions();
+
+  useEffect(() => {
+    setCoordinates([weather?.coord?.lat, weather?.coord?.lon]);
+  }, [setCoordinates, weather]);
 
   return (
     <>
-      {!coordinates[0] && (
+      {/* TODO: conditional rendering bug */}
+      {!coordinates[0] && isLoading && (
         <AlertDismissible
           variant="danger"
           alertHeading="Предупреждение"
@@ -28,7 +42,7 @@ const ForecastPage: React.FC = () => {
 
       {isLoading && <Spinner />}
 
-      {!isLoading && error ? <LoadingError /> : null}
+      {error && !forecast?.current && !isFetching ? <LoadingError /> : null}
 
       {!error && forecast?.current ? (
         <div className="fade-in">

@@ -4,8 +4,6 @@ import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.js
 import "./SearchBox.scss";
 
 import useActions from "../../hooks/useActions";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { useGetWeatherQuery } from "../../store/weather/weatherApi";
 
 interface IProps {
   queryValue: string;
@@ -16,30 +14,18 @@ interface IProps {
 const SearchBox: React.FC<IProps> = (props) => {
   const { isLoading, queryValue, setQueryValue } = props;
 
-  const { setQuery, setCoordinates } = useActions();
-  const query = useTypedSelector((state) => state.query.value);
-  const { data: weather } = useGetWeatherQuery(query);
-  const coordinates = useTypedSelector((state) => state.coordinates.value);
-  console.log(coordinates);
+  const { setQuery } = useActions();
 
   const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (queryValue !== "") {
       setQuery(queryValue);
-      setTimeout(
-        () => setCoordinates([weather?.coord?.lat, weather?.coord?.lon]),
-        1000
-      );
     }
   };
 
   const onBlurSearch = () => {
     if (queryValue !== "") {
       setQuery(queryValue);
-      setTimeout(
-        () => setCoordinates([weather?.coord?.lat, weather?.coord?.lon]),
-        1000
-      );
     }
   };
 

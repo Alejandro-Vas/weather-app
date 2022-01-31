@@ -7,13 +7,21 @@ import { LoadingError } from "../components/errors/Errors";
 
 import { useGetWeatherQuery } from "../store/weather/weatherApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import useActions from "../hooks/useActions";
 
 const MainPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);
   const [queryValue, setQueryValue] = useState(query);
+  const { setCoordinates } = useActions();
 
-  const { data, isFetching, isLoading, isError } = useGetWeatherQuery(query);
+  const {
+    data: weather,
+    isFetching,
+    isLoading,
+    isError,
+  } = useGetWeatherQuery(query);
 
   const onClearSearch = () => {
     setQueryValue("");
@@ -38,8 +46,8 @@ const MainPage: React.FC = () => {
       {isError && <LoadingError />}
 
       {/* <ErrorBoundary> */}
-      {!isFetching && data?.sys! && !isError && queryValue && (
-        <ShowCurrentWeather data={data} />
+      {!isFetching && weather?.sys! && !isError && queryValue && (
+        <ShowCurrentWeather data={weather} />
       )}
       {/* <ErrorBoundary/> */}
     </div>
