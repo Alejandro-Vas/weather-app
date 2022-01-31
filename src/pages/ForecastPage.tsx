@@ -27,11 +27,11 @@ const ForecastPage: React.FC = () => {
 
   useEffect(() => {
     setCoordinates([weather?.coord?.lat, weather?.coord?.lon]);
-  }, [setCoordinates, weather]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weather?.coord?.lat, weather?.coord?.lon]);
 
   return (
     <>
-      {/* TODO: conditional rendering bug */}
       {isWeatherError && !isLoading && (
         <AlertDismissible
           variant="danger"
