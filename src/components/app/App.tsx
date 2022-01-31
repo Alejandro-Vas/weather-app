@@ -17,9 +17,7 @@ import "./App.scss";
 const App: React.FC = () => {
   const { data: weather } = useGetWeatherQuery("Киров");
 
-  useEffect(() => {
-    document.title = weather?.name ? `Погода ${weather.name}` : `Погода`;
-  }, [weather]);
+
 
   return (
     <Router>

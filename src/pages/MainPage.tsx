@@ -14,7 +14,6 @@ import useActions from "../hooks/useActions";
 const MainPage: React.FC = () => {
   const query = useTypedSelector((state) => state.query.value);
   const [queryValue, setQueryValue] = useState(query);
-  const { setCoordinates } = useActions();
 
   const {
     data: weather,
@@ -22,6 +21,10 @@ const MainPage: React.FC = () => {
     isLoading,
     isError,
   } = useGetWeatherQuery(query);
+
+  useEffect(() => {
+    document.title = weather?.name ? `Погода ${weather.name}` : `Погода`;
+  }, [weather]);
 
   const onClearSearch = () => {
     setQueryValue("");
