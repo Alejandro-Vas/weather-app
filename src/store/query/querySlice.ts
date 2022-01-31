@@ -4,7 +4,7 @@ interface IQueryState {
   value: string;
 }
 
-const initialState = { value: "Киров" } as IQueryState;
+const initialState = { value: "Москва" } as IQueryState;
 
 const querySlice = createSlice({
   name: "query",
