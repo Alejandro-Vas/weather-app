@@ -22,7 +22,7 @@ const ForecastPage: React.FC = () => {
     isFetching,
     error,
   } = useGetForecastQuery(coordinates);
-  const { data: weather } = useGetWeatherQuery(query);
+  const { data: weather, isError: isWeatherError } = useGetWeatherQuery(query);
   const { setCoordinates } = useActions();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ForecastPage: React.FC = () => {
   return (
     <>
       {/* TODO: conditional rendering bug */}
-      {!coordinates[0] && isLoading && (
+      {isWeatherError && !isLoading && (
         <AlertDismissible
           variant="danger"
           alertHeading="Предупреждение"

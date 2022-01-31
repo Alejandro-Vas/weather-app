@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
@@ -10,15 +9,9 @@ import Page404 from "../../pages/404Page";
 
 import ForecastPage from "../../pages/ForecastPage";
 
-import { useGetWeatherQuery } from "../../store/weather/weatherApi";
-
 import "./App.scss";
 
 const App: React.FC = () => {
-  const { data: weather } = useGetWeatherQuery("Киров");
-
-
-
   return (
     <Router>
       <div className="container">
