@@ -42,7 +42,7 @@ const SearchBox: React.FC<IProps> = (props) => {
             id="city-choice"
             name="city"
             className="search-bar input-group-text"
-            placeholder="Введите название города"
+            placeholder="Введите город"
             type="text"
             value={queryValue}
             onChange={(event) => setQueryValue(event.target.value)}
