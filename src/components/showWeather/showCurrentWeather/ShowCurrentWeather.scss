@@ -11,12 +11,6 @@
   &__item {
     text-align: center;
     min-width: 64px;
-
-    &_column {
-      text-align: center;
-      min-width: 100px;
-      font-size: 1.5rem;
-    }
   }
 
   &_center {
@@ -30,17 +24,4 @@
   height: 3px;
   border: none;
   background: linear-gradient(90deg, rgb(0, 0, 0), #ddd);
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fade-in 0.5s;
 }
