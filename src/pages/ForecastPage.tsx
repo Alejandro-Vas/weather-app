@@ -38,7 +38,7 @@ const ForecastPage: React.FC = () => {
         />
       )}
 
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner color="primary" />}
 
       {error && !forecast?.current && !isFetching ? <LoadingError /> : null}
 

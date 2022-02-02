@@ -41,7 +41,7 @@ const MainPage: React.FC = () => {
         variant="danger"
       />
 
-      {isFetching && <Spinner />}
+      {isFetching && <Spinner color="primary" />}
 
       {isError && <LoadingError />}
 
