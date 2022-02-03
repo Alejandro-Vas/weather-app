@@ -1,4 +1,6 @@
-// Function takes wind direction in degrees, returns wind direction with arrow and letter
+/**
+ *  Function takes wind direction in degrees, returns wind direction with letter
+ */
 
 export default function getWindDirection(angle: number) {
   const directions = ["С", "С-В", "В", "Ю-В", "Ю", "Ю-З", "З", "С-З"];

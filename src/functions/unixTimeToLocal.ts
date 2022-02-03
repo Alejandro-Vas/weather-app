@@ -1,4 +1,6 @@
-// function takes unixTime and returns local time in "hours : minutes format
+/**
+ *  Function takes unixTime and returns local time in "hours : minutes" format
+ */
 
 export default function unixTimeToLocal(
   unix_timestamp: number,

@@ -1,4 +1,6 @@
-// Function takes icon id from openweathermap.org (for ex. '01d'), returns icon of matching weather (sun, cloud etc...)
+/**
+ * Function takes icon id from openweathermap.org (for ex. '01d'), returns icon of matching weather (sun, cloud etc...)
+ */
 
 export default function weatherIconsAppear(icon: string) {
   const icon01d = require("../resources/icons/weatherIcons/01d.png");
