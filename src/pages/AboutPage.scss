@@ -1,18 +1,12 @@
 .repo-link {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 250px;
+  align-items: center;
   &__item {
     align-items: center;
-    &_icon {
-      margin-top: 10px;
-    }
   }
 }
 
 a {
   text-decoration: none;
 }
-
-
