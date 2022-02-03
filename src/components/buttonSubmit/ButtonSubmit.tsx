@@ -6,7 +6,6 @@ interface IProps {
   variant: string;
   btnText: string;
   onClick?: () => void;
-  children?: JSX.Element;
 }
 
 const ButtonSubmit: React.FC<IProps> = (props) => {
