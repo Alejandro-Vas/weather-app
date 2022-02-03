@@ -8,14 +8,20 @@
   justify-content: space-around;
   font-size: 1.25rem;
 
+  @media screen and (max-width: 400px) {
+    font-size: 1rem;
+  }
+
   &__item {
     text-align: center;
-    min-width: 64px;
   }
 
   &_center {
     justify-content: center;
     font-size: 2rem;
+    @media screen and (max-width: 400px) {
+      font-size: 1.5rem;
+    }
   }
 }
 .gradient-hr {
