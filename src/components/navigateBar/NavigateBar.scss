@@ -1,3 +1,11 @@
+.nav-bar {
+  width: fit-content;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background-color: white;
+}
+
 .nav-link {
   font-size: 22px;
   font-weight: bold;

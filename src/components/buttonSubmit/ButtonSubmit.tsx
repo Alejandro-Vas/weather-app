@@ -6,16 +6,17 @@ interface IProps {
   variant: string;
   btnText: string;
   onClick?: () => void;
+  children?: JSX.Element;
 }
 
 const ButtonSubmit: React.FC<IProps> = (props) => {
-  const { variant, btnText, onClick } = props;
+  const { variant, btnText, onClick, children } = props;
 
   return (
     <div className="button-wrapper">
       <div className=" mt-2 shadow mb-5 rounded">
         <Button variant={variant} onClick={onClick}>
-          {btnText}
+          {children} {btnText}
         </Button>
       </div>
     </div>

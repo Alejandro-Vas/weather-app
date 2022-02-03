@@ -4,7 +4,7 @@ import "./NavigateBar.scss";
 
 const NavigateBar: React.FC = () => {
   return (
-    <>
+    <div className="nav-bar">
       <ul className="nav nav-pills shadow mb-3" id="pills-tab" role="tablist">
         <li className="nav-item">
           <NavLink
@@ -46,7 +46,7 @@ const NavigateBar: React.FC = () => {
           </NavLink>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

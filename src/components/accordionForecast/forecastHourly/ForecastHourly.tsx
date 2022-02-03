@@ -15,7 +15,7 @@ const ForecastHourly: React.FC = () => {
       {forecast?.hourly?.map((el, index) => {
         return index > 0 && index < 13 ? (
           <div key={index}>
-            <div className="forecast fs-5">
+            <div className="forecast fs-4">
               <div className="forecast__item fs-3">
                 {unixTimeToLocal(el.dt, forecast?.timezone_offset!)}
               </div>
