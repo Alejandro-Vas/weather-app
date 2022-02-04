@@ -47,10 +47,10 @@ https://weathermannapp.herokuapp.com/
 #### USAGE
 
 ```
-$ git clone https://github.com/Alejandro-Vas/weather-app.git
-$ cd weather-app
-$ npm i
-$ npm start
+git clone https://github.com/Alejandro-Vas/weather-app.git
+cd weather-app
+npm i
+npm start
 ```
 
 ---
