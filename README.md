@@ -6,8 +6,13 @@ Weather app project made using React, TypeScript and Redux
 
 ---
 
-#### MAIN PAGE DEMO SCREENSHOT
+#### DEPLOYMENT
 
+https://weathermannapp.herokuapp.com/
+
+---
+
+#### MAIN PAGE DEMO SCREENSHOT
 
 <img src="https://github.com/Alejandro-Vas/weather-app/blob/master/app-mainPage-screen.png?raw=true" alt="main page screenshot" style="width:450px;"/>
 
@@ -46,8 +51,3 @@ git clone
 ```
 
 ---
-
-#### DEPLOYMENT
-
-Heroku CLI CI/CD
-https://weathermannapp.herokuapp.com/
