@@ -1,8 +1,7 @@
 # Weathermann
 
-#### DESCRIPTION
-
-Weather app project made using React, TypeScript and Redux
+Weather app project made using React, TypeScript and Redux.
+The source of weather data is [openweathermap.org ](https://openweathermap.org/).
 
 ---
 
@@ -20,16 +19,17 @@ https://weathermannapp.herokuapp.com/
 
 #### APP FEATURES:
 
-- Fetch data from [openweathermap API ](https://openweathermap.org/) isung RTK Query
+- Fetch data from [openweathermap API ](https://openweathermap.org/) using RTK Query
 - Display current weather by text query
 - Display weather forecast for 12 hours or 5 days
-- Pages rounting
-- Responsive design
+- Russian cities query autocomplete
+- Pages routing
+- Responsive design (mobile first)
 - CI/CD production build using Heroku CLI
 
 ---
 
-#### TECHNOLOGIES:
+#### REALISED TECHNOLOGIES:
 
 - HTML5
 - CSS3
@@ -37,10 +37,9 @@ https://weathermannapp.herokuapp.com/
 - JavaScript
 - TypeScript
 - ReactJS
-- Redux
+- Redux / Redux-Toolkit / RTK Query
 - React-router v6
-- Redux-Toolkit (RTK Query)
-- Bootsrap/React-Bootstrap
+- Bootstrap/React-bootstrap
 
 ---
 
