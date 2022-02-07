@@ -1,16 +1,16 @@
-import { IWeather } from "../../../interfaces/IWeather";
+import { IWeather } from "../../interfaces/IWeather";
 
-import WeatherIcon from "../../weatherIcon/WeatherIcon";
-import unixTimeToLocal from "../../../functions/unixTimeToLocal";
-import getWindDirection from "../../../functions/getWindDirection";
+import WeatherIcon from "../weatherIcon/WeatherIcon";
+import unixTimeToLocal from "../../functions/unixTimeToLocal";
+import getWindDirection from "../../functions/getWindDirection";
 
-import "./ShowCurrentWeather.scss";
+import "./ShowWeather.scss";
 
 interface IProps {
   data: IWeather;
 }
 
-const ShowCurrentWeather: React.FC<IProps> = ({ data }) => {
+const ShowWeather: React.FC<IProps> = ({ data }) => {
   return (
     <div className="fade-in shadow-lg p-3 mb-5 rounded">
       <div className="city-header">
@@ -52,4 +52,4 @@ const ShowCurrentWeather: React.FC<IProps> = ({ data }) => {
   );
 };
 
-export default ShowCurrentWeather;
+export default ShowWeather;

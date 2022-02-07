@@ -1,5 +1,4 @@
 import { Component, ErrorInfo, ReactNode } from "react";
-
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
 interface IProps {

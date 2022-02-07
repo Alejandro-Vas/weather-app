@@ -1,10 +1,12 @@
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
+
 import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import unixTimeToLocal from "../../../functions/unixTimeToLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 
 import "../Forecast.scss";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useGetForecastQuery } from "../../../store/forecast/forecastApi";
+
 
 const ForecastHourly: React.FC = () => {
   const coordinates = useTypedSelector((state) => state.coordinates.value);

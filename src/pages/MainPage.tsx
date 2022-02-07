@@ -3,7 +3,7 @@ import { useGetWeatherQuery } from "../store/weather/weatherApi";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 import { LoadingError } from "../components/errors/Errors";
-import ShowCurrentWeather from "../components/showWeather/showCurrentWeather/ShowCurrentWeather";
+import ShowWeather from "../components/showWeather/ShowWeather";
 import SearchBox from "../components/searchBox/SearchBox";
 import Spinner from "../components/spinner/Spinner";
 import ButtonSubmit from "../components/buttonSubmit/ButtonSubmit";
@@ -47,7 +47,7 @@ const MainPage: React.FC = () => {
 
       {/* <ErrorBoundary> */}
       {!isFetching && weather?.sys! && !isError && queryValue && (
-        <ShowCurrentWeather data={weather} />
+        <ShowWeather data={weather} />
       )}
       {/* <ErrorBoundary/> */}
     </div>
