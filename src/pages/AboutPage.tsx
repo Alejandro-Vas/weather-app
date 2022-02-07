@@ -21,7 +21,7 @@ const AboutPage: React.FC = () => {
             className="link"
             href="https://github.com/Alejandro-Vas/weather-app"
           >
-            <ButtonSubmit btnText="Alejandro-VAS" variant="warning">
+            <ButtonSubmit btnText="Alejandro-Vas" variant="success">
               <img src={githubLogo} alt="gitHub repository" />
             </ButtonSubmit>
           </a>

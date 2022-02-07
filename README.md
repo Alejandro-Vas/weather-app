@@ -7,7 +7,7 @@ The source of weather data is [openweathermap.org ](https://openweathermap.org/)
 
 #### DEPLOYMENT
 
-https://weathermannapp.herokuapp.com/
+https://weathermannapp.herokuapp.com
 
 ---
 

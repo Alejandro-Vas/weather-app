@@ -27,7 +27,7 @@ const AlertDismissible: React.FC<IProps> = (props) => {
         </Link>
 
         <Link className="alert__item" to="/about">
-          <ButtonSubmit btnText="Узнать больше" variant="warning" />
+          <ButtonSubmit btnText="О проекте" variant="warning" />
         </Link>
       </div>
     </Alert>
