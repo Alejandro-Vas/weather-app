@@ -19,7 +19,8 @@ https://weathermannapp.herokuapp.com
 
 #### APP FEATURES:
 
-- Fetch data from [openweathermap API ](https://openweathermap.org/) using RTK Query
+- Fetch and cache data from [openweathermap APIs ](https://openweathermap.org/) using RTK Query
+- Typing APIs and React components with TypeScript
 - Display current weather by text query
 - Display weather forecast for 12 hours or 5 days
 - Russian cities query autocomplete
