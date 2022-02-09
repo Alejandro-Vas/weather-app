@@ -25,6 +25,7 @@ https://weathermannapp.herokuapp.com
 - Display weather forecast for 12 hours or 5 days
 - Russian cities query autocomplete
 - Pages routing
+- UI conditional rendering (spinners, errors)
 - Responsive design (mobile first)
 - CI/CD production build using Heroku CLI
 
