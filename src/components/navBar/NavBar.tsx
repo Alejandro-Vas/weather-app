@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import "./NavigateBar.scss";
-
-const NavigateBar: React.FC = () => {
+const NavBar: React.FC = () => {
   return (
     <div className="nav-bar">
       <ul className="nav nav-pills shadow mb-3" id="pills-tab" role="tablist">
@@ -50,4 +48,4 @@ const NavigateBar: React.FC = () => {
   );
 };
 
-export default NavigateBar;
+export default NavBar;

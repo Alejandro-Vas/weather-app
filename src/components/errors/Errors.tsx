@@ -1,5 +1,3 @@
-import "./Errors.scss";
-
 export const LoadingError: React.FC = () => {
   return (
     <div className="loading-error-message">

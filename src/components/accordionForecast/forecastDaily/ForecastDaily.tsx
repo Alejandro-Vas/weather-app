@@ -5,7 +5,6 @@ import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import getWindDirection from "../../../functions/getWindDirection";
 import getWeekDay from "../../../functions/getWeekDay";
 
-import "../Forecast.scss";
 
 const ForecastDaily: React.FC = () => {
   const coordinates = useTypedSelector((state) => state.coordinates.value);

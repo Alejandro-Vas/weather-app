@@ -1,7 +1,5 @@
 import { Button } from "react-bootstrap";
 
-import "./ButtonSubmit.scss";
-
 interface IProps {
   variant: string;
   btnText: string;

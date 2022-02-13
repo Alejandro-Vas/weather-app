@@ -5,9 +5,6 @@ import WeatherIcon from "../../weatherIcon/WeatherIcon";
 import unixTimeToLocal from "../../../functions/unixTimeToLocal";
 import getWindDirection from "../../../functions/getWindDirection";
 
-import "../Forecast.scss";
-
-
 const ForecastHourly: React.FC = () => {
   const coordinates = useTypedSelector((state) => state.coordinates.value);
   const { data: forecast } = useGetForecastQuery(coordinates);

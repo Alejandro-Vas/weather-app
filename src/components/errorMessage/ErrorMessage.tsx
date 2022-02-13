@@ -1,5 +1,3 @@
-import "./ErrorMessage.scss";
-
 const ErrorMessage: React.FC = () => {
   return (
     <div className="error-message">

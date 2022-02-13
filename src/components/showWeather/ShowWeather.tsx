@@ -4,8 +4,6 @@ import WeatherIcon from "../weatherIcon/WeatherIcon";
 import unixTimeToLocal from "../../functions/unixTimeToLocal";
 import getWindDirection from "../../functions/getWindDirection";
 
-import "./ShowWeather.scss";
-
 interface IProps {
   data: IWeather;
 }

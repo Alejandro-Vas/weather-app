@@ -1,5 +1,4 @@
 import weatherIconsAppear from "../../functions/weatherIconsAppear";
-import "./WeatherIcon.scss";
 interface IProps {
   icon: string;
 }

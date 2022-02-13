@@ -1,5 +1,3 @@
-import "./Spinner.scss";
-
 interface IProps {
   color?: string;
 }

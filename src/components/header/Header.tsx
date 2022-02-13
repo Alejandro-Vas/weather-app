@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../resources/img/logo-min-80px.png";
 
-import "./Header.scss";
-
 const Header: React.FC = () => {
   return (
     <>

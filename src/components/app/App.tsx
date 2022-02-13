@@ -1,20 +1,18 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "../header/Header";
-import NavigateBar from "../navigateBar/NavigateBar";
+import NavBar from "../navBar/NavBar";
 import MainPage from "../../pages/MainPage";
 import AboutPage from "../../pages/AboutPage";
 import Page404 from "../../pages/404Page";
 import ForecastPage from "../../pages/ForecastPage";
-
-import "./App.scss";
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="container">
         <Header />
-        <NavigateBar />
+        <NavBar />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="forecast" element={<ForecastPage />} />

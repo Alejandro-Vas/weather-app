@@ -2,7 +2,6 @@ import { Button } from "react-bootstrap";
 import useActions from "../../hooks/useActions";
 import defaultCitiesFullList from "../../resources/data/defaultCitiesFullList.json";
 
-import "./SearchBox.scss";
 
 interface IProps {
   queryValue: string;
